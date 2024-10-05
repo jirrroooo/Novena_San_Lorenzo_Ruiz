@@ -1,0 +1,55 @@
+{
+  "koro": [
+    "O San Lorenzong namomotan",
+    "Iligtas an samong banwaan",
+    "Pilipinas pamibian",
+    "Sa Dios na makakamhan."
+  ],
+  "versos": [
+    {
+      "verso": [
+        "Buhay mo simong inatang",
+        "Sa altar nin katanosan",
+        "Pagtubod ki Hesukristo",
+        "Dai mo tinalikdan"
+      ],
+      "order" : 1
+    },
+    {
+      "verso": [
+        "An marhay na halimbawa",
+        "Iwinalat mo samuya",
+        "Iyo an dapat pag-arogan",
+        "Kan gabos na kinaban."
+      ],
+      "order" : 2
+    },
+    {
+      "verso": [
+        "Sa rona nin Pilipinas",
+        "Ika an enot naging Perlas",
+        "Kan simbahan sa Sirangan",
+        "Na samong rinorokyaw."
+      ],
+      "order" : 3
+    },
+    {
+      "verso": [
+        "Na ika Mamidbidan",
+        "Asin danay na pag-arogan",
+        "Kan gabos na katawohan",
+        "Iyo an hagad mi ngonian."
+      ],
+      "order" : 4
+    },
+    {
+      "verso": [
+        "Tokdoan samo an dalan",
+        "Pasiring sa kabanalan",
+        "Ngani an kamurawayan",
+        "Makamtan mi sagkod pa man."
+      ],
+      "order" : 5
+    }
+  ]
+}
