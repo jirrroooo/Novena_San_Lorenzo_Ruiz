@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:novena_lorenzo/novena_bikol/screens/novena_bikol_page.dart';
+import 'package:novena_lorenzo/novena_english/screens/novena_english_page.dart';
 
-class NovenaBikolHome extends StatefulWidget {
-  const NovenaBikolHome({super.key});
+class NovenaEnglishHome extends StatefulWidget {
+  const NovenaEnglishHome({super.key});
 
   @override
-  State<NovenaBikolHome> createState() => _NovenaBikolHomeState();
+  State<NovenaEnglishHome> createState() => _NovenaEnglishHomeState();
 }
 
-class _NovenaBikolHomeState extends State<NovenaBikolHome> {
+class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
   ScrollController _scrollController = ScrollController();
   bool isCollapsed = false;
 
@@ -109,7 +109,7 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => NovenaBikolPage(
+                          builder: (context) => NovenaEnglishPage(
                               novena_day: index), // Replace with your screen
                         ),
                       );

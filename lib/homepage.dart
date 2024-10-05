@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:novena_lorenzo/novena_bikol/screens/novena_bikol_home.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -136,23 +137,35 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               children: List.generate(10, (index) {
                 // Replace ListView.builder
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        "./assets/background.jpg",
-                        height: 50,
-                        fit: BoxFit.fill,
+                return GestureDetector(
+                  onTap: () {
+                    // Navigate to another screen when tapped
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            NovenaBikolHome(), // Replace with your screen
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        "Financial",
-                        style: TextStyle(fontWeight: FontWeight.w500),
-                      ),
-                    ],
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          "./assets/background.jpg",
+                          height: 50,
+                          fit: BoxFit.fill,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Text(
+                          "Financial",
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               }),
@@ -172,7 +185,7 @@ class _HomePageState extends State<HomePage> {
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     ),
-                    Expanded(child: Container()),
+                    Spacer(),
                     TextButton(
                       child: Text("Read More",
                           style: TextStyle(
@@ -239,13 +252,11 @@ class _HomePageState extends State<HomePage> {
                         TableCell(
                             child: Text('Place of Death:',
                                 style: TextStyle(fontWeight: FontWeight.w500))),
-                        Center(
-                          child: TableCell(
-                            child: Padding(
-                              padding: EdgeInsets.only(bottom: _tableSpacing),
-                              child: Text(
-                                  'Nagasaki, Hizen Province, Tokugawa Shogunate (Military Government of Japan)'),
-                            ),
+                        TableCell(
+                          child: Padding(
+                            padding: EdgeInsets.only(bottom: _tableSpacing),
+                            child: Text(
+                                'Nagasaki, Hizen Province, Tokugawa Shogunate (Military Government of Japan)'),
                           ),
                         ),
                       ],
