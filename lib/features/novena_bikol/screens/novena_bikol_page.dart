@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class NovenaBikolPage extends StatefulWidget {
-  final int novena_day;
+  final int novenaDay;
 
-  const NovenaBikolPage({super.key, required this.novena_day});
+  const NovenaBikolPage({super.key, required this.novenaDay});
 
   @override
   State<NovenaBikolPage> createState() => _NovenaBikolPageState();
@@ -47,7 +47,7 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
               opacity: isCollapsed ? 1.0 : 0.0, // Show title when collapsed
               duration: const Duration(milliseconds: 300),
               child: const Text(
-                "01 | Pagkamundag sa Pamilya nin Dios",
+                "Enot na Aldaw",
                 style: TextStyle(fontWeight: FontWeight.w500),
               )),
           flexibleSpace: FlexibleSpaceBar(

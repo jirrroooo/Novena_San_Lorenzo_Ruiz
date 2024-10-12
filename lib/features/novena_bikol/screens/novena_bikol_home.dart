@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:novena_lorenzo/novena_bikol/screens/novena_bikol_page.dart';
+import 'package:novena_lorenzo/features/novena_bikol/screens/novena_bikol_page.dart';
+import 'package:novena_lorenzo/widgets/appbar.dart';
+import 'package:novena_lorenzo/widgets/scripture.dart';
 
 class NovenaBikolHome extends StatefulWidget {
   const NovenaBikolHome({super.key});
@@ -38,48 +40,11 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
         body: CustomScrollView(
       controller: _scrollController,
       slivers: [
-        SliverAppBar(
-          centerTitle: true,
-          pinned: true,
-          expandedHeight: 200,
-          title: AnimatedOpacity(
-              opacity: isCollapsed ? 1.0 : 0.0, // Show title when collapsed
-              duration: const Duration(milliseconds: 300),
-              child: const Text(
-                "Novena ki San Lorenzo Ruiz",
-                style: TextStyle(fontWeight: FontWeight.w500),
-              )),
-          flexibleSpace: FlexibleSpaceBar(
-            collapseMode: CollapseMode.parallax,
-            background: Image.asset(
-              "./assets/background.jpg",
-              height: 200.0,
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: Container(
-            padding: EdgeInsets.only(top: 40, bottom: 30, right: 30, left: 30),
-            child: const Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  "\"Do not be afraid of what you are about to suffer. I tell you, the devil will put some of you in prison to test you, and you will suffer persecution for ten days. Be faithful, even to the point of death, and I will give you life as your victor’s crown.\"",
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-                Text(
-                  "- Revelation 2:10",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
-                )
-              ],
-            ),
-          ),
-        ),
+        CustomAppbar(
+            isCollapsed: isCollapsed,
+            customAppbarTitle: "Novena ki San Lorenzo Ruiz",
+            imgUrl: "./assets/background.jpg"),
+        Scripture(),
         SliverToBoxAdapter(
           child: Divider(
             thickness: 2,
@@ -110,7 +75,7 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => NovenaBikolPage(
-                              novena_day: index), // Replace with your screen
+                              novenaDay: index), // Replace with your screen
                         ),
                       );
                     },

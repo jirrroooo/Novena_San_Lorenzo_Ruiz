@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:novena_lorenzo/widgets/appbar.dart';
 
 class NovenaEnglishPage extends StatefulWidget {
-  final int novena_day;
+  final int novenaDay;
 
-  const NovenaEnglishPage({super.key, required this.novena_day});
+  const NovenaEnglishPage({super.key, required this.novenaDay});
 
   @override
   State<NovenaEnglishPage> createState() => _NovenaEnglishPageState();
@@ -39,26 +40,10 @@ class _NovenaEnglishPageState extends State<NovenaEnglishPage> {
         body: CustomScrollView(
       controller: _scrollController,
       slivers: [
-        SliverAppBar(
-          centerTitle: true,
-          pinned: true,
-          expandedHeight: 200,
-          title: AnimatedOpacity(
-              opacity: isCollapsed ? 1.0 : 0.0, // Show title when collapsed
-              duration: const Duration(milliseconds: 300),
-              child: const Text(
-                "01 | Pagkamundag sa Pamilya nin Dios",
-                style: TextStyle(fontWeight: FontWeight.w500),
-              )),
-          flexibleSpace: FlexibleSpaceBar(
-            collapseMode: CollapseMode.parallax,
-            background: Image.asset(
-              "./assets/background.jpg",
-              height: 200.0,
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
+        CustomAppbar(
+            isCollapsed: isCollapsed,
+            customAppbarTitle: "Novena Day 1",
+            imgUrl: "./assets/backround.jpg")
       ],
     ));
   }

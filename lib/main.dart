@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:novena_lorenzo/features/about/screens/about_screen.dart';
+import 'package:novena_lorenzo/features/biography/screens/biography_screen.dart';
+import 'package:novena_lorenzo/features/himno/screens/himno_screen.dart';
+import 'package:novena_lorenzo/features/novena_english/screens/novena_english_home.dart';
+import 'package:novena_lorenzo/features/novena_english/screens/novena_english_page.dart';
+import 'package:novena_lorenzo/features/prayers/screens/prayer_screen_page.dart';
+import 'package:novena_lorenzo/features/prayers/screens/prayers_screen_home.dart';
 import 'package:novena_lorenzo/homepage.dart';
-import 'package:novena_lorenzo/novena_bikol/screens/novena_bikol_home.dart';
+import 'package:novena_lorenzo/main_navigation.dart';
+import 'package:novena_lorenzo/features/novena_bikol/screens/novena_bikol_home.dart';
+import 'package:novena_lorenzo/features/novena_bikol/screens/novena_bikol_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,49 +23,27 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int _selectedIndex = 0;
-
-  static const List screens = [
-    HomePage(),
-    NovenaBikolHome(),
-    HomePage(),
-    HomePage(),
-    HomePage()
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Novena to San Lorenzo Ruiz',
-        debugShowCheckedModeBanner: false,
-        // routes: {"/": (BuildContext context) => const HomePage()},
-        // initialRoute: "/",
-        home: Scaffold(
-          body: screens.elementAt(_selectedIndex),
-          bottomNavigationBar: BottomNavigationBar(
-            items: const [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.home_rounded), label: "Home"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.add_box_rounded), label: "Novena"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.music_note_rounded), label: "Hymn"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.church), label: "Prayers"),
-              BottomNavigationBarItem(icon: Icon(Icons.info), label: "About"),
-            ],
-            currentIndex: _selectedIndex,
-            selectedItemColor: Colors.teal,
-            unselectedItemColor: Colors.black54,
-            showUnselectedLabels: true,
-            onTap: _onItemTapped,
-          ),
-        ));
+      title: 'Novena to San Lorenzo Ruiz',
+      debugShowCheckedModeBanner: false,
+      initialRoute: "/",
+      routes: {
+        "/": (BuildContext context) => const MainNavigation(),
+        "/homepage": (BuildContext context) => const HomePage(),
+        "/bikol-novena-home": (BuildContext context) => NovenaBikolHome(),
+        "/bikol-novena-page": (BuildContext context) =>
+            NovenaBikolPage(novenaDay: 1),
+        "/english-novena-home": (BuildContext context) => NovenaEnglishHome(),
+        "/english-novena-page": (BuildContext context) =>
+            NovenaEnglishPage(novenaDay: 1),
+        "/himno": (BuildContext context) => HimnoScreen(),
+        "/prayers-home": (BuildContext context) => PrayersScreenHome(),
+        "/prayers-page": (BuildContext context) => PrayerScreenPage(),
+        "/about": (BuildContext context) => AboutScreen(),
+        "/biography": (BuildContext context) => BiographyScreen(),
+      },
+    );
   }
 }

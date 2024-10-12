@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:novena_lorenzo/novena_bikol/screens/novena_bikol_home.dart';
+import 'package:novena_lorenzo/features/novena_bikol/screens/novena_bikol_home.dart';
+import 'package:novena_lorenzo/widgets/appbar.dart';
+import 'package:novena_lorenzo/widgets/scripture.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -32,6 +34,29 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
+  final List<Map<String, String>> _homepageSelection = [
+    {
+      "title": "Himnno ki San Lorenzo Ruiz",
+      "img_url": "./assets/background.jpg",
+      "nav": '/himno'
+    },
+    {
+      "title": "Perpetual Novena",
+      "img_url": "./assets/background.jpg",
+      "nav": "/perpetual-novena"
+    },
+    {
+      "title": "Bicol Novena",
+      "img_url": "./assets/background.jpg",
+      "nav": "/bicol-novena"
+    },
+    {
+      "title": "English Novena",
+      "img_url": "./assets/background.jpg",
+      "nav": "/english-novena"
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     const _tableSpacing = 15.0;
@@ -40,48 +65,11 @@ class _HomePageState extends State<HomePage> {
         body: CustomScrollView(
       controller: _scrollController,
       slivers: [
-        SliverAppBar(
-          centerTitle: true,
-          pinned: true,
-          expandedHeight: 200,
-          title: AnimatedOpacity(
-              opacity: isCollapsed ? 1.0 : 0.0, // Show title when collapsed
-              duration: const Duration(milliseconds: 300),
-              child: const Text(
-                "Novena to Saint Lorenzo Ruiz",
-                style: TextStyle(fontWeight: FontWeight.w500),
-              )),
-          flexibleSpace: FlexibleSpaceBar(
-            collapseMode: CollapseMode.parallax,
-            background: Image.asset(
-              "./assets/background.jpg",
-              height: 200.0,
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: Container(
-            padding: EdgeInsets.all(30),
-            child: const Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  "\"Do not be afraid of what you are about to suffer. I tell you, the devil will put some of you in prison to test you, and you will suffer persecution for ten days. Be faithful, even to the point of death, and I will give you life as your victor’s crown.\"",
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-                Text(
-                  "- Revelation 2:10",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
-                )
-              ],
-            ),
-          ),
-        ),
+        CustomAppbar(
+            isCollapsed: isCollapsed,
+            customAppbarTitle: "Novena to Saint. Lorenzo Ruiz",
+            imgUrl: "./assets/background.jpg"),
+        Scripture(),
         SliverPadding(
           padding: EdgeInsets.all(10),
           sliver: SliverGrid(
@@ -96,27 +84,27 @@ class _HomePageState extends State<HomePage> {
                 return Column(
                   children: [
                     Image.asset(
-                      "./assets/background.jpg",
+                      _homepageSelection[index]["img_url"]!,
                       fit: BoxFit.cover,
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
-                      "Himno ki San Lorenzo Ruiz",
+                      _homepageSelection[index]["title"]!,
                       style: TextStyle(fontWeight: FontWeight.w500),
                     )
                   ],
                 );
               },
-              childCount: 4,
+              childCount: _homepageSelection.length,
             ),
           ),
         ),
         SliverToBoxAdapter(
           child: Container(
             padding: EdgeInsets.all(10),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
@@ -126,7 +114,12 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   width: 25,
                 ),
-                Icon(Icons.arrow_forward)
+                IconButton(
+                  icon: Icon(Icons.arrow_forward),
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/prayers-home");
+                  },
+                )
               ],
             ),
           ),
@@ -140,13 +133,7 @@ class _HomePageState extends State<HomePage> {
                 return GestureDetector(
                   onTap: () {
                     // Navigate to another screen when tapped
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            NovenaBikolHome(), // Replace with your screen
-                      ),
-                    );
+                    Navigator.pushNamed(context, "/prayers-page");
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -192,7 +179,9 @@ class _HomePageState extends State<HomePage> {
                               fontSize: 10,
                               color: Colors.blueGrey,
                               fontWeight: FontWeight.bold)),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/biography");
+                      },
                     ),
                   ],
                 ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:novena_lorenzo/novena_english/screens/novena_english_page.dart';
+import 'package:novena_lorenzo/features/novena_english/screens/novena_english_page.dart';
 
 class NovenaEnglishHome extends StatefulWidget {
   const NovenaEnglishHome({super.key});
@@ -110,7 +110,7 @@ class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => NovenaEnglishPage(
-                              novena_day: index), // Replace with your screen
+                              novenaDay: index), // Replace with your screen
                         ),
                       );
                     },
