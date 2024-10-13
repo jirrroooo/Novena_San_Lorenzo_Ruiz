@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:novena_lorenzo/data/translation.dart';
 import 'package:novena_lorenzo/features/novena_bikol/screens/novena_bikol_home.dart';
 import 'package:novena_lorenzo/widgets/appbar.dart';
-import 'package:novena_lorenzo/widgets/scripture.dart';
+import 'package:novena_lorenzo/widgets/scripture/screens/scripture.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -69,7 +70,9 @@ class _HomePageState extends State<HomePage> {
             isCollapsed: isCollapsed,
             customAppbarTitle: "Novena to Saint. Lorenzo Ruiz",
             imgUrl: "./assets/background.jpg"),
-        Scripture(),
+        Scripture(
+          translation: Translation.english,
+        ),
         SliverPadding(
           padding: EdgeInsets.all(10),
           sliver: SliverGrid(

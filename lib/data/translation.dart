@@ -1,0 +1,1 @@
+enum Translation { bicol, english }

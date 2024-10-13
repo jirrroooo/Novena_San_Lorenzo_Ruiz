@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:novena_lorenzo/data/translation.dart';
 import 'package:novena_lorenzo/features/novena_bikol/screens/novena_bikol_page.dart';
 import 'package:novena_lorenzo/widgets/appbar.dart';
-import 'package:novena_lorenzo/widgets/scripture.dart';
+import 'package:novena_lorenzo/widgets/scripture/screens/scripture.dart';
 
 class NovenaBikolHome extends StatefulWidget {
   const NovenaBikolHome({super.key});
@@ -44,7 +45,9 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
             isCollapsed: isCollapsed,
             customAppbarTitle: "Novena ki San Lorenzo Ruiz",
             imgUrl: "./assets/background.jpg"),
-        Scripture(),
+        Scripture(
+          translation: Translation.bicol,
+        ),
         SliverToBoxAdapter(
           child: Divider(
             thickness: 2,
