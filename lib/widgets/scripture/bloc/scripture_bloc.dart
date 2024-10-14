@@ -18,15 +18,9 @@ class ScriptureBloc extends Bloc<ScriptureEvent, ScriptureState> {
       ScriptureFetched event, Emitter<ScriptureState> emit) async {
     emit(ScriptureFetchedLoading());
 
-    print("===> Bloc called");
-
     try {
-      print("===> Test 1 | Translation ${event.translation}");
-
       final scriptureModel =
           await scriptureRepository.getScripture(event.translation);
-
-      print("===> Scripture Model: $scriptureModel");
 
       emit(ScriptureFetchedSuccess(scriptureModel: scriptureModel));
     } catch (e) {

@@ -1,16 +1,33 @@
 {
-    "title" : "Danay na Nobena ki San Lorenzo Ruiz asin Kairibang mga Martir",
-    "pamibi" : [
-        "Amang mamomoton, si Hesukristo na saimong Aki nagadan huli samo. Mamotan na Ika sa bilog ming puso sagkod sa kagadanan.",
-        "Dinara mo sa Hapon si San Lorenzo asin mga kairiba nganing si Hesukristo arogon ninda asin duman irokyaw an Marhay na Bareta nin katotoohan asin kaligtasan.",
-        "Sa pamibi kaining mga martir, hinahagad mi an biyaya na magdanay kaming maimbod Saimo, na an liwanag kan Ebanghelyo makaabot sa gabos na banwaan.",
-        "Para sa saimong kamurawayan asin man sa samong karahayan, si San Lorenzo asin mga kairiba lugod mamidbidan, arogon asin omawon siring kan pag-omaw na itinatao nin samong Inang Simbahan sa gabos na mga banal. Ini hinahagad mi huli ki Hesukristong Kagurangnan niamo na nabubuhay asin naghahade kaiba Mo asin nin Espiritu Santo ngonian asin sagkod pa man. Amen.",
-        "Ama niamo, na yaon sa langit: pabanalon an ngaran Mo; magdatong an kahadean Mo; mangyari an boot Mo sa daga nin siring sa langit. An samong kakanon sa aroaldaw, itao Mo samuya ngunyan, asin patawadon Mo kami sa samong mga kasâlan, siring na pinapatawad niamo an mga nagkakasala samuya; asin hare kami pagdaraha sa sugot; kundi agawa kami sa maraot. Amen.",
-        "Ave Maria, pano nin grasya, an Kagurangnan yaon saimo, paladan ka sa kababaihan, asin paladan an bunga kan saimong popônan, si Jesus. Santa Maria, Inâ kan Dios, ipamibi mo kaming mga parakasala, ngunyan asin sa oras kan samuyang kagadanan. Amen.",
-        "Kamurawayan sa Ama, asin sa Aki, asin sa Espiritu Santo, siring sa kapinonan asin ngunyan, magdanay man, asin sa kapanahonan kan mga panahon. Amen."
+  "bicol": {
+    "title": "Danay na Nobena ki San Lorenzo Ruiz",
+    "prayer": [
+      "Amang mamomoton, si Hesukristo na saimong Aki nagadan huli samo. Mamotan na Ika sa bilog ming puso sagkod sa kagadanan.",
+      "Dinara mo sa Hapon si San Lorenzo asin mga kairiba nganing si Hesukristo arogon ninda asin duman irokyaw an Marhay na Bareta nin katotoohan asin kaligtasan.",
+      "Sa pamibi kaining mga martir, hinahagad mi an biyaya na magdanay kaming maimbod Saimo, na an liwanag kan Ebanghelyo makaabot sa gabos na banwaan.",
+      "Para sa saimong kamurawayan asin man sa samong karahayan, si San Lorenzo asin mga kairiba lugod mamidbidan, arogon asin omawon siring kan pag-omaw na itinatao nin samong Inang Simbahan sa gabos na mga banal. Ini hinahagad mi huli ki Hesukristong Kagurangnan niamo na nabubuhay asin naghahade kaiba Mo asin nin Espiritu Santo ngonian asin sagkod pa man."
     ],
-    "huring_pamibi" : [
-        "O Dios, kusog nin mga martir, papagkanigoang omawon digdi sa daga si San Lorenzo Ruiz asin mga kairiba na nagsaksi saimo. Itinao Mo sainda an onor kan mga altar, bilang aarogan nin pagkamaimbod saimo asin bilang modelo nin heroismo Kristiano sa tahaw nin mga pagtios asin kasakitan sa kinaban. Ini hinahagad mi huli ki Hesukristo na samong Kagurangnan.",
-        "Amen."
+    "our_father": "Ama niamo, na yaon sa langit: pabanalon an ngaran Mo; magdatong an kahadean Mo; mangyari an boot Mo sa daga nin siring sa langit. An samong kakanon sa aroaldaw, itao Mo samuya ngunyan, asin patawadon Mo kami sa samong mga kasâlan, siring na pinapatawad niamo an mga nagkakasala samuya; asin hare kami pagdaraha sa sugot; kundi agawa kami sa maraot.",
+    "hail_mary": "Ave Maria, pano nin grasya, an Kagurangnan yaon saimo, paladan ka sa kababaihan, asin paladan an bunga kan saimong popônan, si Jesus. Santa Maria, Inâ kan Dios, ipamibi mo kaming mga parakasala, ngunyan asin sa oras kan samuyang kagadanan.",
+    "glory_be": "Kamurawayan sa Ama, asin sa Aki, asin sa Espiritu Santo, siring sa kapinonan asin ngunyan, magdanay man, asin sa kapanahonan kan mga panahon.",
+    "last_prayer": [
+      "O Dios, kusog nin mga martir, papagkanigoang omawon digdi sa daga si San Lorenzo Ruiz asin mga kairiba na nagsaksi saimo. Itinao Mo sainda an onor kan mga altar, bilang aarogan nin pagkamaimbod saimo asin bilang modelo nin heroismo Kristiano sa tahaw nin mga pagtios asin kasakitan sa kinaban. Ini hinahagad mi huli ki Hesukristo na samong Kagurangnan.",
+      "Amen."
     ]
+  },
+  "english": {
+    "title": "Perpetual Novena to St. Lorenzo Ruiz",
+    "prayer": [
+      "O glorious Saint Lorenzo Ruiz and companion martyrs, you who embraced the call of Christ and endured persecution with unwavering faith, intercede for us as we seek to grow in our relationship with God. Your courage in the face of trials inspires us to live boldly for our faith and to love our neighbors.",
+      "As you faced suffering for the sake of Christ, may we also find strength in our challenges and remain steadfast in our convictions. Help us to witness to the truth of the Gospel in our daily lives, reflecting the love of God through our words and actions.",
+      "We humbly ask for your intercession in our intentions and needs (mention your intentions here), that through your prayers, we may experience the grace and mercy of God in our lives. May your example of faith and dedication inspire us to live with integrity and purpose."
+    ],
+    "our_father": "Our Father, Who art in heaven, hallowed be Thy name; Thy kingdom come; Thy will be done on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil.",
+    "hail_mary": "Hail Mary, full of grace, the Lord is with you; blessed are you among women and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen",
+    "glory_be": "Glory be to the Father, and to the Son, and to the Holy Spirit. As it was in the beginning, is now, and ever shall be, world without end.",
+    "last_prayer": [
+      "O Saint Lorenzo Ruiz and companion martyrs, pray for us, that we may grow in holiness and one day join you in the eternal joy of heaven. We ask this through Christ our Lord.",
+      "Amen."
+    ]
+  }
 }

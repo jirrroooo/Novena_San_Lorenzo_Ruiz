@@ -1,0 +1,36 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
+import 'package:novena_lorenzo/data/translation.dart';
+import 'package:novena_lorenzo/features/perpetual_novena/models/perpetual_novena_model.dart';
+
+class PerpetualNovenaRepository {
+  Future<PerpetualNovenaModel> getPerpetualNovenaPrayer(
+      Translation translation) async {
+    var data;
+    PerpetualNovenaModel perpetualNovenaModel;
+
+    try {
+      String jsonString =
+          await rootBundle.loadString('lib/data/danay_na_novena.json');
+
+      var decodedData = jsonDecode(jsonString);
+
+      data = translation == Translation.bicol
+          ? decodedData["bicol"]
+          : decodedData["english"];
+
+      perpetualNovenaModel = PerpetualNovenaModel(
+          title: data["title"],
+          prayer: data["prayer"],
+          ourFather: data["our_father"],
+          hailMary: data["hail_mary"],
+          gloryBe: data["glory_be"],
+          lastPrayer: data["last_prayer"]);
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+
+    return perpetualNovenaModel;
+  }
+}

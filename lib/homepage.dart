@@ -49,12 +49,12 @@ class _HomePageState extends State<HomePage> {
     {
       "title": "Bicol Novena",
       "img_url": "./assets/background.jpg",
-      "nav": "/bicol-novena"
+      "nav": "/bicol-novena-home"
     },
     {
       "title": "English Novena",
       "img_url": "./assets/background.jpg",
-      "nav": "/english-novena"
+      "nav": "/english-novena-home"
     },
   ];
 
@@ -84,20 +84,26 @@ class _HomePageState extends State<HomePage> {
                 mainAxisExtent: 150),
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
-                return Column(
-                  children: [
-                    Image.asset(
-                      _homepageSelection[index]["img_url"]!,
-                      fit: BoxFit.cover,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      _homepageSelection[index]["title"]!,
-                      style: TextStyle(fontWeight: FontWeight.w500),
-                    )
-                  ],
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(
+                        context, _homepageSelection[index]["nav"]!);
+                  },
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        _homepageSelection[index]["img_url"]!,
+                        fit: BoxFit.cover,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        _homepageSelection[index]["title"]!,
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      )
+                    ],
+                  ),
                 );
               },
               childCount: _homepageSelection.length,

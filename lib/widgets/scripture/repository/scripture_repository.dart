@@ -7,8 +7,6 @@ import 'package:novena_lorenzo/widgets/scripture/models/scriptureModel.dart';
 
 class ScriptureRepository {
   Future<ScriptureModel> getScripture(Translation translation) async {
-    print("===> getScripture is Called");
-
     var random = Random();
     int randomInt = random.nextInt(20);
 
@@ -30,8 +28,6 @@ class ScriptureRepository {
         text: translation == Translation.bicol
             ? data["bicol_text"]
             : data["english_text"]);
-
-    print(scriptureModel);
 
     return scriptureModel;
   }

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:novena_lorenzo/features/about/screens/about_screen.dart';
 import 'package:novena_lorenzo/features/biography/screens/biography_screen.dart';
+import 'package:novena_lorenzo/features/perpetual_novena/bloc/perpetual_novena_bloc.dart';
+import 'package:novena_lorenzo/features/perpetual_novena/repository/perpetual_novena_repository.dart';
+import 'package:novena_lorenzo/features/perpetual_novena/screens/perpetual_novena_screen.dart';
 import 'package:novena_lorenzo/features/himno/screens/himno_screen.dart';
 import 'package:novena_lorenzo/features/novena_english/screens/novena_english_home.dart';
 import 'package:novena_lorenzo/features/novena_english/screens/novena_english_page.dart';
@@ -32,7 +35,10 @@ class _MyAppState extends State<MyApp> {
       providers: [
         BlocProvider<ScriptureBloc>(
             create: (BuildContext context) =>
-                ScriptureBloc(ScriptureRepository()))
+                ScriptureBloc(ScriptureRepository())),
+        BlocProvider<PerpetualNovenaBloc>(
+            create: (BuildContext context) =>
+                PerpetualNovenaBloc(PerpetualNovenaRepository()))
       ],
       child: MaterialApp(
         title: 'Novena to San Lorenzo Ruiz',
@@ -41,12 +47,14 @@ class _MyAppState extends State<MyApp> {
         routes: {
           "/": (BuildContext context) => const MainNavigation(),
           "/homepage": (BuildContext context) => const HomePage(),
-          "/bikol-novena-home": (BuildContext context) => NovenaBikolHome(),
-          "/bikol-novena-page": (BuildContext context) =>
+          "/bicol-novena-home": (BuildContext context) => NovenaBikolHome(),
+          "/bicol-novena-page": (BuildContext context) =>
               NovenaBikolPage(novenaDay: 1),
           "/english-novena-home": (BuildContext context) => NovenaEnglishHome(),
           "/english-novena-page": (BuildContext context) =>
               NovenaEnglishPage(novenaDay: 1),
+          "/perpetual-novena": (BuildContext context) =>
+              PerpetualNovenaScreen(),
           "/himno": (BuildContext context) => HimnoScreen(),
           "/prayers-home": (BuildContext context) => PrayersScreenHome(),
           "/prayers-page": (BuildContext context) => PrayerScreenPage(),
