@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:novena_lorenzo/common/error.dart';
 import 'package:novena_lorenzo/data/translation.dart';
+import 'package:novena_lorenzo/features/novena_bikol/bloc/novena_bikol_bloc.dart';
+import 'package:novena_lorenzo/features/novena_bikol/models/novena_bikol_home_model.dart';
 import 'package:novena_lorenzo/features/novena_bikol/screens/novena_bikol_page.dart';
 import 'package:novena_lorenzo/widgets/appbar.dart';
 import 'package:novena_lorenzo/widgets/scripture/screens/scripture.dart';
@@ -15,6 +19,8 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
   ScrollController _scrollController = ScrollController();
   bool isCollapsed = false;
 
+  List<NovenaBikolHomeModel>? data;
+
   @override
   void initState() {
     super.initState();
@@ -27,6 +33,8 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
         isCollapsed = offset > 200 - kToolbarHeight;
       });
     });
+
+    context.read<NovenaBikolBloc>().add(NovenaBikolTitleFetched());
   }
 
   @override
@@ -53,44 +61,64 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
             thickness: 2,
           ),
         ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              return Column(
-                children: [
-                  ListTile(
-                    leading: Icon(
-                      Icons.add_rounded,
-                      size: 40,
-                    ),
-                    title: Text(
-                      "Pagkamundag sa Pamilya nin Dios",
-                      style: TextStyle(fontWeight: FontWeight.w500),
-                    ),
-                    subtitle: Text(
-                      "Enot na Aldaw",
-                      style: TextStyle(fontStyle: FontStyle.italic),
-                    ),
-                    onTap: () {
-                      print("Index: $index");
+        BlocConsumer<NovenaBikolBloc, NovenaBikolState>(
+          listener: (context, state) {
+            if (state is NovenaBikolTitleFetchedFailure) {
+              showError(context, state.error);
+            }
 
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => NovenaBikolPage(
-                              novenaDay: index), // Replace with your screen
-                        ),
-                      );
-                    },
-                  ),
-                  const Divider(
-                    indent: 70, // This will add spacing from the leading icon
-                  ),
-                ],
+            if (state is NovenaBikolTitleFetchedLoading) {}
+
+            if (state is NovenaBikolTitleFetchedSuccess) {
+              data = state.titleList;
+            }
+          },
+          builder: (context, state) {
+            if (state is NovenaBikolPageFetcedLoading ||
+                data == null ||
+                data!.isEmpty) {
+              return SliverToBoxAdapter(
+                child: Center(
+                  child: CircularProgressIndicator.adaptive(),
+                ),
               );
-            },
-            childCount: 9, // The number of items in your list
-          ),
+            }
+
+            return SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return Column(
+                    children: [
+                      ListTile(
+                        leading: Image.asset("./assets/cross.png", height: 30),
+                        title: Text(
+                          data![index].title,
+                          style: TextStyle(fontWeight: FontWeight.w700),
+                        ),
+                        subtitle: Text(
+                          data![index].aldaw,
+                          style: TextStyle(fontStyle: FontStyle.italic),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  NovenaBikolPage(novenaDay: index),
+                            ),
+                          );
+                        },
+                      ),
+                      const Divider(
+                        indent: 55,
+                      ),
+                    ],
+                  );
+                },
+                childCount: data!.length,
+              ),
+            );
+          },
         ),
       ],
     ));

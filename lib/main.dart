@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:novena_lorenzo/features/about/screens/about_screen.dart';
 import 'package:novena_lorenzo/features/biography/screens/biography_screen.dart';
+import 'package:novena_lorenzo/features/novena_bikol/bloc/novena_bikol_bloc.dart';
+import 'package:novena_lorenzo/features/novena_bikol/repository/novena_bikol_repository.dart';
 import 'package:novena_lorenzo/features/perpetual_novena/bloc/perpetual_novena_bloc.dart';
 import 'package:novena_lorenzo/features/perpetual_novena/repository/perpetual_novena_repository.dart';
 import 'package:novena_lorenzo/features/perpetual_novena/screens/perpetual_novena_screen.dart';
@@ -38,7 +40,10 @@ class _MyAppState extends State<MyApp> {
                 ScriptureBloc(ScriptureRepository())),
         BlocProvider<PerpetualNovenaBloc>(
             create: (BuildContext context) =>
-                PerpetualNovenaBloc(PerpetualNovenaRepository()))
+                PerpetualNovenaBloc(PerpetualNovenaRepository())),
+        BlocProvider<NovenaBikolBloc>(
+            create: (BuildContext context) =>
+                NovenaBikolBloc(NovenaBikolRepository()))
       ],
       child: MaterialApp(
         title: 'Novena to San Lorenzo Ruiz',

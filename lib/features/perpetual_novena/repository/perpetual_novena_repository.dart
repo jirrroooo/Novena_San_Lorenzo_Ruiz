@@ -28,7 +28,12 @@ class PerpetualNovenaRepository {
           gloryBe: data["glory_be"],
           lastPrayer: data["last_prayer"]);
     } catch (e) {
-      throw Exception(e.toString());
+      final error = {
+        "title": "Error Occured",
+        "description": "Cannot fetched perpertual novena data. Try again later."
+      };
+
+      throw Exception(jsonEncode(error));
     }
 
     return perpetualNovenaModel;

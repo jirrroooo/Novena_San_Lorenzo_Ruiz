@@ -49,7 +49,7 @@ class _ScriptureState extends State<Scripture> {
                   data.text,
                   textAlign: TextAlign.justify,
                   style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 16,
                     fontStyle: FontStyle.italic,
                   ),
                 ),
@@ -59,7 +59,7 @@ class _ScriptureState extends State<Scripture> {
                 Text(
                   "- ${data.verse}",
                   style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic),
                 )

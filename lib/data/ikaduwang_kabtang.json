@@ -1,122 +1,133 @@
 {
-    "pamibi" : "An mga santo panalmingan kan pagsunod ki Hesukristo. An saindang buhay, siring sa hayag na libro, nagtutukdo kun paano kita mabuhay asin magsaksi sa pagtubod. Dakul an satuyang manonodan ki San Lorenzo. Paghorop-horopan niato an nagi niyang buhay.",
-    "1" : {
-        "title" : "Enot na Aldaw",
-        "subtitle" : "Pagkamundag sa Pamilya nin Dios",
-        "reflection" : [
-            "Si San Lorenzo namundag sa Binondo, Manila kan taon 1600. Siya binonyagan sa simbahan kan Binondo. Nginaranan siyang Lorenzo, ngaran nin sarong midbid na martir.",
-            "An bonyag iyo an kapinonan kan kristianong pagkabuhay. Digdi hinohugasan an kasalan asin iwinawaras nin Dios an biyaya sa satuya. Sa bonyag, inaapod kitang mga aki nin Dios asin kaayon sa Simbahan. Iyo ini an kapinonan kan paglakbay sa kinaban sa pagsunod ki Hesukristo asin paglingkod sa Kahadean nin Dios.",
-            "An bonyag sa sarong aki iyo an pangenot na pagdusay kan buhay ki Hesukristo. Sa ngaran niya an saiyang mga magurang asin padrino minasikwal ki Satanas asin minaako kan mga katokdoan ni Hesus. Ngapit ining aking binonyagan iyo mismo an magibo kan pagsumpa asin pagdusay kan saiyang buhay ki Hesukristong Kagurangnan sa paaging mas makahulugan.",
-            "May mga kristianong inaapod nin Kagurangnan sa mas mapagbalong pagsaksi sa Saiya. Ini sarong pag-alok sa ibang klase nin bonyag, an bonyag sa dugo siring sa sinabi niya sa aki ni Zebedeo na si Santiago asin Juan, “Makakainom daw kamo kan kalis na iinomon ko? Makakapabonyag daw kamo kan bonyag na aakoon ko?” (Markos 10:38).",
-            "Si Hesus binonyagan nin tubig sa Jordan, siring man binonyagan nin dugo kan Siya nakapako sa krus. Sa huring bonyag na ini nin dugo dinara Niya sa kabilogan an pagtubos sa kadaklan.",
-            "Sa Nagasaki duman sa Hapon si Lorenzo pinagbalo sa paagi nin sarong kahapotan.",
-            "Siring ki Santiago asin Juan maogma siyang nagsimbag, “Opo kaya ko”. Sa pag-arog sa saiyang Maestrong si Hesus asin sa saiyang katood na si San Lorenzong decano asin martir na taga Roma, saiyang pinabulos an sadiring dugo sa kagadanan, kun saen niya dinusay an bilog niyang buhay para sa kahadean nin Dios. Digdi namunga an bonyag asin pagtubod na inako kan aking si Lorenzo duman sa Simbahan kan Binondo."
-        ],
-        "tataramon_nin_Dios" : "“Totoong sinasabi ko saindo: kun an banhi nin trigo dai mahulog sa daga asin magadan, dai mabunga; alagad kun magadan mabunga nin dakul” - Juan 12:24"
+  "pamibi": "An mga santo panalmingan kan pagsunod ki Hesukristo. An saindang buhay, siring sa hayag na libro, nagtutukdo kun paano kita mabuhay asin magsaksi sa pagtubod. Dakul an satuyang manonodan ki San Lorenzo. Paghorop-horopan niato an nagi niyang buhay.",
+  "proper": [
+    {
+      "aldaw": "Enot na Aldaw",
+      "order": 1,
+      "title": "Pagkamundag sa Pamilya nin Dios",
+      "reflection": [
+        "Si San Lorenzo namundag sa Binondo, Manila kan taon 1600. Siya binonyagan sa simbahan kan Binondo. Nginaranan siyang Lorenzo, ngaran nin sarong midbid na martir.",
+        "An bonyag iyo an kapinonan kan kristianong pagkabuhay. Digdi hinohugasan an kasalan asin iwinawaras nin Dios an biyaya sa satuya. Sa bonyag, inaapod kitang mga aki nin Dios asin kaayon sa Simbahan. Iyo ini an kapinonan kan paglakbay sa kinaban sa pagsunod ki Hesukristo asin paglingkod sa Kahadean nin Dios.",
+        "An bonyag sa sarong aki iyo an pangenot na pagdusay kan buhay ki Hesukristo. Sa ngaran niya an saiyang mga magurang asin padrino minasikwal ki Satanas asin minaako kan mga katokdoan ni Hesus. Ngapit ining aking binonyagan iyo mismo an magibo kan pagsumpa asin pagdusay kan saiyang buhay ki Hesukristong Kagurangnan sa paaging mas makahulugan.",
+        "May mga kristianong inaapod nin Kagurangnan sa mas mapagbalong pagsaksi sa Saiya. Ini sarong pag-alok sa ibang klase nin bonyag, an bonyag sa dugo siring sa sinabi niya sa aki ni Zebedeo na si Santiago asin Juan, “Makakainom daw kamo kan kalis na iinomon ko? Makakapabonyag daw kamo kan bonyag na aakoon ko?” (Markos 10:38).",
+        "Si Hesus binonyagan nin tubig sa Jordan, siring man binonyagan nin dugo kan Siya nakapako sa krus. Sa huring bonyag na ini nin dugo dinara Niya sa kabilogan an pagtubos sa kadaklan.",
+        "Sa Nagasaki duman sa Hapon si Lorenzo pinagbalo sa paagi nin sarong kahapotan.",
+        "Siring ki Santiago asin Juan maogma siyang nagsimbag, “Opo kaya ko”. Sa pag-arog sa saiyang Maestrong si Hesus asin sa saiyang katood na si San Lorenzong decano asin martir na taga Roma, saiyang pinabulos an sadiring dugo sa kagadanan, kun saen niya dinusay an bilog niyang buhay para sa kahadean nin Dios. Digdi namunga an bonyag asin pagtubod na inako kan aking si Lorenzo duman sa Simbahan kan Binondo."
+      ],
+      "tataramon_nin_Dios": "“Totoong sinasabi ko saindo: kun an banhi nin trigo dai mahulog sa daga asin magadan, dai mabunga; alagad kun magadan mabunga nin dakul” - Juan 12:24"
     },
-    "2" : {
-        "title" : "Ika-Duwang Aldaw",
-        "subtitle" : "An Paglalakbay sa Daga",
-        "reflection" : [
-            "“Bayaan mo an saimong daga, an saimong mga kadugo asin an harong kan saimong ama dangan magduman ka sa dagang ipapahiling ko saimo. Gigibohon takang sarong dakulang nasyon, bebendisyonan taka asin gigibohon kong bantog an saimong ngaran tanganing ika magin sarong bendisyon” - (Genesis 12: 1-2).",
-            "Siring an sabi nin Kagurangnan ki Abraham. Ining pang-apodan sinimbag niya… alagad dai niya aram kun saen siya maduman, handa suya minsan saen pa man sugoon nin Kagurangnan!",
-            "Pusog sa saiyang pagsarig ki Yahweh si Abraham naglakbay sa palaen-laen na lugar, minsan pano nin mga kadeficilan asin mga pagbalo sagkod siya umabot sa bagong daga. Duman siya naging ama nin sarong dakulang nasyon, an banwaan nin Tipan kun saen guminikan an Kristo an nagligtas sa kinaban.",
-            "Sarong aldaw nagdangog man ni San Lorenzo an tingog nin Kagurangnan alagad sa naiibang paagi. Kan nasa tahaw siya nin mapiligrong kamugtakan sa Manila naghagad siya nin tabang sa mga pading Dominicos asin siya nagsabay sa apat nindang misyonero asin sarong seglar na Hapones na naghale sa Manila. Dai aram kun saen siya maduman o kun ano man an plano nin Dios para sa saiya. Sinda nag-abot sa Hapon kan taon 1636.",
-            "Dai ini ikinapurisaw ni San Lorenzo. An paagi nin Kagurangnan naiiba sa makatawong palakaw. An Dios an nakakaaram kan gabos. Nakakasurat an Dios nin tanos sa tikong bagay. Nangyari ini ki Abraham asin ngonian ki Lorenzo man.",
-            "An lalaking taga Binondo naging perigrino bako pasiring sa Jerusalem o kaya pasiring sa Roma alagad patukad sa kabulodan kan Nagasaki. An lugar na ini pinabanal kan dugo nin kadakul na mga dayupot na disipulos ni Hesus. Duman man nakua ni Lorenzo an bago niyang daga… siring man an dakulang ngaran! Duman siya namidbidan. Duman siya naging dakulang bendisyon sa kagabsan."
-        ],
-        "tataramon_nin_Dios" : "“An siisay man na nagbaya kan saiyang pamilya o mga tugang, ama saka ina, mga aki o mga rogaring dahil sako maako nin labi pa sa ginatos asin mag-mamana kan buhay na daing kasagkoran” - Mateo 19:29"
+    {
+      "aldaw": "Ika-Duwang Aldaw",
+      "order": 2,
+      "title": "An Paglalakbay sa Daga",
+      "reflection": [
+        "“Bayaan mo an saimong daga, an saimong mga kadugo asin an harong kan saimong ama dangan magduman ka sa dagang ipapahiling ko saimo. Gigibohon takang sarong dakulang nasyon, bebendisyonan taka asin gigibohon kong bantog an saimong ngaran tanganing ika magin sarong bendisyon” - (Genesis 12: 1-2).",
+        "Siring an sabi nin Kagurangnan ki Abraham. Ining pang-apodan sinimbag niya… alagad dai niya aram kun saen siya maduman, handa suya minsan saen pa man sugoon nin Kagurangnan!",
+        "Pusog sa saiyang pagsarig ki Yahweh si Abraham naglakbay sa palaen-laen na lugar, minsan pano nin mga kadeficilan asin mga pagbalo sagkod siya umabot sa bagong daga. Duman siya naging ama nin sarong dakulang nasyon, an banwaan nin Tipan kun saen guminikan an Kristo an nagligtas sa kinaban.",
+        "Sarong aldaw nagdangog man ni San Lorenzo an tingog nin Kagurangnan alagad sa naiibang paagi. Kan nasa tahaw siya nin mapiligrong kamugtakan sa Manila naghagad siya nin tabang sa mga pading Dominicos asin siya nagsabay sa apat nindang misyonero asin sarong seglar na Hapones na naghale sa Manila. Dai aram kun saen siya maduman o kun ano man an plano nin Dios para sa saiya. Sinda nag-abot sa Hapon kan taon 1636.",
+        "Dai ini ikinapurisaw ni San Lorenzo. An paagi nin Kagurangnan naiiba sa makatawong palakaw. An Dios an nakakaaram kan gabos. Nakakasurat an Dios nin tanos sa tikong bagay. Nangyari ini ki Abraham asin ngonian ki Lorenzo man.",
+        "An lalaking taga Binondo naging perigrino bako pasiring sa Jerusalem o kaya pasiring sa Roma alagad patukad sa kabulodan kan Nagasaki. An lugar na ini pinabanal kan dugo nin kadakul na mga dayupot na disipulos ni Hesus. Duman man nakua ni Lorenzo an bago niyang daga… siring man an dakulang ngaran! Duman siya namidbidan. Duman siya naging dakulang bendisyon sa kagabsan."
+      ],
+      "tataramon_nin_Dios": "“An siisay man na nagbaya kan saiyang pamilya o mga tugang, ama saka ina, mga aki o mga rogaring dahil sako maako nin labi pa sa ginatos asin mag-mamana kan buhay na daing kasagkoran” - Mateo 19:29"
     },
-    "3" : {
-        "title" : "Ika-Tolong Aldaw",
-        "subtitle" : "Pagkamoot sa Dios nin Orog sa Gabos",
-        "reflection" : [
-            "“An boot na sumunod sako, magsayuma sa sadiri, pasanon an saiyang krus asin sumunod sako. Huli ta an boot magligtas kan saiyang buhay, mawawara niya iyan. Alagad an nawawaran nin buhay dahil sako, Makakamtan niya iyan” - Mateo 16:24-25.",
-            "Dai nagkulang sa pagkamoot si Hesus sa satuya. Idinusay niya iyan para satuya tanganing magkamit kita kan buhay na daing kasagkoran. Sinabi Niya, “An sakuyang buhay idinusay ko para sa sakuyang mga karnero” (Juan 10:15) asin iyo man nanggad an ginibo Niya.",
-            "Si San Lorenzong namomotan an saiyang buhay asin ginibo an gabos niyang makakaya sa pagpahayag kaini. Alagad mas namootan niya an Dios!",
-            "Pinapili kun arin an gugustohon niya: talikdan an pagtubod asin padagos na mabuhay o pagdanay sa pagtubod na mahatod saiya sa kagadanan. Pinili niya an saiyang bonyag, an saiyang pagtubod asin an saiyang pagkadayupot ki Hesus. Ini naghatod nin kagadanan ki San Lorenzo.",
-            "Malinaw na saiyang ipinaliwanag na dai siya nagpa Hapon sa pagbalangibog kan Marhay na Bareta; na bako man siyang misyonero; na kun may pagkakataon pa mawot niyang mag-oli sa sadiring daga. Alagad dai an mga ini nangahulogan na bako siyang kristiano asin dai magdadanay sa saiyang pagtubod ki Hesukristo.",
-            "“Ako sarong kristiano asin ini ikinukumpisal ko sagkod na ako magadan. Para sa Dios idodolot ko an sakuyang buhay. Minsan dai ako napadigdi sa Hapon tangani magin martir, bilang kristiano idinodolot ko an sakuyang buhay sa Dios”.",
-            "An saiyang daing takot na kapahayagan lalo niyang pinapusog asin pinalinaw sa saiyang huring pahayag sa atubang kan tribunal. Hinapot kun dai niya man nanggad tatalikdan an pagtubod tangani na maglawig pa an saiyang buhay, siya nagsimbag na mayo nin takot: “Iyan an dai ko nanggad gigibohon dahil ta ako kristiano. Ako mapagadan para sa kamurawayan nin Dios asin para Saiya itatao ko an rinibong mga buhay kun igua man ako kaiyan. Ngonian tabi, gibuha sa sako an saindong kamawotan”. Kan ika-27 nin Septembre taong 1637, siya binitay na pabugsok; mga bitis itaas asin an payo nasa laog nin kalot. Duwang aldaw sa siring na kamugtakan naubusan siya nin dugo asin napoot. Siya nagadan kan ika-29 nin Septembre taong 1637."
-        ],
-        "tataramon_nin_Dios" : "“Paladan kamo, kun dahil sakuya, kamo pagmudahon, pasakitan asin pakaraoton nin mga tawo. Ipag-ogma nindo huli ta dakula an ibabalos nin Dios saindo sa langit. Siring na pasakit ginibo ninda sa mga profeta na nagkaerenot saindo” - Mateo 5:11-12."
+    {
+      "aldaw": "Ika-Tolong Aldaw",
+      "order": 3,
+      "title": "Pagkamoot sa Dios nin Orog sa Gabos",
+      "reflection": [
+        "“An boot na sumunod sako, magsayuma sa sadiri, pasanon an saiyang krus asin sumunod sako. Huli ta an boot magligtas kan saiyang buhay, mawawara niya iyan. Alagad an nawawaran nin buhay dahil sako, Makakamtan niya iyan” - Mateo 16:24-25.",
+        "Dai nagkulang sa pagkamoot si Hesus sa satuya. Idinusay niya iyan para satuya tanganing magkamit kita kan buhay na daing kasagkoran. Sinabi Niya, “An sakuyang buhay idinusay ko para sa sakuyang mga karnero” (Juan 10:15) asin iyo man nanggad an ginibo Niya.",
+        "Si San Lorenzong namomotan an saiyang buhay asin ginibo an gabos niyang makakaya sa pagpahayag kaini. Alagad mas namootan niya an Dios!",
+        "Pinapili kun arin an gugustohon niya: talikdan an pagtubod asin padagos na mabuhay o pagdanay sa pagtubod na mahatod saiya sa kagadanan. Pinili niya an saiyang bonyag, an saiyang pagtubod asin an saiyang pagkadayupot ki Hesus. Ini naghatod nin kagadanan ki San Lorenzo.",
+        "Malinaw na saiyang ipinaliwanag na dai siya nagpa Hapon sa pagbalangibog kan Marhay na Bareta; na bako man siyang misyonero; na kun may pagkakataon pa mawot niyang mag-oli sa sadiring daga. Alagad dai an mga ini nangahulogan na bako siyang kristiano asin dai magdadanay sa saiyang pagtubod ki Hesukristo.",
+        "“Ako sarong kristiano asin ini ikinukumpisal ko sagkod na ako magadan. Para sa Dios idodolot ko an sakuyang buhay. Minsan dai ako napadigdi sa Hapon tangani magin martir, bilang kristiano idinodolot ko an sakuyang buhay sa Dios”.",
+        "An saiyang daing takot na kapahayagan lalo niyang pinapusog asin pinalinaw sa saiyang huring pahayag sa atubang kan tribunal. Hinapot kun dai niya man nanggad tatalikdan an pagtubod tangani na maglawig pa an saiyang buhay, siya nagsimbag na mayo nin takot: “Iyan an dai ko nanggad gigibohon dahil ta ako kristiano. Ako mapagadan para sa kamurawayan nin Dios asin para Saiya itatao ko an rinibong mga buhay kun igua man ako kaiyan. Ngonian tabi, gibuha sa sako an saindong kamawotan”. Kan ika-27 nin Septembre taong 1637, siya binitay na pabugsok; mga bitis itaas asin an payo nasa laog nin kalot. Duwang aldaw sa siring na kamugtakan naubusan siya nin dugo asin napoot. Siya nagadan kan ika-29 nin Septembre taong 1637."
+      ],
+      "tataramon_nin_Dios": "“Paladan kamo, kun dahil sakuya, kamo pagmudahon, pasakitan asin pakaraoton nin mga tawo. Ipag-ogma nindo huli ta dakula an ibabalos nin Dios saindo sa langit. Siring na pasakit ginibo ninda sa mga profeta na nagkaerenot saindo” - Mateo 5:11-12."
     },
-    "4" : {
-        "title" : "Ika-Apat na Aldaw",
-        "subtitle" : "Pakisumaro sa mga pagtios ni Hesus",
-        "reflection" : [
-            "Duman sa Getesemane si Hesus inabotan nin takot asin napurisaw. Siya naghapot kun igua pa nin ibang paagi… “Ama ko, kun mahihimo pa sana, palihisa ako sa kalis na ini; alagad koyogon bako an bot ko, kundi an boot Mo” (Mateo 26:39).",
-            "An pagduda asin pagkatakot minaabot sa buhay nin lambang tawo, kun minsan kadakul na beses. Ini uminabot man sa buhay ni Lorenzo.",
-            "Dai man siya nagpa Hapon sa pagbalangibog kan Marhay na bareta o tanganing magpagadan. Dugay na an saiyang edad, igua siya nin pamilya, an naghahalat saiyang kagadanan makangirhat na gayo. Ano daw kun pwede na niyang talikdan an pagtubod? Siisay an makakapagbasol saiya sa halipot na ining takot asin pagduda?",
-            "Ano daw an mga nasa isip ni Lorenzo pakatapos kan saiyang halipot na pagduda? Talagang naghimate siya sa mga pasabong kan banal na Espiritu, siring man sa mga tataramon kan saiyang mga kairibang Dominicos, asin namamatean niya an kapangyarihan nin pamibi na inatang para saiya. Orog sa gabos, siya giniromdom an mga pagtios ni Hesus asin saiya nakisumaro sa mga kasakitan na inako nin Kagurangnan.",
-            "Si Hesus naghapot manongod sa iba pang paagi tanganing mailigtas an kinaban alagad handa Siya na magsunod sa paaging pinili nin Ama: “Alagad koyogon bako an boot ko kundi an boot Mo” (Mateo 26:39).",
-            "Malinaw na namidmidan ni San Lorenzo an Kagustuhan kan Ama na saiyang pagsaksihan an saiyang pagtubod sa Saiyang aking si Hesus. Saiyang sinabihan an nanonongdan “An sinabi ko saimo kaidto, nasabi ko na mayong tamang pakasabot”.",
-            "An “kulang sa pakasabot” nakakua kan tunay na kadonongan: an pakasabot na ki Hesukristo sana kita magkakaigua nin buhay."
-        ],
-        "tataramon_nin_Dios" : "“Ama, sinda itinao Mo sakuya: boot ko na, kun haen ako, yaon man sinda kaiba ko, nganing mahiling ninda an sakong kamurawayan na itinao Mo sakuya, huli ta namotan Mo ako bago linalang an kinaban” - Juan 17:24"
+    {
+      "aldaw": "Ika-Apat na Aldaw",
+      "order": 4,
+      "title": "Pakisumaro sa mga pagtios ni Hesus",
+      "reflection": [
+        "Duman sa Getesemane si Hesus inabotan nin takot asin napurisaw. Siya naghapot kun igua pa nin ibang paagi… “Ama ko, kun mahihimo pa sana, palihisa ako sa kalis na ini; alagad koyogon bako an bot ko, kundi an boot Mo” (Mateo 26:39).",
+        "An pagduda asin pagkatakot minaabot sa buhay nin lambang tawo, kun minsan kadakul na beses. Ini uminabot man sa buhay ni Lorenzo.",
+        "Dai man siya nagpa Hapon sa pagbalangibog kan Marhay na bareta o tanganing magpagadan. Dugay na an saiyang edad, igua siya nin pamilya, an naghahalat saiyang kagadanan makangirhat na gayo. Ano daw kun pwede na niyang talikdan an pagtubod? Siisay an makakapagbasol saiya sa halipot na ining takot asin pagduda?",
+        "Ano daw an mga nasa isip ni Lorenzo pakatapos kan saiyang halipot na pagduda? Talagang naghimate siya sa mga pasabong kan banal na Espiritu, siring man sa mga tataramon kan saiyang mga kairibang Dominicos, asin namamatean niya an kapangyarihan nin pamibi na inatang para saiya. Orog sa gabos, siya giniromdom an mga pagtios ni Hesus asin saiya nakisumaro sa mga kasakitan na inako nin Kagurangnan.",
+        "Si Hesus naghapot manongod sa iba pang paagi tanganing mailigtas an kinaban alagad handa Siya na magsunod sa paaging pinili nin Ama: “Alagad koyogon bako an boot ko kundi an boot Mo” (Mateo 26:39).",
+        "Malinaw na namidmidan ni San Lorenzo an Kagustuhan kan Ama na saiyang pagsaksihan an saiyang pagtubod sa Saiyang aking si Hesus. Saiyang sinabihan an nanonongdan “An sinabi ko saimo kaidto, nasabi ko na mayong tamang pakasabot”.",
+        "An “kulang sa pakasabot” nakakua kan tunay na kadonongan: an pakasabot na ki Hesukristo sana kita magkakaigua nin buhay."
+      ],
+      "tataramon_nin_Dios": "“Ama, sinda itinao Mo sakuya: boot ko na, kun haen ako, yaon man sinda kaiba ko, nganing mahiling ninda an sakong kamurawayan na itinao Mo sakuya, huli ta namotan Mo ako bago linalang an kinaban” - Juan 17:24"
     },
-    "5" : {
-        "title" : "Ika-Limang Aldaw",
-        "subtitle" : "An Kusog na Gikan sa Dios",
-        "reflection" : [
-            "“Iaatubang kamo sa mga Gobernador asin mga hade dahil sako; sa paaging ini makakapagpatotoo kamo sa dapit kan Marhay na Bareta sa atubang ninda asin kan mga pagano. Kun iaatubang kamo sa husgado, dai kamo mahadit kun ano man an saidong isisimbag o kun paano an pagsimbag nindo. Sa oras mismong iyan, ipapasabong saindo an sasabihon nindo bakong hale saindo kundi sa Espiritu kan saindong Ama na iyo an mataram sa paagi nindo” - Mateo 10: 18-20",
-            "Malinaw na sinabi ni Hesus na kasabat an pagtios asin sakit sa saiyang pangapodan. Alagad sinabi Niya sa saiyang mga disipulos na dai maghadit. Sa paagi kan saiyang Espiritu danay siyang yaon sainda; tanganing magpakusog asin magpadanay kan saindang pagtubod.",
-            "Sa bilog na istorya kan Simbahan, ginibo ni Hesus an Saiyang panuga asin an Saiyang Espiritu nagtaram sa kadakul na katawohan sa pagpatotoo kan mga panugang iyan. Mga kulang sa pakasabot nakapagtaram nin kadunongan, mga maluya tinawan nin kusog na bakong gikan sa kinaban, mga mapakumbaba itinaas nin Kagurangnan na naggibo hale sa bilang nin kagapoan, kan mga aki ni Abraham…",
-            "Sa bonyag, inako ni San Lorenzo an Espiritu Santo. Siring man sa kumpil. Alagad sarong naiibang pentekostes an naghalat saiya sa Nagasaki. Dai masabing mga biyaya an inako niya lalo na kan kaipuhan niyang gayo an banal na pakasabot, ang paghorop-horop asin an kosog.",
-            "Marhay an nagin bunga kan pag-adal ni San Lorenzo kan pagtubod. Saiyang tinawanan nin kasimbagan an mga hapot kan mga paragadan lalo na kan kapot na ninda an mga gamit sa paggadan. Saen naghale an mga tataramon na guminikan saiyang mga ngoso?",
-            "Sa giraray pinatunayan ni Hesus an saiyang mga panuga, siring na an Espiritu iyo an nagtaram sa ngoso ni San Lorenzo!"
-        ],
-        "tataramon_nin_Dios" : "“Ako ini! Dai kamo matakot. Pakusoga an saindong boot… Kagurangnan, kun ika man nanggad, padulokon Mo ako Saimo” - Mateo 14:27-28"
+    {
+      "aldaw": "Ika-Limang Aldaw",
+      "order": 5,
+      "title": "An Kusog na Gikan sa Dios",
+      "reflection": [
+        "“Iaatubang kamo sa mga Gobernador asin mga hade dahil sako; sa paaging ini makakapagpatotoo kamo sa dapit kan Marhay na Bareta sa atubang ninda asin kan mga pagano. Kun iaatubang kamo sa husgado, dai kamo mahadit kun ano man an saidong isisimbag o kun paano an pagsimbag nindo. Sa oras mismong iyan, ipapasabong saindo an sasabihon nindo bakong hale saindo kundi sa Espiritu kan saindong Ama na iyo an mataram sa paagi nindo” - Mateo 10: 18-20",
+        "Malinaw na sinabi ni Hesus na kasabat an pagtios asin sakit sa saiyang pangapodan. Alagad sinabi Niya sa saiyang mga disipulos na dai maghadit. Sa paagi kan saiyang Espiritu danay siyang yaon sainda; tanganing magpakusog asin magpadanay kan saindang pagtubod.",
+        "Sa bilog na istorya kan Simbahan, ginibo ni Hesus an Saiyang panuga asin an Saiyang Espiritu nagtaram sa kadakul na katawohan sa pagpatotoo kan mga panugang iyan. Mga kulang sa pakasabot nakapagtaram nin kadunongan, mga maluya tinawan nin kusog na bakong gikan sa kinaban, mga mapakumbaba itinaas nin Kagurangnan na naggibo hale sa bilang nin kagapoan, kan mga aki ni Abraham…",
+        "Sa bonyag, inako ni San Lorenzo an Espiritu Santo. Siring man sa kumpil. Alagad sarong naiibang pentekostes an naghalat saiya sa Nagasaki. Dai masabing mga biyaya an inako niya lalo na kan kaipuhan niyang gayo an banal na pakasabot, ang paghorop-horop asin an kosog.",
+        "Marhay an nagin bunga kan pag-adal ni San Lorenzo kan pagtubod. Saiyang tinawanan nin kasimbagan an mga hapot kan mga paragadan lalo na kan kapot na ninda an mga gamit sa paggadan. Saen naghale an mga tataramon na guminikan saiyang mga ngoso?",
+        "Sa giraray pinatunayan ni Hesus an saiyang mga panuga, siring na an Espiritu iyo an nagtaram sa ngoso ni San Lorenzo!"
+      ],
+      "tataramon_nin_Dios": "“Ako ini! Dai kamo matakot. Pakusoga an saindong boot… Kagurangnan, kun ika man nanggad, padulokon Mo ako Saimo” - Mateo 14:27-28"
     },
-    "6" : {
-        "title" : "Ika-Anom na Aldaw",
-        "subtitle" : "An Pag-apod asin Pagpili nin Dios",
-        "reflection" : [
-            "Si Lorenzo sarong ordinaryong tawo sa Manila. Mayo nin dangog asin dai midbid siring sa may katongdan sa banwaan. Dai niya aram an misyon kan saiyang nagin mga pag-iriba pasiring sa Hapon dahil ta dai sa isip ni Lorenzo an magin misyonero; siring man an magpasiring sa Hapon lalo na an magtindog ngapit para saiyang pagtubod.",
-            "Ini gabos masasabi ta sa makatawong panhiling asin sukol. Iba an nagin plano nin Dios para ki San Lorenzo.",
-            "Sa listahan nin Dios kan mga nagin dakula sa Saiyang kahadean makukua an mga ngaran nin mga ordinaryong tawo; si Abraham na mayong aki iyo an tinugaan na magin ama nin kadakul na kaakian siring sa numero nin mga bitoon asin mga baybay sa daragsaan (Genesis 2:17); si Jose ipinabakal bilang oripon nagin sarong pamayo duman sa Ehipto; si Moises na nagtatago asin maluya magtaram inapod na mamayo kan banwaan asin maghawas sainda sa kaoripnan ni Faraon, si Jeremias ginibong propeta minsan aki pa asin dai tataong magtaram (Jeremias 1:15); si Pedro na sarong parasira nagin parasira nin mga tawo; si Pablo na kalaban an mga Kristiyano sinugo parising sa daga nin mga Hentil…",
-            "“Bako kamo an nagpili sako; ako an nagpili asin nagsugo saindo na maglakaw saka mamunga kamo, patin magdanay an bunga nindong iyan” - Juan 15:16",
-            "Bako an sadiri an minahimo sa sarong tawo na kristiano alagad an grasya nin Dios. Bako an inadalan an minahimo sa sarong tawo na propeta o martir. Bako an saiyang kusog o ngaran kan saiyang pamilya alagad an grasya nin Dios malaad na nahiling sa buhay nin kadakul na tawo siring sa malaad na nagsirang sa buhay ni San Lorenzo.",
-            "Si San Lorenzo sarong milagro kan grasya nin Dios."
-        ],
-        "tataramon_nin_Dios" : "“Dai ka matakot, ililigtas taka. Inapod taka sa saimong ngaran, sadiri taka… Ako an Kagurangnan na saimong Dios” - Isaias 43:1,3"
+    {
+      "aldaw": "Ika-Anom na Aldaw",
+      "order": 6,
+      "title": "An Pag-apod asin Pagpili nin Dios",
+      "reflection": [
+        "Si Lorenzo sarong ordinaryong tawo sa Manila. Mayo nin dangog asin dai midbid siring sa may katongdan sa banwaan. Dai niya aram an misyon kan saiyang nagin mga pag-iriba pasiring sa Hapon dahil ta dai sa isip ni Lorenzo an magin misyonero; siring man an magpasiring sa Hapon lalo na an magtindog ngapit para saiyang pagtubod.",
+        "Ini gabos masasabi ta sa makatawong panhiling asin sukol. Iba an nagin plano nin Dios para ki San Lorenzo.",
+        "Sa listahan nin Dios kan mga nagin dakula sa Saiyang kahadean makukua an mga ngaran nin mga ordinaryong tawo; si Abraham na mayong aki iyo an tinugaan na magin ama nin kadakul na kaakian siring sa numero nin mga bitoon asin mga baybay sa daragsaan (Genesis 2:17); si Jose ipinabakal bilang oripon nagin sarong pamayo duman sa Ehipto; si Moises na nagtatago asin maluya magtaram inapod na mamayo kan banwaan asin maghawas sainda sa kaoripnan ni Faraon, si Jeremias ginibong propeta minsan aki pa asin dai tataong magtaram (Jeremias 1:15); si Pedro na sarong parasira nagin parasira nin mga tawo; si Pablo na kalaban an mga Kristiyano sinugo parising sa daga nin mga Hentil…",
+        "“Bako kamo an nagpili sako; ako an nagpili asin nagsugo saindo na maglakaw saka mamunga kamo, patin magdanay an bunga nindong iyan” - Juan 15:16",
+        "Bako an sadiri an minahimo sa sarong tawo na kristiano alagad an grasya nin Dios. Bako an inadalan an minahimo sa sarong tawo na propeta o martir. Bako an saiyang kusog o ngaran kan saiyang pamilya alagad an grasya nin Dios malaad na nahiling sa buhay nin kadakul na tawo siring sa malaad na nagsirang sa buhay ni San Lorenzo.",
+        "Si San Lorenzo sarong milagro kan grasya nin Dios."
+      ],
+      "tataramon_nin_Dios": "“Dai ka matakot, ililigtas taka. Inapod taka sa saimong ngaran, sadiri taka… Ako an Kagurangnan na saimong Dios” - Isaias 43:1,3"
     },
-    "7" : {
-        "title" : "Ika-Pitong Aldaw",
-        "subtitle" : "An Pagdebosyon ki Santa Maria",
-        "reflection" : [
-            "An lambang klase nin debosyon dapat maghatod sa deboto ki Hesukristo. Siya sana an Kagurangnan. Yaon Saiya an kaligtasan asin an buhay na daing kasagkoran. Si Santa Maria danay na nag-aalok satuya na magsunod sa katokdoan ni Hesukristo tanganing mapasatuya an tuga Niyang kaligtasan.",
-            "Si San Lorenzo sarong dayupot na deboto ki Santa Maria. Danay siyang nagpapangadyi kan Santo Rosaryo asin danay na nag-aapod ki paglakaw sa kinaban. Ini an nagdara ki San Lorenzo sa mga sakramento, danay siyang nag-aako nin komunyon siring man dayupot sa paglingkod sa Simbahan. Tunay an saiyang pagdebosyon ki Santa Maria kaya naghatod ini ki Lorenzo sa pagkamoot ki Hesukristo.",
-            "Sa oras nin saiyang kaluyahan asin pagduda nag-agi siya sa saiyang Getsemane; sa tahaw nin dai masabing mga kasakitan nagiromdoman niya an mga pagtios ni Hesus; ang paghampas, an pagkoronahi nin tonok asin pagtuya-tuya, an pagpasan asin pagpakoan sa krus. Mantang si San Lorenzo na man an nabibitay, saiyang inatang an sadiring buhay bilang dolot sa Dios, kasarao ni Hesus na enot nagpagadan para sa gabos.",
-            "Mantang an gabos na ini nangyari ki San Lorenzo, Si Santa Maria na Ina niato gabos asin dai nanggad nagpapabaya sa siisay man na naghahagad nin tabang, yaon sa kaibahan kan saiyang deboto na nag-aapod kan saiyang ngaran. Siya nag-antabay asin nagpakusog ki Lorenzo tanganing magin dayupot ki Hesus sagkod sa katapusan."
-        ],
-        "tataramon_nin_Dios" : "“Ako an dalan, an katotoohan asin an buhay; dai nin makakaduman sa Ama, kun bakong huli sako” - Juan 14:6"
+    {
+      "aldaw": "Ika-Pitong Aldaw",
+      "order": 7,
+      "title": "An Pagdebosyon ki Santa Maria",
+      "reflection": [
+        "An lambang klase nin debosyon dapat maghatod sa deboto ki Hesukristo. Siya sana an Kagurangnan. Yaon Saiya an kaligtasan asin an buhay na daing kasagkoran. Si Santa Maria danay na nag-aalok satuya na magsunod sa katokdoan ni Hesukristo tanganing mapasatuya an tuga Niyang kaligtasan.",
+        "Si San Lorenzo sarong dayupot na deboto ki Santa Maria. Danay siyang nagpapangadyi kan Santo Rosaryo asin danay na nag-aapod ki paglakaw sa kinaban. Ini an nagdara ki San Lorenzo sa mga sakramento, danay siyang nag-aako nin komunyon siring man dayupot sa paglingkod sa Simbahan. Tunay an saiyang pagdebosyon ki Santa Maria kaya naghatod ini ki Lorenzo sa pagkamoot ki Hesukristo.",
+        "Sa oras nin saiyang kaluyahan asin pagduda nag-agi siya sa saiyang Getsemane; sa tahaw nin dai masabing mga kasakitan nagiromdoman niya an mga pagtios ni Hesus; ang paghampas, an pagkoronahi nin tonok asin pagtuya-tuya, an pagpasan asin pagpakoan sa krus. Mantang si San Lorenzo na man an nabibitay, saiyang inatang an sadiring buhay bilang dolot sa Dios, kasarao ni Hesus na enot nagpagadan para sa gabos.",
+        "Mantang an gabos na ini nangyari ki San Lorenzo, Si Santa Maria na Ina niato gabos asin dai nanggad nagpapabaya sa siisay man na naghahagad nin tabang, yaon sa kaibahan kan saiyang deboto na nag-aapod kan saiyang ngaran. Siya nag-antabay asin nagpakusog ki Lorenzo tanganing magin dayupot ki Hesus sagkod sa katapusan."
+      ],
+      "tataramon_nin_Dios": "“Ako an dalan, an katotoohan asin an buhay; dai nin makakaduman sa Ama, kun bakong huli sako” - Juan 14:6"
     },
-    "8" : {
-        "title" : "Ika-Walong Aldaw",
-        "subtitle" : "An Simbahan sa Harong",
-        "reflection" : [
-            "Sa grupo kan anom na naghale sa Manila pasiring sa Hapon kan ika-10 nin Hunio taong 1636, siring man na grupo kan 16 na mga martir na pinagbeatificar ni Papa Juan Pablo II sa Luneta, Manila kan ika-18 nin Pebrero taong 1981, asin pinagcanonisar kan taong 1987, si San Lorenzo an ama nin sarong pamilya.",
-            "Si San Lorenzo igua nin tolong aki: duwang lalaki asin sarong babae. Siya sarong marhay na agom asin magurang. Maigot siyang naghingowa tanganing mabuhay an saiyang pamilya. Nagtrabaho siya bilang escrinabano, sarong mahalagang propesyon kan mga panahon. Tinawan niya nin halaga an edukasyon kan saiyang kaakian, lalo na an pagmuklat sainda sa kristianong pagtubod.",
-            "Kan taong 1636, nagkaproblema an saiyang pamilya kan kinalaban si San Lorenzo kan mga autoridad kan banwaan. An bagay na ini an nagpirit saiya na maghale ngona sa Manila. An pangyayaring ini nagpakusog sa pagtubod kan pamilya ni San Lorenzo.",
-            "Ano daw an namatian kan pamilyang ini kan madangog ninda an solemneng pag-awit kan TE DEUM sa simbahan kan Santo Domingo sa pagproklamar kan panggana kan kristianismo sa Nagasaki sa paagi kan martirio kan grupo ni San Lorenzo? An saindang pagtubod nagtokdo sainda na minsan nawara sainda an sarong agom asin ama alagad nagkaigwa man sinda nin sarong santo asin sinda magkaboronyog giraray ngapit sa harong kan satuyang Ama.",
-            "An pamilya ni San Lorenzo, nagtalubo asin nagdakula. Minsan kita, nagi nang parte kan saiyang pamilya; “An siisay man na nag-ootob kan kabotan kan sakong Ama sa langit, iyo an sakong tugang asin an sakong ina” (Mateo 12:50). Siring man si San Lorenzo nakakua nin mga tugang sa kapwa niya martires asin kita saiyang inayon sa bagong pamilyang ini."
-        ],
-        "tataramon_nin_Dios" : "“Sinasabihan ko kamo, kun duwa saindo digdi sa daga magkaoyon na maghagad nin anoman, itatao iyan saindo kan sakong Ama sa langit. Huli ta kun may duwa o tolo katawo na nagkatiripon sa ngaran ko yaon ako sa kaibahan ninda.” - Mateo 18:19-20"
+    {
+      "aldaw": "Ika-Walong Aldaw",
+      "order": 8,
+      "title": "An Simbahan sa Harong",
+      "reflection": [
+        "Sa grupo kan anom na naghale sa Manila pasiring sa Hapon kan ika-10 nin Hunio taong 1636, siring man na grupo kan 16 na mga martir na pinagbeatificar ni Papa Juan Pablo II sa Luneta, Manila kan ika-18 nin Pebrero taong 1981, asin pinagcanonisar kan taong 1987, si San Lorenzo an ama nin sarong pamilya.",
+        "Si San Lorenzo igua nin tolong aki: duwang lalaki asin sarong babae. Siya sarong marhay na agom asin magurang. Maigot siyang naghingowa tanganing mabuhay an saiyang pamilya. Nagtrabaho siya bilang escrinabano, sarong mahalagang propesyon kan mga panahon. Tinawan niya nin halaga an edukasyon kan saiyang kaakian, lalo na an pagmuklat sainda sa kristianong pagtubod.",
+        "Kan taong 1636, nagkaproblema an saiyang pamilya kan kinalaban si San Lorenzo kan mga autoridad kan banwaan. An bagay na ini an nagpirit saiya na maghale ngona sa Manila. An pangyayaring ini nagpakusog sa pagtubod kan pamilya ni San Lorenzo.",
+        "Ano daw an namatian kan pamilyang ini kan madangog ninda an solemneng pag-awit kan TE DEUM sa simbahan kan Santo Domingo sa pagproklamar kan panggana kan kristianismo sa Nagasaki sa paagi kan martirio kan grupo ni San Lorenzo? An saindang pagtubod nagtokdo sainda na minsan nawara sainda an sarong agom asin ama alagad nagkaigwa man sinda nin sarong santo asin sinda magkaboronyog giraray ngapit sa harong kan satuyang Ama.",
+        "An pamilya ni San Lorenzo, nagtalubo asin nagdakula. Minsan kita, nagi nang parte kan saiyang pamilya; “An siisay man na nag-ootob kan kabotan kan sakong Ama sa langit, iyo an sakong tugang asin an sakong ina” (Mateo 12:50). Siring man si San Lorenzo nakakua nin mga tugang sa kapwa niya martires asin kita saiyang inayon sa bagong pamilyang ini."
+      ],
+      "tataramon_nin_Dios": "“Sinasabihan ko kamo, kun duwa saindo digdi sa daga magkaoyon na maghagad nin anoman, itatao iyan saindo kan sakong Ama sa langit. Huli ta kun may duwa o tolo katawo na nagkatiripon sa ngaran ko yaon ako sa kaibahan ninda.” - Mateo 18:19-20"
     },
-    "9" : {
-        "title" : "Ika-Siyam na Aldaw",
-        "subtitle" : "Liwanag sa Banwaan",
-        "reflection" : [
-            "Sa kadikloman kan satuyang paglakbay sa kinaban danay na yaon sato si Hesus tanganing ipahiling satuya an liwanag na iyo an naghahatod nin kaogmahan sa satuyang buhay.",
-            "“Mahihiling nindo an Aki nin Tawo sa too kan Makakambahan” (Mateo 26:64). Si Esteban, an enot na martir kan Simbahan nahiling Siya (Gibo 7: 55-56) siring man an ebanghelistang si Juan: “si Hesukristo, an maimbod na saksi, na iyo an enot na nabuhay-liwat, saka iyo man an kagsakop kan mga hade kan kinaban” (Kapahayagan 1:5)",
-            "An kagadanan sa Dios bakong kagadanan. Si Hesus nanuga satuya kan Siya nagtaram sa Saiyang mga disipulos: “Makakan saka mainom kamong kasabay ko sa kahadean ko. Matukaw kamo sa mga trono sa paghukom sa doseng tribu nin Israel” (Lukas 22:30).",
-            "An mga apostoles nasabotan na gayo ini. Sabi ni Santiago: “Paladan an tawong nagdadanay na maimbod sa panahon nin mga pagbalo, huli ta kun matagalan niya iyan, maako siya kan korona nin buhay na ipinanuga nin Dios sa mga namomoot Saiya” (Santiago 1:12).",
-            "Paladan si San Lorenzo sa nagin pusog sa tahaw nin mga pagbalo, saiyang nakamtan an premyo nin buhay. Sa saiyang payo ipinatong an korona nin kamurawayan susog sa panuga ni Hesus sa siisay man na minatao kan saiyang buhay asin minasunod Saiya.",
-            "“An siisay man na magbaya nin eerokan, o agom, o mga tugang, o mga magurang, o mga aki huli sa kahadean nin Dios, maako nin mas dakul sa panahon na ini, asin nin buhay na daing kataposan sa maabot na panahon” (Lukas 18: 29-30).",
-            "Si San Lorenzo binayaan an gabos: sadiring daga, harong, pamilya, trabaho, sadiring buhay… An mga dai niya nahimo kan siya buhay pa nahimo gabos sa saiyang pagkagadan. Dahil digdi saiyang inako an buhay na daing kasagkoran asin an premyo nin kamurawayan bilang sarong santo kan Simbahan. Labi pa sa ginatos an nakamtan niya. An dating escribano sa Binondo ngonian namidbid sa bilog na kinaban asin yaon na siya sa mga altar kan kadaklan.",
-            "An kutana gustong magtago, ngonian hayag na namidbid kan gabos asin nagliliwanag sa bilog na banwaan nin Dios."
-        ],
-        "tataramon_nin_Dios" : "“Kamo na ilaw nin kinaban. Paliwanagon nindo an saindong ilaw sa gabos na tawo, tanganing mahiling ninda an mga marhay nindong gibo; huli kaiyan oomawon ninda an saindong Ama sa langit” - Mateo 5:14,16"
+    {
+      "aldaw": "Ika-Siyam na Aldaw",
+      "order": 9,
+      "title": "Liwanag sa Banwaan",
+      "reflection": [
+        "Sa kadikloman kan satuyang paglakbay sa kinaban danay na yaon sato si Hesus tanganing ipahiling satuya an liwanag na iyo an naghahatod nin kaogmahan sa satuyang buhay.",
+        "“Mahihiling nindo an Aki nin Tawo sa too kan Makakambahan” (Mateo 26:64). Si Esteban, an enot na martir kan Simbahan nahiling Siya (Gibo 7: 55-56) siring man an ebanghelistang si Juan: “si Hesukristo, an maimbod na saksi, na iyo an enot na nabuhay-liwat, saka iyo man an kagsakop kan mga hade kan kinaban” (Kapahayagan 1:5)",
+        "An kagadanan sa Dios bakong kagadanan. Si Hesus nanuga satuya kan Siya nagtaram sa Saiyang mga disipulos: “Makakan saka mainom kamong kasabay ko sa kahadean ko. Matukaw kamo sa mga trono sa paghukom sa doseng tribu nin Israel” (Lukas 22:30).",
+        "An mga apostoles nasabotan na gayo ini. Sabi ni Santiago: “Paladan an tawong nagdadanay na maimbod sa panahon nin mga pagbalo, huli ta kun matagalan niya iyan, maako siya kan korona nin buhay na ipinanuga nin Dios sa mga namomoot Saiya” (Santiago 1:12).",
+        "Paladan si San Lorenzo sa nagin pusog sa tahaw nin mga pagbalo, saiyang nakamtan an premyo nin buhay. Sa saiyang payo ipinatong an korona nin kamurawayan susog sa panuga ni Hesus sa siisay man na minatao kan saiyang buhay asin minasunod Saiya.",
+        "“An siisay man na magbaya nin eerokan, o agom, o mga tugang, o mga magurang, o mga aki huli sa kahadean nin Dios, maako nin mas dakul sa panahon na ini, asin nin buhay na daing kataposan sa maabot na panahon” (Lukas 18: 29-30).",
+        "Si San Lorenzo binayaan an gabos: sadiring daga, harong, pamilya, trabaho, sadiring buhay… An mga dai niya nahimo kan siya buhay pa nahimo gabos sa saiyang pagkagadan. Dahil digdi saiyang inako an buhay na daing kasagkoran asin an premyo nin kamurawayan bilang sarong santo kan Simbahan. Labi pa sa ginatos an nakamtan niya. An dating escribano sa Binondo ngonian namidbid sa bilog na kinaban asin yaon na siya sa mga altar kan kadaklan.",
+        "An kutana gustong magtago, ngonian hayag na namidbid kan gabos asin nagliliwanag sa bilog na banwaan nin Dios."
+      ],
+      "tataramon_nin_Dios": "“Kamo na ilaw nin kinaban. Paliwanagon nindo an saindong ilaw sa gabos na tawo, tanganing mahiling ninda an mga marhay nindong gibo; huli kaiyan oomawon ninda an saindong Ama sa langit” - Mateo 5:14,16"
     }
+  ]
 }

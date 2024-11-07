@@ -36,11 +36,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   final List<Map<String, String>> _homepageSelection = [
-    {
-      "title": "Himnno ki San Lorenzo Ruiz",
-      "img_url": "./assets/background.jpg",
-      "nav": '/himno'
-    },
+    {"title": "Himno", "img_url": "./assets/background.jpg", "nav": '/himno'},
     {
       "title": "Perpetual Novena",
       "img_url": "./assets/background.jpg",
@@ -68,7 +64,7 @@ class _HomePageState extends State<HomePage> {
       slivers: [
         CustomAppbar(
             isCollapsed: isCollapsed,
-            customAppbarTitle: "Novena to Saint. Lorenzo Ruiz",
+            customAppbarTitle: "Novena to Saint Lorenzo Ruiz",
             imgUrl: "./assets/background.jpg"),
         Scripture(
           translation: Translation.english,
@@ -100,7 +96,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Text(
                         _homepageSelection[index]["title"]!,
-                        style: TextStyle(fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
                       )
                     ],
                   ),
@@ -158,7 +155,8 @@ class _HomePageState extends State<HomePage> {
                         ),
                         const Text(
                           "Financial",
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w500),
                         ),
                       ],
                     ),
@@ -185,7 +183,7 @@ class _HomePageState extends State<HomePage> {
                     TextButton(
                       child: Text("Read More",
                           style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 14,
                               color: Colors.blueGrey,
                               fontWeight: FontWeight.bold)),
                       onPressed: () {
@@ -212,11 +210,18 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         TableCell(
                             child: Text('Born:',
-                                style: TextStyle(fontWeight: FontWeight.w500))),
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500))),
                         TableCell(
                             child: Padding(
                           padding: EdgeInsets.only(bottom: _tableSpacing),
-                          child: Text('November 28, 1594'),
+                          child: Text(
+                            'November 28, 1594',
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
                         )),
                       ],
                     ),

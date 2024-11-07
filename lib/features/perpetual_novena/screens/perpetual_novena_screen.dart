@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:novena_lorenzo/common/error.dart';
 import 'package:novena_lorenzo/data/translation.dart';
 import 'package:novena_lorenzo/features/perpetual_novena/bloc/perpetual_novena_bloc.dart';
+import 'package:novena_lorenzo/features/perpetual_novena/models/perpetual_novena_model.dart';
 import 'package:novena_lorenzo/widgets/appbar.dart';
 
 class PerpetualNovenaScreen extends StatefulWidget {
@@ -15,6 +17,12 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
   ScrollController _scrollController = ScrollController();
   bool isCollapsed = false;
   Translation translation = Translation.english;
+
+  double? titleFontSize = 18;
+  double? subTitleFontSize = 17;
+  double? prayerFontSize = 16;
+
+  PerpetualNovenaModel? data;
 
   @override
   void initState() {
@@ -43,40 +51,47 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: BlocBuilder<PerpetualNovenaBloc, PerpetualNovenaState>(
-      builder: (context, state) {
+        body: BlocConsumer<PerpetualNovenaBloc, PerpetualNovenaState>(
+      listener: (context, state) {
         if (state is PerpetualNovenaFetchedFailure) {
-          return Center(child: Text(state.error));
+          showError(context, state.error);
         }
 
-        if (state is! PerpetualNovenaFetchedSuccess) {
+        if (state is PerpetualNovenaFetchedSuccess) {
+          data = state.perpetualNovenaModel;
+        }
+      },
+      builder: (context, state) {
+        if (state is! PerpetualNovenaFetchedSuccess || data == null) {
           return const Center(
             child: CircularProgressIndicator.adaptive(),
           );
         }
 
-        var data = state.perpetualNovenaModel;
-
         return CustomScrollView(
           controller: _scrollController,
           slivers: [
             CustomAppbar(
-                isCollapsed: isCollapsed,
-                customAppbarTitle: translation == Translation.bicol
-                    ? "Danay na Novena"
-                    : "Perpetual Novena",
-                imgUrl: "./assets/background.jpg"),
+              isCollapsed: isCollapsed,
+              customAppbarTitle: translation == Translation.bicol
+                  ? "Danay na Novena"
+                  : "Perpetual Novena",
+              imgUrl: "./assets/background.jpg",
+            ),
             SliverPadding(
               padding: EdgeInsets.only(top: 25, right: 10, left: 10),
               sliver: SliverToBoxAdapter(
-                child: Row(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      data.title,
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      data!.title,
+                      style: TextStyle(
+                          fontSize: titleFontSize, fontWeight: FontWeight.bold),
                     ),
-                    Spacer(),
+                    SizedBox(
+                      height: 10,
+                    ),
                     GestureDetector(
                         onTap: () {
                           setState(() {
@@ -101,7 +116,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                                   ? "Bicol"
                                   : "English",
                               style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: subTitleFontSize,
                                   color: Colors.black87,
                                   fontWeight: FontWeight.w400),
                             ),
@@ -114,14 +129,14 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
             SliverPadding(
               padding: EdgeInsets.only(top: 20, right: 10, left: 10),
               sliver: SliverList.builder(
-                  itemCount: data.prayer.length,
+                  itemCount: data!.prayer.length,
                   itemBuilder: (BuildContext context, index) {
                     return Column(
                       children: [
                         Text(
-                          data.prayer[index],
+                          data!.prayer[index],
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: prayerFontSize,
                           ),
                           textAlign: TextAlign.justify,
                         ),
@@ -141,15 +156,16 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                       translation == Translation.bicol
                           ? "Ama Niamo"
                           : "The Lord's Prayer",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: prayerFontSize),
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
-                      data.ourFather,
-                      style: TextStyle(fontSize: 15),
+                      data!.ourFather,
+                      style: TextStyle(fontSize: subTitleFontSize),
                       textAlign: TextAlign.justify,
                     )
                   ],
@@ -165,15 +181,16 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                       translation == Translation.bicol
                           ? "Ave Maria"
                           : "Hail Mary",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: subTitleFontSize),
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
-                      data.hailMary,
-                      style: TextStyle(fontSize: 15),
+                      data!.hailMary,
+                      style: TextStyle(fontSize: prayerFontSize),
                       textAlign: TextAlign.justify,
                     )
                   ],
@@ -189,15 +206,16 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                       translation == Translation.bicol
                           ? "Kamurawayan sa Dios"
                           : "Glory Be",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: subTitleFontSize),
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
-                      data.gloryBe,
-                      style: TextStyle(fontSize: 15),
+                      data!.gloryBe,
+                      style: TextStyle(fontSize: prayerFontSize),
                       textAlign: TextAlign.justify,
                     )
                   ],
@@ -211,7 +229,8 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                   translation == Translation.bicol
                       ? "Huring Pamibi"
                       : "Last Prayer",
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700, fontSize: subTitleFontSize),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -220,14 +239,14 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
               padding:
                   EdgeInsets.only(top: 20, right: 10, left: 10, bottom: 20),
               sliver: SliverList.builder(
-                  itemCount: data.lastPrayer.length,
+                  itemCount: data!.lastPrayer.length,
                   itemBuilder: (BuildContext context, index) {
                     return Column(
                       children: [
                         Text(
-                          data.lastPrayer[index],
+                          data!.lastPrayer[index],
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: prayerFontSize,
                           ),
                           textAlign: TextAlign.justify,
                         ),
