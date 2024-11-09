@@ -147,7 +147,7 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                           isCollapsed ? 1.0 : 0.0, // Show title when collapsed
                       duration: const Duration(milliseconds: 300),
                       child: Text(
-                        "Bikol Novena | ${data.proper.aldaw}",
+                        "Bicol Novena | ${data.proper.aldaw}",
                         style: TextStyle(
                             fontSize: 17, fontWeight: FontWeight.w700),
                       )),
@@ -210,7 +210,7 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                     child: Column(
                       children: [
                         Text(
-                          "+ Sign of the Cross +",
+                          "+ Pag-antanda nin Krus +",
                           style: TextStyle(
                               fontSize: titleFontSize,
                               fontWeight: FontWeight.bold,
@@ -755,7 +755,7 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                     child: Column(
                       children: [
                         Text(
-                          "+ Sign of the Cross +",
+                          "+ Pag-antanda nin Krus +",
                           style: TextStyle(
                               fontSize: titleFontSize,
                               fontWeight: FontWeight.bold,

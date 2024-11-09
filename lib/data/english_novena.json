@@ -1,73 +1,118 @@
 {
-    "act_of_contrition" : [
-        "O Lord my God, You created me, and sent Your only Son to redeem me. I am truly sorry for having offended You.",
-        "My God, my Lord and my Father, whom I adore above all things, I intend to make amends for all my sins and promise to approach the sacrament of penance as frequent as possible.",
-        "I hope for your pardon and strength in honor of Your Holy Passion and sacrifice on the cross. Amen."
-    ],
-    "opening_prayer" : [
-        "O most merciful and almighty God, You bestowed as gift to St. Lorenzo Ruiz the strength to withstand the overpowering forces of death for the sake of his faith in You. Through his prayers, help us to follow his example by overcoming all life’s trials and eventually, increase our hope and love in You.",
-        "O St. Lorenzo Ruiz, you brought honor to our country, having been a level-headed and prudent father of the family, a witness of Christ in your life until your death. We present all our petitions to God through your help so that by our actions, we may know more and love more Jesus our Lord and Savior.",
-        "We humbly implore your infinite glory of God and in honor of your triumph as martyr of Christ and defender of Christianity."
-    ],
-    "act_of_supplication" : {
-        "response" : "St. Lorenzo Ruiz, pray for us.",
-        "supplications" : [
-            "Dear St. Lorenzo Ruiz, you showed yourself to be a responsible father of your family; you chose to live in the midst of suffering. Look with gracious eyes upon our family that is now beset with crisis.",
-            "You had been loyal as a servant of the church by fulfilling your duties to God and fellowmen; inspire us to be loyal too to our commitments.",
-            "You have been a hardworking member of parish organizations; teach us to take an active part in parish activities and become worthy instruments of Christ in works of charity.",
-            "You have been firm in your faith in Christ which was why you chose to die for His sake: help us to be brave and fearless defenders of Christianity."
-        ]
+  "act_of_contrition": [
+    "O Lord my God, You created me, and sent Your only Son to redeem me. I am truly sorry for having offended You.",
+    "My God, my Lord and my Father, whom I adore above all things, I intend to make amends for all my sins and promise to approach the sacrament of penance as frequent as possible.",
+    "I hope for your pardon and strength in honor of Your Holy Passion and sacrifice on the cross. Amen."
+  ],
+  "opening_prayer": [
+    "O most merciful and almighty God, You bestowed as gift to St. Lorenzo Ruiz the strength to withstand the overpowering forces of death for the sake of his faith in You. Through his prayers, help us to follow his example by overcoming all life’s trials and eventually, increase our hope and love in You.",
+    "O St. Lorenzo Ruiz, you brought honor to our country, having been a level-headed and prudent father of the family, a witness of Christ in your life until your death. We present all our petitions to God through your help so that by our actions, we may know more and love more Jesus our Lord and Savior.",
+    "We humbly implore your infinite glory of God and in honor of your triumph as martyr of Christ and defender of Christianity."
+  ],
+  "act_of_supplication": {
+    "response": "St. Lorenzo Ruiz, pray for us.",
+    "supplications": [
+      "Dear St. Lorenzo Ruiz, you showed yourself to be a responsible father of your family; you chose to live in the midst of suffering. Look with gracious eyes upon our family that is now beset with crisis.",
+      "You had been loyal as a servant of the church by fulfilling your duties to God and fellowmen; inspire us to be loyal too to our commitments.",
+      "You have been a hardworking member of parish organizations; teach us to take an active part in parish activities and become worthy instruments of Christ in works of charity.",
+      "You have been firm in your faith in Christ which was why you chose to die for His sake: help us to be brave and fearless defenders of Christianity."
+    ]
+  },
+  "our_father": "Our Father, Who art in heaven, hallowed be Thy name; Thy kingdom come; Thy will be done on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil.",
+  "instruction_after_reflection": "Pause for a while, reflect on the examples of St. Lorenzo Ruiz, and mention all your petitions.",
+  "reflections": [
+    {
+      "title": "Love and Commitment to God",
+      "subtitle": "First Day",
+      "order": 1,
+      "reflection": [
+        "St. Paul said in his letter to the Romans: “Who shall separate us from the love of Christ? Shall tribulation, or distress, or persecution, or famine, or nakedness, or peril, or sword? As it is written, ‘For your sake, we are being killed all the day long: we are regarded as sheep to be slaughtered.’",
+        "“No, in all these things we are more than conquerors through him who loves us… nothing else in all creation will be able to separate us from the love of God in Christ Jesus our Lord.” (Romans 8: 35-39)",
+        "St. Paul wants to impress this thought upon us: If a man loves God, he will try to overcome all difficulties for His sake, like man doing everything for his beloved. St. Lorenzo Ruiz denied himself and surmounted all trials, suffering, hunger, persecution and death as proof of his faith in God. This is the ultimate reason why love for God prevailed in St. Lorenzo Ruiz’s life. In our case, what is really important in life, and whom are we following as example?"
+      ]
     },
-    "our_father": "Our Father, Who art in heaven, hallowed be Thy name; Thy kingdom come; Thy will be done on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil.",
-    "reflections" : {
-        "instruction_after_reflection" : "Pause for a while, reflect on the examples of St. Lorenzo Ruiz, and mention all your petitions.",
-        "first_day" : [
-            "St. Paul said in his letter to the Romans: “Who shall separate us from the love of Christ? Shall tribulation, or distress, or persecution, or famine, or nakedness, or peril, or sword? As it is written, ‘For your sake, we are being killed all the day long: we are regarded as sheep to be slaughtered.’",
-            "“No, in all these things we are more than conquerors through him who loves us… nothing else in all creation will be able to separate us from the love of God in Christ Jesus our Lord.” (Romans 8: 35-39)",
-            "St. Paul wants to impress this thought upon us: If a man loves God, he will try to overcome all difficulties for His sake, like man doing everything for his beloved. St. Lorenzo Ruiz denied himself and surmounted all trials, suffering, hunger, persecution and death as proof of his faith in God. This is the ultimate reason why love for God prevailed in St. Lorenzo Ruiz’s life. In our case, what is really important in life, and whom are we following as example?"
-        ],
-        "second_day" : [
-            "This is what the Lord says in the gosperl according to St. John the Apostle: “This is my commandment, that you have love one another as I have loved you. Greater love than this no man has, that he lays down his life for his friends. You are my friends if you do what I command you. No longer do I call you servants, for the master is doing; but I have called you friends, for all that I have heard from my Father I have made known to you.” (John 15:12-15).",
-            "We can show our love for God in action, not just in words. We can manifest this love to him if we can do things according to his will and fulfill our obligation to him and to our neighbors. Like St. Lorenzo Ruiz, let us offer our life to God as the greatest sign of our love for Him even if we experience so much hardships in the hands of our of the enemies of our faith Let us assume all the responsibilities in honor of St. Lorenzo Luiz."
-        ],
-        "third_day" : [
-            "Saint John the apostle says in his gospel: “If the world hates you, know that it has hated me before it hated you. If you were of the world, the world would love its own; But because you are not of the world, but I choose you out of the world, therefore the world hates you. Remember the word that I said to you, ‘servant is not greater than his master.’ If they persecute me, they will persecute you; If they kept my word, they will keep yours tool.” (John 15:18-20).",
-            "According to our Lord Himself, whoever follows in His footsteps shall also suffer hardships and even persecution in reparation for sins. In the midst of suffering, one’s moral strength and steadfastness in truth are put to test. By this, there is assurance that all other hardships that will come by will be overcome. But, by avoiding or even complaining against life's difficulties, one's heart is weakened. Victory in anything in life, in the field of science, education, economics, morality dash can only be achieved with the price of hardship and suffering."
-        ],
-        "fourth_day" : [
-            "According to the gospel (Matthew 19:16-21) there was a man who came to Jesus and asked: “What shall I do to gain life everlasting?” And Jesus answered:",
-            "“Why do you ask me concerning what is good?  There is only one who is good. Keep the commandments if you want to enter eternal life.” The man asked: “What commandments?” And Jesus said:",
-            "“Do not commit murder; do not commit adultery; do not steal; do not accuse anyone falsely; respect your father and your mother; and love your neighbour and yourself.”",
-            "The young man replied: “I have observe all these commandments. What else do I need to do?”",
-            "Jesus said to him: “If you want to be perfect go and sell all you have and give the money to the poor, and you will have riches in heaven. Then come and follow me.”",
-            "Are we of the same disposition as the young man in the gospel? Do we also obey the commandments of God and fulfill obligations to our family and neighbors? We all want to be holy, but do we follow the counsels of Jesus conveyed to the young man? There are still murders, act of adultery, thefts, and robberies, slanders and curses around us. Let us strive to avoid such acts as will hinder us from the road to eternal life."
-        ],
-        "fifth_day" : [
-            "The gospel according to St. Luke (14:25-27) says that a big crowd followed him in his preaching. Then, he turned to them and said: “Whosoever comes to me cannot be my disciple unless he loves me more than he loves his father and his mother, his wife and his children, his brothers and sisters, and himself as well. Whoever does not carry his own cross and come after me, cannot be my disciple.”",
-            "Two points are conveyed to us by this gospel narrative. First, that in following Christ, we should love him more than we love our spouses and families. The meaning is that we have to love God above everything and everyone else. Of course, we should love all others, but never at the expense of God's love and commandments. ",
-            "The second message is that we have to bear our cross with joy. It is the cross and the way we carry it that characterize our discipline of Christ. There can no Christ without the cross and no disciple or follower of Christ can be worthy of His love unless one bears the cross. Who avoids the cross given by Christ is like renouncing Christ the crucified. St. Lorenzo Ruiz has given us an example of loving Christ till death."
-        ],
-        "sixth_day" : [
-            "In the gospel according to St. Luke (21:1219), we are reminded that if Christ suffered for love of us, we should not be surprised if we suffer some persecution, for Christ our master showed us the example. He told his apostles:",
-            "“Before all these things take place, you will be arrested and persecuted. You will be handed over to be tried in synagogues and be put in prison; you will be brought before kings and rulers for my sake. This will be your chance to preach the Good News. Make up your minds ahead of time not to worry about how you will defend yourselves, because I will give you such words and wisdom that none of your enemies will be able to refute or contradict what you say. You will be handed over by your parents, your brothers, your relatives, and your friends; and some of you will be put to death. Everyone will hate because of me… stand firm, and you will save yourselves.”",
-            "The grace of God, Christ has assured us, will be sufficient to sustain ourselves in the midst of suffering and persecution, for it is for His sake that we bear hardships and difficulties. St. Lorenzo Ruiz is an example of how we should not worry about what to say when we are slandered, or what to do in presence of persecutors. By our example of strength of soul and heart, we also preach the Gospel of love of Christ."
-        ],
-        "seventh_day" : [
-            "The book of wisdom tells us that the just are protected by the hand of God (3:15). They will triumph over every form of hardship.",
-            "“According to the fools,” the book says, “the just will die. They think of that as a curse in the last breath of man as the end of everything. The truth is, the just will be in peace and at peace. To the eyes of man, they are punished, but the truth is, they are enjoying life eternal. The little suffering that they undergo will be compensated with great blessings for they have proven themselves worthy of the love of God.”",
-            "The biography of St. Lorenzo Ruiz narrates that he started to suffer punishment for his Christian faith on September 21, 1637. He was brought to the judge who asked him about his Christianity. And he answered: “I am Christian and I will remain to be so until death; to God alone shall I  offer my life. And if I would have 1000 lives, I would still offer them to Him. So, do to me as you please.”",
-            "St. Lorenzo Ruiz, was then put to death by “hanging in the pit.”",
-            "What an example of fortitude in the face of death! We, too, shall commit ourselves to the love of God and neighbor until the end of our earthly life."
-        ],
-        "eighth_day" : [
-            "St. Peter the apostle has consoling advice to us (1 Peter 4:12-15) in times of need and trials:",
-            "“My dear friends: Surprise at that painful test you are suffering, as though something unusual were happening to you. Rather, be glad that you are sharing Christ sufferings, so that you may be full of joy when his glory is revealed happy are you if you are insulted because you are Christ followers. This means that the glorious spirit, the spirit of God, is resting on you… if you suffer because you are Christians, don't be ashamed of it, but thank God that you bear Christ's name.”",
-            "Indeed, it is only through a trial of one's faith that a follower of Christ will deserve the name Christian. The genuineness of gold is ascertained in fire. The truth of Christianity is tested and verified and enhanced by challenges and trials.",
-            "St. Lorenzo Ruiz proved that faith is tested when one is challenged to renounce it with promise of physical freedom and temporary happiness. We know that the saint showed us the way to everlasting happiness when he gave up earthly life for eternal life. We can go through similar test but we have to rely on God's grace and assistance. Without him, we cannot do anything. With him, we can even withstand persecution."
-        ],
-        "nineth_day" : [
-            "Our Lord's gospel according to St. Luke's reminds us of the need for perseverance in order to attain salvation. Jesus said: “In those days, you will be hated and persecuted for my sake; And you will suffer and even die. Many will renounce their faith and there will be mutual hatred. They will also betray one another. False prophets will arise and they will be able to mislead many. Evil will spread, while the love of many will be tepid. But he who perseveres shall be saved. The Good News will be preached throughout the world, and there will be talks about the Kingdom of God so that he may be known to man. Then the end will come.”",
-            "If we look closely into the life of St. Lorenzo Ruiz, we will realize that he was not one of those who harbored hatred against others. He persevered in acknowledgement of his faith. His death could be said to be a form of preaching the Good News of salvation. It behooves that as his devotees, we all follow in his footsteps so that we may likewise attain, through perseverance, eternal salvation."
-        ]
+    {
+      "title": "Love Through Sacrificial Actions",
+      "subtitle": "Second Day",
+      "order": 2,
+      "reflection": [
+        "This is what the Lord says in the gosperl according to St. John the Apostle: “This is my commandment, that you have love one another as I have loved you. Greater love than this no man has, that he lays down his life for his friends. You are my friends if you do what I command you. No longer do I call you servants, for the master is doing; but I have called you friends, for all that I have heard from my Father I have made known to you.” (John 15:12-15).",
+        "We can show our love for God in action, not just in words. We can manifest this love to him if we can do things according to his will and fulfill our obligation to him and to our neighbors. Like St. Lorenzo Ruiz, let us offer our life to God as the greatest sign of our love for Him even if we experience so much hardships in the hands of our of the enemies of our faith Let us assume all the responsibilities in honor of St. Lorenzo Luiz."
+      ]
+    },
+    {
+      "title": "Enduring Persecution for Faith",
+      "subtitle": "Third Day",
+      "order": 3,
+      "reflection": [
+        "Saint John the apostle says in his gospel: “If the world hates you, know that it has hated me before it hated you. If you were of the world, the world would love its own; But because you are not of the world, but I choose you out of the world, therefore the world hates you. Remember the word that I said to you, ‘servant is not greater than his master.’ If they persecute me, they will persecute you; If they kept my word, they will keep yours tool.” (John 15:18-20).",
+        "According to our Lord Himself, whoever follows in His footsteps shall also suffer hardships and even persecution in reparation for sins. In the midst of suffering, one’s moral strength and steadfastness in truth are put to test. By this, there is assurance that all other hardships that will come by will be overcome. But, by avoiding or even complaining against life's difficulties, one's heart is weakened. Victory in anything in life, in the field of science, education, economics, morality dash can only be achieved with the price of hardship and suffering."
+      ]
+    },
+    {
+      "title": "Striving for Holiness and Obedience",
+      "subtitle": "Fourth Day",
+      "order": 4,
+      "reflection": [
+        "According to the gospel (Matthew 19:16-21) there was a man who came to Jesus and asked: “What shall I do to gain life everlasting?” And Jesus answered:",
+        "“Why do you ask me concerning what is good?  There is only one who is good. Keep the commandments if you want to enter eternal life.” The man asked: “What commandments?” And Jesus said:",
+        "“Do not commit murder; do not commit adultery; do not steal; do not accuse anyone falsely; respect your father and your mother; and love your neighbour and yourself.”",
+        "The young man replied: “I have observe all these commandments. What else do I need to do?”",
+        "Jesus said to him: “If you want to be perfect go and sell all you have and give the money to the poor, and you will have riches in heaven. Then come and follow me.”",
+        "Are we of the same disposition as the young man in the gospel? Do we also obey the commandments of God and fulfill obligations to our family and neighbors? We all want to be holy, but do we follow the counsels of Jesus conveyed to the young man? There are still murders, act of adultery, thefts, and robberies, slanders and curses around us. Let us strive to avoid such acts as will hinder us from the road to eternal life."
+      ]
+    },
+    {
+      "title": "Loving God Above All Else",
+      "subtitle": "Fifth Day",
+      "order": 5,
+      "reflection": [
+        "The gospel according to St. Luke (14:25-27) says that a big crowd followed him in his preaching. Then, he turned to them and said: “Whosoever comes to me cannot be my disciple unless he loves me more than he loves his father and his mother, his wife and his children, his brothers and sisters, and himself as well. Whoever does not carry his own cross and come after me, cannot be my disciple.”",
+        "Two points are conveyed to us by this gospel narrative. First, that in following Christ, we should love him more than we love our spouses and families. The meaning is that we have to love God above everything and everyone else. Of course, we should love all others, but never at the expense of God's love and commandments. ",
+        "The second message is that we have to bear our cross with joy. It is the cross and the way we carry it that characterize our discipline of Christ. There can no Christ without the cross and no disciple or follower of Christ can be worthy of His love unless one bears the cross. Who avoids the cross given by Christ is like renouncing Christ the crucified. St. Lorenzo Ruiz has given us an example of loving Christ till death."
+      ]
+    },
+    {
+      "title": "Suffering for Christ's Sake",
+      "subtitle": "Sixth Day",
+      "order": 6,
+      "reflection": [
+        "In the gospel according to St. Luke (21:1219), we are reminded that if Christ suffered for love of us, we should not be surprised if we suffer some persecution, for Christ our master showed us the example. He told his apostles:",
+        "“Before all these things take place, you will be arrested and persecuted. You will be handed over to be tried in synagogues and be put in prison; you will be brought before kings and rulers for my sake. This will be your chance to preach the Good News. Make up your minds ahead of time not to worry about how you will defend yourselves, because I will give you such words and wisdom that none of your enemies will be able to refute or contradict what you say. You will be handed over by your parents, your brothers, your relatives, and your friends; and some of you will be put to death. Everyone will hate because of me… stand firm, and you will save yourselves.”",
+        "The grace of God, Christ has assured us, will be sufficient to sustain ourselves in the midst of suffering and persecution, for it is for His sake that we bear hardships and difficulties. St. Lorenzo Ruiz is an example of how we should not worry about what to say when we are slandered, or what to do in presence of persecutors. By our example of strength of soul and heart, we also preach the Gospel of love of Christ."
+      ]
+    },
+    {
+      "title": "Faithful Perseverance in Trials",
+      "subtitle": "Seventh Day",
+      "order": 7,
+      "reflection": [
+        "The book of wisdom tells us that the just are protected by the hand of God (3:15). They will triumph over every form of hardship.",
+        "“According to the fools,” the book says, “the just will die. They think of that as a curse in the last breath of man as the end of everything. The truth is, the just will be in peace and at peace. To the eyes of man, they are punished, but the truth is, they are enjoying life eternal. The little suffering that they undergo will be compensated with great blessings for they have proven themselves worthy of the love of God.”",
+        "The biography of St. Lorenzo Ruiz narrates that he started to suffer punishment for his Christian faith on September 21, 1637. He was brought to the judge who asked him about his Christianity. And he answered: “I am Christian and I will remain to be so until death; to God alone shall I  offer my life. And if I would have 1000 lives, I would still offer them to Him. So, do to me as you please.”",
+        "St. Lorenzo Ruiz, was then put to death by “hanging in the pit.”",
+        "What an example of fortitude in the face of death! We, too, shall commit ourselves to the love of God and neighbor until the end of our earthly life."
+      ]
+    },
+    {
+      "title": "Shared Suffering with Christ",
+      "subtitle": "Eight Day",
+      "order": 8,
+      "reflection": [
+        "St. Peter the apostle has consoling advice to us (1 Peter 4:12-15) in times of need and trials:",
+        "“My dear friends: Surprise at that painful test you are suffering, as though something unusual were happening to you. Rather, be glad that you are sharing Christ sufferings, so that you may be full of joy when his glory is revealed happy are you if you are insulted because you are Christ followers. This means that the glorious spirit, the spirit of God, is resting on you… if you suffer because you are Christians, don't be ashamed of it, but thank God that you bear Christ's name.”",
+        "Indeed, it is only through a trial of one's faith that a follower of Christ will deserve the name Christian. The genuineness of gold is ascertained in fire. The truth of Christianity is tested and verified and enhanced by challenges and trials.",
+        "St. Lorenzo Ruiz proved that faith is tested when one is challenged to renounce it with promise of physical freedom and temporary happiness. We know that the saint showed us the way to everlasting happiness when he gave up earthly life for eternal life. We can go through similar test but we have to rely on God's grace and assistance. Without him, we cannot do anything. With him, we can even withstand persecution."
+      ]
+    },
+    {
+      "title": "Salvation through Perseverance",
+      "subtitle": "Nineth Day",
+      "order": 9,
+      "reflection": [
+        "Our Lord's gospel according to St. Luke's reminds us of the need for perseverance in order to attain salvation. Jesus said: “In those days, you will be hated and persecuted for my sake; And you will suffer and even die. Many will renounce their faith and there will be mutual hatred. They will also betray one another. False prophets will arise and they will be able to mislead many. Evil will spread, while the love of many will be tepid. But he who perseveres shall be saved. The Good News will be preached throughout the world, and there will be talks about the Kingdom of God so that he may be known to man. Then the end will come.”",
+        "If we look closely into the life of St. Lorenzo Ruiz, we will realize that he was not one of those who harbored hatred against others. He persevered in acknowledgement of his faith. His death could be said to be a form of preaching the Good News of salvation. It behooves that as his devotees, we all follow in his footsteps so that we may likewise attain, through perseverance, eternal salvation."
+      ]
     }
+  ]
 }

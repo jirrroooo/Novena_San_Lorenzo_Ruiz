@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:novena_lorenzo/common/error.dart';
 import 'package:novena_lorenzo/data/translation.dart';
+import 'package:novena_lorenzo/features/novena_english/bloc/novena_english_bloc.dart';
+import 'package:novena_lorenzo/features/novena_english/models/novena_english_home_model.dart';
 import 'package:novena_lorenzo/features/novena_english/screens/novena_english_page.dart';
-import 'package:novena_lorenzo/widgets/appbar.dart';
 import 'package:novena_lorenzo/widgets/scripture/screens/scripture.dart';
 
 class NovenaEnglishHome extends StatefulWidget {
@@ -14,6 +17,7 @@ class NovenaEnglishHome extends StatefulWidget {
 class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
   ScrollController _scrollController = ScrollController();
   bool isCollapsed = false;
+  List<NovenaEnglishHomeModel> data = [];
 
   @override
   void initState() {
@@ -27,6 +31,8 @@ class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
         isCollapsed = offset > 200 - kToolbarHeight;
       });
     });
+
+    context.read<NovenaEnglishBloc>().add(NovenaEnglishHomeFetch());
   }
 
   @override
@@ -41,10 +47,27 @@ class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
         body: CustomScrollView(
       controller: _scrollController,
       slivers: [
-        CustomAppbar(
-            isCollapsed: isCollapsed,
-            customAppbarTitle: "Novena to Saint Lorenzo Ruiz",
-            imgUrl: "./assets/background.jpg"),
+        SliverAppBar(
+          centerTitle: true,
+          pinned: true,
+          expandedHeight: 200,
+          backgroundColor: Colors.amber[200],
+          title: AnimatedOpacity(
+              opacity: isCollapsed ? 1.0 : 0.0, // Show title when collapsed
+              duration: const Duration(milliseconds: 300),
+              child: Text(
+                "English Novena",
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
+              )),
+          flexibleSpace: FlexibleSpaceBar(
+            collapseMode: CollapseMode.parallax,
+            background: Image.asset(
+              "./assets/background.jpg",
+              height: 200.0,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
         Scripture(
           translation: Translation.english,
         ),
@@ -53,44 +76,62 @@ class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
             thickness: 2,
           ),
         ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              return Column(
-                children: [
-                  ListTile(
-                    leading: Icon(
-                      Icons.add_rounded,
-                      size: 40,
-                    ),
-                    title: Text(
-                      "Pagkamundag sa Pamilya nin Dios",
-                      style: TextStyle(fontWeight: FontWeight.w500),
-                    ),
-                    subtitle: Text(
-                      "Enot na Aldaw",
-                      style: TextStyle(fontStyle: FontStyle.italic),
-                    ),
-                    onTap: () {
-                      print("Index: $index");
+        BlocConsumer<NovenaEnglishBloc, NovenaEnglishState>(
+          listener: (context, state) {
+            if (state is NovenaEnglishHomeFetchFailure) {
+              showError(context, state.error);
+            }
 
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => NovenaEnglishPage(
-                              novenaDay: index), // Replace with your screen
-                        ),
-                      );
-                    },
-                  ),
-                  const Divider(
-                    indent: 70, // This will add spacing from the leading icon
-                  ),
-                ],
+            if (state is NovenaEnglishHomeFetchLoading) {}
+
+            if (state is NovenaEnglishHomeFetchSuccess) {
+              data = state.homeModel;
+            }
+          },
+          builder: (context, state) {
+            if (state is NovenaEnglishHomeFetchLoading || data.isEmpty) {
+              return SliverToBoxAdapter(
+                child: Center(
+                  child: CircularProgressIndicator.adaptive(),
+                ),
               );
-            },
-            childCount: 9, // The number of items in your list
-          ),
+            }
+
+            return SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return Column(
+                    children: [
+                      ListTile(
+                        leading: Image.asset("./assets/cross.png", height: 30),
+                        title: Text(
+                          data[index].title,
+                          style: TextStyle(fontWeight: FontWeight.w700),
+                        ),
+                        subtitle: Text(
+                          data[index].subtitle,
+                          style: TextStyle(fontStyle: FontStyle.italic),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  NovenaEnglishPage(novenaDay: index),
+                            ),
+                          );
+                        },
+                      ),
+                      const Divider(
+                        indent: 55,
+                      ),
+                    ],
+                  );
+                },
+                childCount: 9, // The number of items in your list
+              ),
+            );
+          },
         ),
       ],
     ));

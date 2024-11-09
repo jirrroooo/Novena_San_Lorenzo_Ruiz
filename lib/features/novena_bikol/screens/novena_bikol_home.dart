@@ -5,7 +5,6 @@ import 'package:novena_lorenzo/data/translation.dart';
 import 'package:novena_lorenzo/features/novena_bikol/bloc/novena_bikol_bloc.dart';
 import 'package:novena_lorenzo/features/novena_bikol/models/novena_bikol_home_model.dart';
 import 'package:novena_lorenzo/features/novena_bikol/screens/novena_bikol_page.dart';
-import 'package:novena_lorenzo/widgets/appbar.dart';
 import 'package:novena_lorenzo/widgets/scripture/screens/scripture.dart';
 
 class NovenaBikolHome extends StatefulWidget {
@@ -49,10 +48,27 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
         body: CustomScrollView(
       controller: _scrollController,
       slivers: [
-        CustomAppbar(
-            isCollapsed: isCollapsed,
-            customAppbarTitle: "Novena ki San Lorenzo Ruiz",
-            imgUrl: "./assets/background.jpg"),
+        SliverAppBar(
+          centerTitle: true,
+          pinned: true,
+          expandedHeight: 200,
+          backgroundColor: Colors.amber[200],
+          title: AnimatedOpacity(
+              opacity: isCollapsed ? 1.0 : 0.0, // Show title when collapsed
+              duration: const Duration(milliseconds: 300),
+              child: Text(
+                "Bicol Novena",
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
+              )),
+          flexibleSpace: FlexibleSpaceBar(
+            collapseMode: CollapseMode.parallax,
+            background: Image.asset(
+              "./assets/background.jpg",
+              height: 200.0,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
         Scripture(
           translation: Translation.bicol,
         ),
