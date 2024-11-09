@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:novena_lorenzo/common/error.dart';
 import 'package:novena_lorenzo/features/novena_bikol/bloc/novena_bikol_bloc.dart';
-import 'package:novena_lorenzo/features/novena_bikol/screens/novena_bikol_home.dart';
 
 class NovenaBikolPage extends StatefulWidget {
   final int novenaDay;
@@ -16,10 +15,11 @@ class NovenaBikolPage extends StatefulWidget {
 class _NovenaBikolPageState extends State<NovenaBikolPage> {
   ScrollController _scrollController = ScrollController();
   bool isCollapsed = false;
+  bool isExpanded = false;
 
-  double? titleFontSize = 18;
-  double? subTitleFontSize = 17;
-  double? prayerFontSize = 16;
+  double? titleFontSize = 20;
+  double? subTitleFontSize = 18;
+  double? prayerFontSize = 17;
 
   @override
   void initState() {
@@ -48,16 +48,78 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-            backgroundColor: Colors.amber[200],
-            elevation: 5,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-            child: Icon(
-              Icons.text_fields,
-              color: Colors.black,
-            ),
-            onPressed: () {}),
+        floatingActionButton: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            if (isExpanded)
+              FloatingActionButton(
+                backgroundColor: Colors.amber[200],
+                onPressed: () {
+                  setState(() {
+                    titleFontSize = 18;
+                    subTitleFontSize = 17;
+                    prayerFontSize = 16;
+                    isExpanded = !isExpanded;
+                  });
+                },
+                child: Text('Small', style: TextStyle(fontSize: 14.0)),
+              ),
+            if (isExpanded)
+              SizedBox(
+                height: 15,
+              ),
+            if (isExpanded)
+              FloatingActionButton(
+                backgroundColor: Colors.amber[200],
+                onPressed: () {
+                  setState(() {
+                    titleFontSize = 20;
+                    subTitleFontSize = 18;
+                    prayerFontSize = 17;
+                    isExpanded = !isExpanded;
+                  });
+                },
+                child: Text('Normal', style: TextStyle(fontSize: 14.0)),
+              ),
+            if (isExpanded)
+              SizedBox(
+                height: 15,
+              ),
+            if (isExpanded)
+              FloatingActionButton(
+                backgroundColor: Colors.amber[200],
+                onPressed: () {
+                  setState(() {
+                    titleFontSize = 21;
+                    subTitleFontSize = 20;
+                    prayerFontSize = 18;
+                    isExpanded = !isExpanded;
+                  });
+                },
+                child: Text('Large', style: TextStyle(fontSize: 14.0)),
+              ),
+            if (isExpanded)
+              SizedBox(
+                height: 15,
+              ),
+            FloatingActionButton(
+                backgroundColor:
+                    isExpanded ? Colors.grey[300] : Colors.amber[200],
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50)),
+                child: Icon(
+                  isExpanded ? Icons.close : Icons.text_fields,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  setState(() {
+                    isExpanded = !isExpanded;
+                  });
+                }),
+          ],
+        ),
         body: BlocBuilder<NovenaBikolBloc, NovenaBikolState>(
           builder: (context, state) {
             if (state is NovenaBikolPageFetchedFailure) {
@@ -85,8 +147,9 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                           isCollapsed ? 1.0 : 0.0, // Show title when collapsed
                       duration: const Duration(milliseconds: 300),
                       child: Text(
-                        data.proper.aldaw,
-                        style: TextStyle(fontWeight: FontWeight.w500),
+                        "Bikol Novena | ${data.proper.aldaw}",
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.w700),
                       )),
                   flexibleSpace: FlexibleSpaceBar(
                     collapseMode: CollapseMode.parallax,
@@ -100,7 +163,7 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                 SliverPadding(
                   padding: EdgeInsets.symmetric(vertical: 30),
                   sliver: SliverToBoxAdapter(
-                    child: Column(
+                    child: const Column(
                       children: [
                         Text(
                           "RINIBONG BUHAY PARA SA DIOS",
@@ -110,14 +173,14 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                         ),
                         Text(
                           "Nobena ki San Lorenzo Ruiz de Manila",
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 17),
                         )
                       ],
                     ),
                   ),
                 ),
                 SliverPadding(
-                  padding: EdgeInsets.symmetric(horizontal: 60),
+                  padding: EdgeInsets.symmetric(horizontal: 50),
                   sliver: SliverToBoxAdapter(
                     child: Column(
                       children: [
@@ -353,8 +416,8 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                   ),
                 ],
                 SliverPadding(
-                  padding: EdgeInsets.only(
-                      left: 100, right: 100, top: 20, bottom: 5),
+                  padding:
+                      EdgeInsets.only(left: 80, right: 80, top: 20, bottom: 5),
                   sliver: SliverToBoxAdapter(
                     child: Column(
                       children: [
@@ -389,7 +452,7 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                 ),
                 SliverPadding(
                   padding:
-                      EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 10),
+                      EdgeInsets.only(top: 50, left: 15, right: 15, bottom: 10),
                   sliver: SliverToBoxAdapter(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -417,7 +480,7 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                 ),
                 SliverPadding(
                   padding:
-                      EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 10),
+                      EdgeInsets.only(top: 50, left: 15, right: 15, bottom: 10),
                   sliver: SliverToBoxAdapter(
                     child: Column(
                       children: [
@@ -496,8 +559,8 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                   ),
                 ),
                 SliverPadding(
-                  padding: EdgeInsets.only(
-                      left: 100, right: 100, top: 20, bottom: 5),
+                  padding:
+                      EdgeInsets.only(left: 80, right: 80, top: 50, bottom: 5),
                   sliver: SliverToBoxAdapter(
                     child: Column(
                       children: [
@@ -532,7 +595,7 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                 ),
                 SliverPadding(
                   padding:
-                      EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 10),
+                      EdgeInsets.only(top: 50, left: 15, right: 15, bottom: 30),
                   sliver: SliverToBoxAdapter(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -555,7 +618,7 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                           textAlign: TextAlign.justify,
                         ),
                         SizedBox(
-                          height: 35,
+                          height: 45,
                         ),
                         Center(
                           child: Text(
@@ -595,7 +658,7 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                               textAlign: TextAlign.justify,
                             ),
                             SizedBox(
-                              height: 15,
+                              height: 25,
                             ),
                             Text(
                               "Gabos:",
@@ -616,6 +679,9 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                                 ),
                                 textAlign: TextAlign.center,
                               ),
+                            ),
+                            SizedBox(
+                              height: 25,
                             )
                           ],
                         ),

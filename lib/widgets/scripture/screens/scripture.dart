@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:novena_lorenzo/data/translation.dart';
-import 'package:novena_lorenzo/main.dart';
 import 'package:novena_lorenzo/widgets/scripture/bloc/scripture_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

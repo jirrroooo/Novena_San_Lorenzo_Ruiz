@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class CustomAppbar extends StatefulWidget {
   final String customAppbarTitle;
   final String imgUrl;
-  bool isCollapsed;
+  final bool isCollapsed;
 
-  CustomAppbar(
+  const CustomAppbar(
       {super.key,
       required this.isCollapsed,
       required this.customAppbarTitle,

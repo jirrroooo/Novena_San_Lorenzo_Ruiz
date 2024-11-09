@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:novena_lorenzo/data/translation.dart';
 import 'package:novena_lorenzo/features/novena_bikol/models/novena_bikol_home_model.dart';
 import 'package:novena_lorenzo/features/novena_bikol/models/novena_bikol_page_model.dart';
 
