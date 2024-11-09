@@ -43,7 +43,7 @@ class _NovenaEnglishPageState extends State<NovenaEnglishPage> {
         CustomAppbar(
             isCollapsed: isCollapsed,
             customAppbarTitle: "Novena Day 1",
-            imgUrl: "./assets/backround.jpg")
+            imgUrl: "./assets/background.jpg")
       ],
     ));
   }

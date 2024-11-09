@@ -207,6 +207,36 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                   padding:
                       EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 10),
                   sliver: SliverToBoxAdapter(
+                    child: Column(
+                      children: [
+                        Text(
+                          "+ Sign of the Cross +",
+                          style: TextStyle(
+                              fontSize: titleFontSize,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.red),
+                          textAlign: TextAlign.left,
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          "Sa ngaran kan Ama, asin kan Aki, Pati an Espiritu Santo. Amen.",
+                          style: TextStyle(
+                            fontSize: prayerFontSize,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.italic,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SliverPadding(
+                  padding:
+                      EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 10),
+                  sliver: SliverToBoxAdapter(
                     child: Text(
                       "Pamibi sa Aroaldaw",
                       style: TextStyle(
@@ -692,7 +722,7 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                 ),
                 SliverPadding(
                   padding:
-                      EdgeInsets.only(left: 15, right: 15, top: 30, bottom: 70),
+                      EdgeInsets.only(left: 15, right: 15, top: 30, bottom: 15),
                   sliver: SliverToBoxAdapter(
                     child: Column(
                       // crossAxisAlignment: CrossAxisAlignment.center,
@@ -713,6 +743,36 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                             fontSize: prayerFontSize,
                           ),
                           textAlign: TextAlign.justify,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SliverPadding(
+                  padding:
+                      EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 80),
+                  sliver: SliverToBoxAdapter(
+                    child: Column(
+                      children: [
+                        Text(
+                          "+ Sign of the Cross +",
+                          style: TextStyle(
+                              fontSize: titleFontSize,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.red),
+                          textAlign: TextAlign.left,
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          "Sa ngaran kan Ama, asin kan Aki, Pati an Espiritu Santo. Amen.",
+                          style: TextStyle(
+                            fontSize: prayerFontSize,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.italic,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
                       ],
                     ),
