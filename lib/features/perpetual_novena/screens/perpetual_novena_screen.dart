@@ -4,7 +4,6 @@ import 'package:novena_lorenzo/common/error.dart';
 import 'package:novena_lorenzo/data/translation.dart';
 import 'package:novena_lorenzo/features/perpetual_novena/bloc/perpetual_novena_bloc.dart';
 import 'package:novena_lorenzo/features/perpetual_novena/models/perpetual_novena_model.dart';
-import 'package:novena_lorenzo/widgets/appbar.dart';
 
 class PerpetualNovenaScreen extends StatefulWidget {
   const PerpetualNovenaScreen({super.key});
