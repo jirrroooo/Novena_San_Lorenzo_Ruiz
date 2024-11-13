@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:novena_lorenzo/common/error.dart';
 import 'package:novena_lorenzo/data/translation.dart';
-import 'package:novena_lorenzo/widgets/appbar.dart';
+import 'package:novena_lorenzo/features/biography/bloc/biography_bloc.dart';
+import 'package:novena_lorenzo/features/biography/models/biography_model.dart';
+import 'package:novena_lorenzo/features/prayers/bloc/prayer_bloc.dart';
+import 'package:novena_lorenzo/features/prayers/models/prayer_model.dart';
+import 'package:novena_lorenzo/features/prayers/screens/prayer_screen_page.dart';
 import 'package:novena_lorenzo/widgets/scripture/screens/scripture.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,6 +20,9 @@ class _HomePageState extends State<HomePage> {
   ScrollController _scrollController = ScrollController();
   bool isCollapsed = false;
 
+  List<PrayerModel>? prayers;
+  BiographyModel? biography;
+
   @override
   void initState() {
     super.initState();
@@ -26,6 +35,9 @@ class _HomePageState extends State<HomePage> {
         isCollapsed = offset > 200 - kToolbarHeight;
       });
     });
+
+    context.read<PrayerBloc>().add(PrayersFetched());
+    context.read<BiographyBloc>().add(BiographyFetched());
   }
 
   @override
@@ -55,21 +67,38 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    const _tableSpacing = 15.0;
+    const _tableSpacing = 25.0;
 
     return Scaffold(
         body: CustomScrollView(
       controller: _scrollController,
       slivers: [
-        CustomAppbar(
-            isCollapsed: isCollapsed,
-            customAppbarTitle: "Novena to Saint Lorenzo Ruiz",
-            imgUrl: "./assets/background.jpg"),
-        Scripture(
+        SliverAppBar(
+          centerTitle: true,
+          pinned: true,
+          expandedHeight: 200,
+          backgroundColor: Colors.amber[200],
+          title: AnimatedOpacity(
+              opacity: isCollapsed ? 1.0 : 0.0, // Show title when collapsed
+              duration: const Duration(milliseconds: 300),
+              child: const Text(
+                "Novena to Saint Lorenzo Ruiz",
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
+              )),
+          flexibleSpace: FlexibleSpaceBar(
+            collapseMode: CollapseMode.parallax,
+            background: Image.asset(
+              "./assets/background.jpg",
+              height: 200.0,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        const Scripture(
           translation: Translation.english,
         ),
         SliverPadding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           sliver: SliverGrid(
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: 200.0,
@@ -90,12 +119,12 @@ class _HomePageState extends State<HomePage> {
                         _homepageSelection[index]["img_url"]!,
                         fit: BoxFit.cover,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
                         _homepageSelection[index]["title"]!,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w500),
                       )
                     ],
@@ -108,19 +137,19 @@ class _HomePageState extends State<HomePage> {
         ),
         SliverToBoxAdapter(
           child: Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Prayers to St. Lorenzo Ruiz",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 25,
                 ),
                 IconButton(
-                  icon: Icon(Icons.arrow_forward),
+                  icon: const Icon(Icons.arrow_forward),
                   onPressed: () {
                     Navigator.pushNamed(context, "/prayers-home");
                   },
@@ -129,238 +158,162 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-        SliverToBoxAdapter(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: List.generate(10, (index) {
-                // Replace ListView.builder
-                return GestureDetector(
-                  onTap: () {
-                    // Navigate to another screen when tapped
-                    Navigator.pushNamed(context, "/prayers-page");
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          "./assets/background.jpg",
-                          height: 50,
-                          fit: BoxFit.fill,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          "Financial",
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w500),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              }),
-            ),
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: Container(
-            padding: EdgeInsets.only(top: 30, right: 10, left: 10, bottom: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      "Biography of St. Lorenzo Ruiz",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                    ),
-                    Spacer(),
-                    TextButton(
-                      child: Text("Read More",
-                          style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.blueGrey,
-                              fontWeight: FontWeight.bold)),
-                      onPressed: () {
-                        Navigator.pushNamed(context, "/biography");
+        BlocConsumer<PrayerBloc, PrayerState>(
+          listener: (context, state) {
+            if (state is PrayerFetchedLoading) {}
+
+            if (state is PrayerFetchedFailure) {
+              showError(context, state.error);
+            }
+
+            if (state is PrayerFetchedSuccess) {
+              prayers = state.prayers;
+            }
+          },
+          builder: (context, state) {
+            if (prayers == null) {
+              return const SliverToBoxAdapter(
+                child: Center(
+                  child: CircularProgressIndicator.adaptive(),
+                ),
+              );
+            }
+
+            return SliverToBoxAdapter(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: List.generate(prayers!.length, (index) {
+                    // Replace ListView.builder
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PrayerScreenPage(
+                                    prayerModel: prayers![index])));
                       },
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Image.asset(
-                  "./assets/lorenzo.jpg",
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Table(
-                  columnWidths: {0: FixedColumnWidth(120)},
-                  children: const [
-                    TableRow(
-                      children: [
-                        TableCell(
-                            child: Text('Born:',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500))),
-                        TableCell(
-                            child: Padding(
-                          padding: EdgeInsets.only(bottom: _tableSpacing),
-                          child: Text(
-                            'November 28, 1594',
-                            style: TextStyle(
-                              fontSize: 16,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              "./assets/background.jpg",
+                              height: 50,
+                              fit: BoxFit.fill,
                             ),
-                          ),
-                        )),
-                      ],
-                    ),
-                    TableRow(
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              prayers![index].shortTitle,
+                              style: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  }),
+                ),
+              ),
+            );
+          },
+        ),
+        BlocConsumer<BiographyBloc, BiographyState>(
+          listener: (context, state) {
+            if (state is BiographyFetchedLoading) {}
+
+            if (state is BiographyFetchedFailure) {
+              showError(context, state.error);
+            }
+
+            if (state is BiographyFetchedSuccess) {
+              biography = state.biographyModel;
+            }
+          },
+          builder: (context, state) {
+            if (biography == null) {
+              return const SliverToBoxAdapter(
+                child: Center(
+                  child: CircularProgressIndicator.adaptive(),
+                ),
+              );
+            }
+            return SliverToBoxAdapter(
+              child: Container(
+                padding: const EdgeInsets.only(
+                    top: 30, right: 10, left: 10, bottom: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
                       children: [
-                        TableCell(
-                            child: Text('Place of Birth: ',
-                                style: TextStyle(fontWeight: FontWeight.w500))),
-                        TableCell(
-                            child: Padding(
-                          padding: EdgeInsets.only(bottom: _tableSpacing),
-                          child: Text(
-                              'Chinese Father and Filipino Mother (Both Catholics)'),
-                        )),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                            child: Text('Died:',
-                                style: TextStyle(fontWeight: FontWeight.w500))),
-                        TableCell(
-                            child: Padding(
-                          padding: EdgeInsets.only(bottom: _tableSpacing),
-                          child: Text('September 29, 1637 (Aged 42)'),
-                        )),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                            child: Text('Place of Death:',
-                                style: TextStyle(fontWeight: FontWeight.w500))),
-                        TableCell(
-                          child: Padding(
-                            padding: EdgeInsets.only(bottom: _tableSpacing),
-                            child: Text(
-                                'Nagasaki, Hizen Province, Tokugawa Shogunate (Military Government of Japan)'),
-                          ),
+                        const Text(
+                          "Biography of St. Lorenzo Ruiz",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                        const Spacer(),
+                        TextButton(
+                          child: Text("Read More",
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey[500],
+                                  fontWeight: FontWeight.w400)),
+                          onPressed: () {
+                            Navigator.pushNamed(context, "/biography");
+                          },
                         ),
                       ],
                     ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                            child: Text('Cause of Death:',
-                                style: TextStyle(fontWeight: FontWeight.w500))),
-                        TableCell(
-                          child: Padding(
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Image.asset(
+                      "./assets/lorenzo.jpg",
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                    ),
+                    const SizedBox(
+                      height: 25,
+                    ),
+                    Table(
+                      columnWidths: {3: const FixedColumnWidth(120)},
+                      children: biography!.shortTitles.asMap().entries.map((
+                        entry,
+                      ) {
+                        int index = entry.key;
+                        return TableRow(
+                          children: [
+                            TableCell(
+                                child: Text(
+                                    "${biography!.shortTitles[index].toString()}:",
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w700))),
+                            TableCell(
+                                child: Padding(
                               padding: EdgeInsets.only(bottom: _tableSpacing),
                               child: Text(
-                                  'Tsurushi (Torture technique for Christians to recant their faith. Hung upside-down)')),
-                        )
-                      ],
+                                biography!.shortDetails[index].toString(),
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            )),
+                          ],
+                        );
+                      }).toList(),
                     ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                            child: Text('Beatified:',
-                                style: TextStyle(fontWeight: FontWeight.w500))),
-                        TableCell(
-                          child: Padding(
-                              padding: EdgeInsets.only(bottom: _tableSpacing),
-                              child: Text(
-                                  'February 18, 1981, Manila, Philippines by Pope John Paul II')),
-                        )
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                            child: Text('Canonized:',
-                                style: TextStyle(fontWeight: FontWeight.w500))),
-                        TableCell(
-                          child: Padding(
-                              padding: EdgeInsets.only(bottom: _tableSpacing),
-                              child: Text(
-                                  'October 18, 1987, Vatican City by Pope John Paul II')),
-                        )
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                            child: Text('Major Shrine:',
-                                style: TextStyle(fontWeight: FontWeight.w500))),
-                        TableCell(
-                          child: Padding(
-                              padding: EdgeInsets.only(bottom: _tableSpacing),
-                              child: Text(
-                                  'Binondo Church, Binondo, Manila, Philippines')),
-                        )
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                            child: Text('Feast:',
-                                style: TextStyle(fontWeight: FontWeight.w500))),
-                        TableCell(
-                          child: Padding(
-                              padding: EdgeInsets.only(bottom: _tableSpacing),
-                              child: Text('September 28')),
-                        )
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                            child: Text('Attributes:',
-                                style: TextStyle(fontWeight: FontWeight.w500))),
-                        TableCell(
-                          child: Padding(
-                              padding: EdgeInsets.only(bottom: _tableSpacing),
-                              child: Text(
-                                  'Rosary in clasped hands, gallows and pit, barong tagalog or camisa de chino and black trousers, cross, palm of martyrdom')),
-                        )
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                            child: Text('Patronage',
-                                style: TextStyle(fontWeight: FontWeight.w500))),
-                        TableCell(
-                          child: Padding(
-                              padding: EdgeInsets.only(bottom: _tableSpacing),
-                              child: Text(
-                                  'The Philippines, Filipinos, Overseas Filipino Workers and migrant workers, immigrants, the poor, separated families, Filipino youth, Chinese-Filipinos, Filipino Altar servers, Tagalogs, Archdiocese of Manila.')),
-                        )
-                      ],
+                    const SizedBox(
+                      height: 10,
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
       ],
     ));

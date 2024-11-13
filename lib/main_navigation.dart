@@ -45,7 +45,7 @@ class _MainNavigationState extends State<MainNavigation> {
           BottomNavigationBarItem(icon: Icon(Icons.info), label: "About"),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.teal,
+        selectedItemColor: Colors.amber[800],
         unselectedItemColor: Colors.black54,
         showUnselectedLabels: true,
         onTap: _onItemTapped,

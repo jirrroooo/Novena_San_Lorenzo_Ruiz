@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:novena_lorenzo/features/about/screens/about_screen.dart';
+import 'package:novena_lorenzo/features/biography/bloc/biography_bloc.dart';
+import 'package:novena_lorenzo/features/biography/repository/biography_repository.dart';
 import 'package:novena_lorenzo/features/biography/screens/biography_screen.dart';
 import 'package:novena_lorenzo/features/novena_bikol/bloc/novena_bikol_bloc.dart';
 import 'package:novena_lorenzo/features/novena_bikol/repository/novena_bikol_repository.dart';
@@ -12,7 +14,8 @@ import 'package:novena_lorenzo/features/perpetual_novena/screens/perpetual_noven
 import 'package:novena_lorenzo/features/himno/screens/himno_screen.dart';
 import 'package:novena_lorenzo/features/novena_english/screens/novena_english_home.dart';
 import 'package:novena_lorenzo/features/novena_english/screens/novena_english_page.dart';
-import 'package:novena_lorenzo/features/prayers/screens/prayer_screen_page.dart';
+import 'package:novena_lorenzo/features/prayers/bloc/prayer_bloc.dart';
+import 'package:novena_lorenzo/features/prayers/repository/prayer_repository.dart';
 import 'package:novena_lorenzo/features/prayers/screens/prayers_screen_home.dart';
 import 'package:novena_lorenzo/homepage.dart';
 import 'package:novena_lorenzo/main_navigation.dart';
@@ -48,7 +51,12 @@ class _MyAppState extends State<MyApp> {
                 NovenaBikolBloc(NovenaBikolRepository())),
         BlocProvider<NovenaEnglishBloc>(
             create: (BuildContext context) =>
-                NovenaEnglishBloc(NovenaEnglishRepository()))
+                NovenaEnglishBloc(NovenaEnglishRepository())),
+        BlocProvider<PrayerBloc>(
+            create: (BuildContext context) => PrayerBloc(PrayerRepository())),
+        BlocProvider<BiographyBloc>(
+            create: (BuildContext context) =>
+                BiographyBloc(BiographyRepository()))
       ],
       child: MaterialApp(
         title: 'Novena to San Lorenzo Ruiz',
@@ -67,7 +75,6 @@ class _MyAppState extends State<MyApp> {
               PerpetualNovenaScreen(),
           "/himno": (BuildContext context) => HimnoScreen(),
           "/prayers-home": (BuildContext context) => PrayersScreenHome(),
-          "/prayers-page": (BuildContext context) => PrayerScreenPage(),
           "/about": (BuildContext context) => AboutScreen(),
           "/biography": (BuildContext context) => BiographyScreen(),
         },

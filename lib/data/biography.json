@@ -1,52 +1,111 @@
 {
-    "born" : "November 28, 1594",
-    "parents" : "Chinese Father and Filipino Mother (Both Catholics)",
-    "place_of_birth" : "Binondo, Manila, Captaincy General of the Philippines, Spanish Empire",
-    "died" : "September 29, 1637 (Aged 42)",
-    "place_of_death" : "Nagasaki, Hizen Province, Tokugawa Shogunate (Military Government of Japan)",
-    "cause_of_death" : "Tsurushi (Torture technique for Christians to recant their faith. Hung upside-down)",
-    "beatified" : "February 18, 1981, Manila, Philippines by Pope John Paul II",
-    "canonized" : "October 18, 1987, Vatican City by Pope John Paul II",
-    "major_shrine" : "Binondo Church, Binondo, Manila, Philippines",
-    "feast" : "September 28",
-    "attributes" : "Rosary in clasped hands, gallows and pit, barong tagalog or camisa de chino and black trousers, cross, palm of martyrdom",
-    "patronage" : "The Philippines, Filipinos, Overseas Filipino Workers and migrant workers, immigrants, the poor, separated families, Filipino youth, Chinese-Filipinos, Filipino Altar servers, Tagalogs, Archdiocese of Manila.",    
-    "early_life" : [
+  "short_details": [
+    {
+      "title": "Born",
+      "detail": "November 28, 1594"
+    },
+    {
+      "title": "Parents",
+      "detail": "Chinese Father and Filipino Mother (Both Catholics)"
+    },
+    {
+      "title": "Place of Birth",
+      "detail": "Binondo, Manila, Captaincy General of the Philippines, Spanish Empire"
+    },
+    {
+      "title": "Died",
+      "detail": "September 29, 1637 (Aged 42)"
+    },
+    {
+      "title": "Place of Death",
+      "detail": "Nagasaki, Hizen Province, Tokugawa Shogunate (Military Government of Japan)"
+    },
+    {
+      "title": "Cause of Death",
+      "detail": "Tsurushi (Torture technique for Christians to recant their faith. Hung upside-down)"
+    },
+    {
+      "title": "Beatified",
+      "detail": "February 18, 1981, Manila, Philippines by Pope John Paul II"
+    },
+    {
+      "title": "Canonized",
+      "detail": "October 18, 1987, Vatican City by Pope John Paul II"
+    },
+    {
+      "title": "Major Shrine",
+      "detail": "Binondo Church, Binondo, Manila, Philippines"
+    },
+    {
+      "title": "Feast",
+      "detail": "September 28"
+    },
+    {
+      "title": "Attributes",
+      "detail": "Rosary in clasped hands, gallows and pit, barong tagalog or camisa de chino and black trousers, cross, palm of martyrdom"
+    },
+    {
+      "title": "Patronage",
+      "detail": "The Philippines, Filipinos, Overseas Filipino Workers and migrant workers, immigrants, the poor, separated families, Filipino youth, Chinese-Filipinos, Filipino Altar servers, Tagalogs, Archdiocese of Manila."
+    }
+  ],
+  "long_details": [
+    {
+      "title": "Early Life",
+      "detail": [
         "He served as an altar boy at the Binondo Church",
         "Educated by Dominican Friars",
         "He became a professional calligrapher, transcribing documents in the convent of Dominicans",
         "He becomes a member of the Confraternity of the Most Holy Rosary (Cofradia del Santisimo Rosario)"
-    ],
-    "married_life" : [
+      ]
+    },
+    {
+      "title": "Married Life",
+      "detail": [
         "He married Rosario (a Filipino native) and had two sons and one daughter. (3 children)",
         "Their family lived a peaceful, religious, and content life.",
         "He worked as a clerk for the Binondo Church"
-    ],
-    "accusation" : [
+      ]
+    },
+    {
+      "title": "Accusation",
+      "detail": [
         "In 1936, he was falsely accused of killing a Spaniard.",
         "Statement from two Dominicans, “he was sought by the authorities on account of a homicide to which he was present or which was attributed to him.”",
         "He feared for his life due to the potential severity of the punishment."
-    ],
-    "escape" : [
+      ]
+    },
+    {
+      "title": "Escape",
+      "detail": [
         "Fearing the possible punishment, Lorenzo seeks help to escape.",
         "He was allowed to board the ship in the hope of finding safety",
         "Persons on the ship were Fr. Antonio Gonzalez (Dominican Superior), Fr. Guillermo Courtet (Dominican), Fr. Migurl de Aozaraza (Dominican), Fr. Vicente Shiwozuka de la Cruz (Japanese Priest), Lazaro of Kyoto (lay person suffering leprosy), and Lorenzo Ruiz (lay)",
         "Only when they were at sea did Lorenzo learn that they were going to Okinawa, Japan.",
         "At that time, it was known that there was an intense persecution against Christians by the Tokugawa Shogunate (Military Government of Japan).",
         "All the priest are determined to go to Japan despite the threat to their lives."
-    ],
-    "arrival_to_okinawa" : [
+      ]
+    },
+    {
+      "title": "Arrival to Okinawa",
+      "detail": [
         "Lorenzo Ruiz and his companions arrived in Okinawa in June 1636 (latter date)",
         "Lorenzo could have gone on to Spanish Formosa (Taiwan – a small colony of the Spanish Empire at that time) but he said, “I decided to stay with the Fathers because the Spaniards would hang me there.”",
         "Upon their arrival, they were almost immediately imprisoned.",
         "They were taken to Nagasaki, where they were imprisoned and tortured for their faith."
-    ],
-    "imprisonment" : [
+      ]
+    },
+    {
+      "title": "Imprisonment",
+      "detail": [
         "They faced trial by torture.",
         "In the trial, Fr. Guillaume Courtet affirmed that only Christian truth will save mankind.",
         "Fr. Antonio Gonzalez proudly wears his habit to signify that he went to Japan for the sake of the Gospel."
-    ],
-    "torture_and_death" : [
+      ]
+    },
+    {
+      "title": "Torture and Death",
+      "detail": [
         "Torture: After huge quantities of water were forced down their throats, they were made to lie down. Long boards were placed on their stomachs and guards then stepped on the ends of the boards, forcing the water to spurt violently from mouth, nose, and ears.",
         "After some days, Fr. Gonzales died.",
         "Torture: Insertion of bamboo needles under their fingernails",
@@ -59,13 +118,21 @@
         "Death: They were allowed to hang for three days. By that time, Lorenzo and Lazaro were dead.",
         "The three priests are still alive after the torture. Because of this they were all beheaded.",
         "After Death: After his death, his body was cremated. His ashes were then thrown into the sea of Nagasaki to prevent other Christians from gathering his sacred relics"
-    ],
-    "beatification" : [
+      ]
+    },
+    {
+      "title": "Beatification",
+      "detail": [
         "The positio for the cause of the beatification of Lorenzo Ruiz was written by Spanish historian Fidel Villarroel. The central document found to exhibit Ruiz's martyrdom was an eyewitness account by two Japanese ex-priests from the Society of Jesus, rediscovered by Villaroel at the Jesuit Generalate archive in Rome.",
         "Lorenzo Ruiz and 16 companions were beatified during Pope John Paul II's papal visit to the Philippines on February 18, 1981. It was the first beatification ceremony to be held outside the Vatican in history."
-    ],
-    "canonization" : [
+      ]
+    },
+    {
+      "title": "Canonization",
+      "detail": [
         "Lorenzo Ruiz and 15 companions were canonized by Pope John Paul II on October 18, 1987. This makes Lorenzo Ruiz the first Filipino saint. Lorenzo Ruiz's canonization was supported by a miracle in October 1983, when Cecilia Alegria Policarpio of Calinog, Iloilo, was cured of brain atrophy (hydrocephalus) at the age of two after her family and supporters prayed to Lorenzo for his intercession. She was diagnosed with the condition shortly after birth and was treated at the University of the East Ramon Magsaysay Memorial Medical Center.",
         "The feast day of St. Lorenzo Ruiz and 15 companions was celebrated every September 28. The group is collectively known as the \"Martyrs of Japan\" or the \"16 Martyrs of Nagasaki.\""
-    ]
+      ]
+    }
+  ]
 }
