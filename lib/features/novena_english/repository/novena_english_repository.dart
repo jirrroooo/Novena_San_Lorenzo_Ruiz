@@ -3,8 +3,11 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:novena_lorenzo/features/novena_english/models/novena_english_home_model.dart';
 import 'package:novena_lorenzo/features/novena_english/models/novena_english_page_model.dart';
+import 'package:novena_lorenzo/utils/log_service.dart';
 
 class NovenaEnglishRepository {
+  LogService logService = LogService();
+
   Future<List<NovenaEnglishHomeModel>> getEnglishNovenaTitles() async {
     List<NovenaEnglishHomeModel> titles = [];
 
@@ -27,6 +30,7 @@ class NovenaEnglishRepository {
         "description": "Cannot fetched novena titles. Try again later."
       };
 
+      await logService.logError(e.toString());
       throw Exception(jsonEncode(error));
     }
 
@@ -60,6 +64,7 @@ class NovenaEnglishRepository {
         "description": "Cannot fetched novena titles. Try again later."
       };
 
+      await logService.logError(e.toString());
       throw Exception(jsonEncode(error));
     }
   }
@@ -85,6 +90,7 @@ class NovenaEnglishRepository {
         "description": "Cannot fetched novena detail. Try again later."
       };
 
+      await logService.logError(e.toString());
       throw Exception(jsonEncode(error));
     }
   }

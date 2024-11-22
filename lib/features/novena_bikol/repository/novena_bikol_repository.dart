@@ -3,8 +3,11 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:novena_lorenzo/features/novena_bikol/models/novena_bikol_home_model.dart';
 import 'package:novena_lorenzo/features/novena_bikol/models/novena_bikol_page_model.dart';
+import 'package:novena_lorenzo/utils/log_service.dart';
 
 class NovenaBikolRepository {
+  LogService logService = LogService();
+
   Future<List<NovenaBikolHomeModel>> getBikolNovenaTitles() async {
     List<NovenaBikolHomeModel> titles = [];
 
@@ -28,6 +31,7 @@ class NovenaBikolRepository {
         "description": "Cannot fetched novena titles. Try again later."
       };
 
+      await logService.logError(error.toString());
       throw Exception(jsonEncode(error));
     }
 
@@ -104,6 +108,7 @@ class NovenaBikolRepository {
         "description": "Cannot fetched novena details. Try again later."
       };
 
+      await logService.logError(error.toString());
       throw Exception(jsonEncode(error));
     }
   }

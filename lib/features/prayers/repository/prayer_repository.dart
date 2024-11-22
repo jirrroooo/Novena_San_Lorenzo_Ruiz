@@ -1,9 +1,13 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/services.dart';
 import 'package:novena_lorenzo/features/prayers/models/prayer_model.dart';
+import 'package:novena_lorenzo/utils/log_service.dart';
 
 class PrayerRepository {
+  LogService logService = LogService();
+
   Future<List<PrayerModel>> getPrayers() async {
     List<PrayerModel> prayers = [];
 
@@ -28,6 +32,7 @@ class PrayerRepository {
         "description": "Cannot fetched prayer data. Try again later."
       };
 
+      await logService.logError(e.toString());
       throw Exception(jsonEncode(error));
     }
   }

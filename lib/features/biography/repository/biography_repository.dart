@@ -2,8 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:novena_lorenzo/features/biography/models/biography_model.dart';
+import 'package:novena_lorenzo/utils/log_service.dart';
 
 class BiographyRepository {
+  LogService logService = LogService();
+
   Future<BiographyModel> getBiograpy() async {
     final List<dynamic> shortTitles = [];
     final List<dynamic> shortDetails = [];
@@ -36,6 +39,8 @@ class BiographyRepository {
         "title": "Error Occured",
         "description": "Cannot fetched biography data. Try again later."
       };
+
+      await logService.logError(e.toString());
 
       throw Exception(jsonEncode(error));
     }
