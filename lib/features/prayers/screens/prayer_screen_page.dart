@@ -131,6 +131,16 @@ class _PrayerScreenPageState extends State<PrayerScreenPage> {
             SliverAppBar(
               centerTitle: true,
               pinned: true,
+              automaticallyImplyLeading: false,
+              leading: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  size: 20,
+                ),
+              ),
               expandedHeight: 200,
               backgroundColor: Colors.amber[200],
               title: AnimatedOpacity(

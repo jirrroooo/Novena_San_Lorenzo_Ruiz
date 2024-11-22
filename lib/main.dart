@@ -4,6 +4,8 @@ import 'package:novena_lorenzo/features/about/screens/about_screen.dart';
 import 'package:novena_lorenzo/features/biography/bloc/biography_bloc.dart';
 import 'package:novena_lorenzo/features/biography/repository/biography_repository.dart';
 import 'package:novena_lorenzo/features/biography/screens/biography_screen.dart';
+import 'package:novena_lorenzo/features/himno/bloc/himno_bloc.dart';
+import 'package:novena_lorenzo/features/himno/repository/himno_repository.dart';
 import 'package:novena_lorenzo/features/novena_bikol/bloc/novena_bikol_bloc.dart';
 import 'package:novena_lorenzo/features/novena_bikol/repository/novena_bikol_repository.dart';
 import 'package:novena_lorenzo/features/novena_english/bloc/novena_english_bloc.dart';
@@ -56,7 +58,9 @@ class _MyAppState extends State<MyApp> {
             create: (BuildContext context) => PrayerBloc(PrayerRepository())),
         BlocProvider<BiographyBloc>(
             create: (BuildContext context) =>
-                BiographyBloc(BiographyRepository()))
+                BiographyBloc(BiographyRepository())),
+        BlocProvider<HimnoBloc>(
+            create: (BuildContext context) => HimnoBloc(HimnoRepository())),
       ],
       child: MaterialApp(
         title: 'Novena to San Lorenzo Ruiz',

@@ -51,6 +51,16 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
         SliverAppBar(
           centerTitle: true,
           pinned: true,
+          automaticallyImplyLeading: false,
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.pushReplacementNamed(context, '/');
+            },
+            child: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              size: 20,
+            ),
+          ),
           expandedHeight: 200,
           backgroundColor: Colors.amber[200],
           title: AnimatedOpacity(

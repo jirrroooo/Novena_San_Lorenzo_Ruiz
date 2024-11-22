@@ -76,6 +76,7 @@ class _HomePageState extends State<HomePage> {
         SliverAppBar(
           centerTitle: true,
           pinned: true,
+          automaticallyImplyLeading: false,
           expandedHeight: 200,
           backgroundColor: Colors.amber[200],
           title: AnimatedOpacity(
@@ -146,10 +147,13 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 const SizedBox(
-                  width: 25,
+                  width: 20,
                 ),
                 IconButton(
-                  icon: const Icon(Icons.arrow_forward),
+                  icon: const Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 15,
+                  ),
                   onPressed: () {
                     Navigator.pushNamed(context, "/prayers-home");
                   },
