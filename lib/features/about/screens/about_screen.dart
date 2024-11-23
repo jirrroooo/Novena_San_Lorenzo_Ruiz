@@ -45,6 +45,7 @@ class _AboutScreenState extends State<AboutScreen> {
           centerTitle: true,
           pinned: true,
           expandedHeight: 250,
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.red[400],
           title: AnimatedOpacity(
               opacity: isCollapsed ? 1.0 : 0.0, // Show title when collapsed
@@ -78,7 +79,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   "About the Developer:",
                   style: TextStyle(
                       fontFamily: 'Inter',
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold),
                   textAlign: TextAlign.start,
                 ),
@@ -86,10 +87,10 @@ class _AboutScreenState extends State<AboutScreen> {
                   height: 30,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: 100,
+                      height: 85,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(360),
                           border:
@@ -103,34 +104,44 @@ class _AboutScreenState extends State<AboutScreen> {
                       ),
                     ),
                     SizedBox(
-                      width: 20,
+                      width: 10,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Bro. John Rommel B. Octavo",
-                          style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
+                    Expanded(
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Bro. John Rommel B. Octavo",
+                              style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16),
+                              maxLines: 2,
+                              overflow: TextOverflow.visible,
+                            ),
+                            Text(
+                              "Altar Server since April 11, 2011",
+                              style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14),
+                            ),
+                            Text(
+                              "Programmer X Future Priest",
+                              style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14),
+                            ),
+                          ],
                         ),
-                        Text(
-                          "Altar Server since April 11, 2011",
-                          style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.w400,
-                              fontSize: 16),
-                        ),
-                        Text(
-                          "Programmer X Future Priest",
-                          style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.w400,
-                              fontSize: 16),
-                        ),
-                      ],
-                    )
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -154,7 +165,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   "Bicol Novena:",
                   style: TextStyle(
                       fontFamily: 'Inter',
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold),
                   textAlign: TextAlign.start,
                 ),
@@ -162,6 +173,8 @@ class _AboutScreenState extends State<AboutScreen> {
                   height: 15,
                 ),
                 ListTile(
+                  dense: true,
+                  contentPadding: EdgeInsets.all(0),
                   leading: Image.asset(
                     "./assets/bernarte.png",
                     width: 50,
@@ -170,7 +183,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     "Rev. Msgr. Crispin C. Bernarte Jr.",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text(
@@ -182,6 +195,8 @@ class _AboutScreenState extends State<AboutScreen> {
                   ),
                 ),
                 ListTile(
+                  dense: true,
+                  contentPadding: EdgeInsets.all(0),
                   leading: Image.asset(
                     "./assets/pavilando.jpg",
                     width: 50,
@@ -190,7 +205,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     "Rev. Msgr. Don Vito Pavilando",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text(
@@ -202,6 +217,8 @@ class _AboutScreenState extends State<AboutScreen> {
                   ),
                 ),
                 ListTile(
+                  dense: true,
+                  contentPadding: EdgeInsets.all(0),
                   leading: Image.asset(
                     "./assets/sorra.jpg",
                     width: 50,
@@ -210,7 +227,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     "+ Most. Rev. Jose C. Sorra, DD",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text(
@@ -229,7 +246,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     "All Rights Reserved",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 18,
+                        fontSize: 16,
                         color: Colors.grey[700],
                         fontWeight: FontWeight.bold),
                   ),
@@ -239,7 +256,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     "COPYRIGHT 2004",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 18,
+                        fontSize: 16,
                         color: Colors.grey[700],
                         fontWeight: FontWeight.bold),
                   ),
@@ -249,7 +266,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     "Commission on Lay Apostolate",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 18,
+                        fontSize: 16,
                         color: Colors.grey[700],
                         fontWeight: FontWeight.bold),
                   ),
@@ -259,7 +276,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     "Diocese of Legazpi",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 18,
+                        fontSize: 16,
                         color: Colors.grey[700],
                         fontWeight: FontWeight.bold),
                   ),
@@ -285,7 +302,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   "English Novena:",
                   style: TextStyle(
                       fontFamily: 'Inter',
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold),
                   textAlign: TextAlign.start,
                 ),
@@ -293,6 +310,8 @@ class _AboutScreenState extends State<AboutScreen> {
                   height: 15,
                 ),
                 ListTile(
+                  dense: true,
+                  contentPadding: EdgeInsets.all(0),
                   leading: Image.asset(
                     "./assets/aquino.png",
                     width: 50,
@@ -301,7 +320,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     "Rev. Msgr. Benedicto S. Aquino",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text(
@@ -313,6 +332,8 @@ class _AboutScreenState extends State<AboutScreen> {
                   ),
                 ),
                 ListTile(
+                  dense: true,
+                  contentPadding: EdgeInsets.all(0),
                   leading: Image.asset(
                     "./assets/abriol.jpg",
                     width: 50,
@@ -321,7 +342,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     "Rt. Rev. Msgr. Jose C. Abriol",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text(
@@ -340,7 +361,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     "All Rights Reserved to the Rightful Owner",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 18,
+                        fontSize: 16,
                         color: Colors.grey[700],
                         fontWeight: FontWeight.bold),
                   ),

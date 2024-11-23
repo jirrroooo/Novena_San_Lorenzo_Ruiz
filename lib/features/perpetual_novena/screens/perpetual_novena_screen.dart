@@ -441,45 +441,15 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                 if (translation == Translation.bicol)
                   SliverToBoxAdapter(
                     child: Padding(
-                      padding:
-                          EdgeInsets.only(left: 15.0, right: 15, bottom: 100),
+                      padding: EdgeInsets.symmetric(horizontal: 15.0),
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 30,
-                          ),
-                          Text(
-                            "All Rights Reserved",
-                            style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "COPYRIGHT 2004",
-                            style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "Commission on Lay Apostolate",
-                            style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "Diocese of Legazpi",
-                            style: const TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 30,
+                            height: 50,
                           ),
                           ListTile(
+                            dense: true,
+                            contentPadding: EdgeInsets.all(0),
                             leading: Image.asset(
                               "./assets/bernarte.png",
                               width: 50,
@@ -488,7 +458,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                               "Rev. Msgr. Crispin C. Bernarte Jr.",
                               style: TextStyle(
                                   fontFamily: 'Inter',
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w700),
                             ),
                             subtitle: Text(
@@ -500,6 +470,8 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                             ),
                           ),
                           ListTile(
+                            dense: true,
+                            contentPadding: EdgeInsets.all(0),
                             leading: Image.asset(
                               "./assets/pavilando.jpg",
                               width: 50,
@@ -508,7 +480,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                               "Rev. Msgr. Don Vito Pavilando",
                               style: TextStyle(
                                   fontFamily: 'Inter',
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w700),
                             ),
                             subtitle: Text(
@@ -520,6 +492,8 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                             ),
                           ),
                           ListTile(
+                            dense: true,
+                            contentPadding: EdgeInsets.all(0),
                             leading: Image.asset(
                               "./assets/sorra.jpg",
                               width: 50,
@@ -528,7 +502,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                               "+ Most. Rev. Jose C. Sorra, DD",
                               style: TextStyle(
                                   fontFamily: 'Inter',
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w700),
                             ),
                             subtitle: Text(
@@ -539,6 +513,42 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                                   fontWeight: FontWeight.w500),
                             ),
                           ),
+                          SizedBox(
+                            height: 50,
+                          ),
+                          Text(
+                            "All Rights Reserved",
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 16,
+                                color: Colors.grey[700],
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "COPYRIGHT 2004",
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 16,
+                                color: Colors.grey[700],
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "Commission on Lay Apostolate",
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 16,
+                                color: Colors.grey[700],
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "Diocese of Legazpi",
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 16,
+                                color: Colors.grey[700],
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: 50)
                         ],
                       ),
                     ),
@@ -547,23 +557,15 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                   SliverToBoxAdapter(
                     child: Padding(
                       padding:
-                          EdgeInsets.only(left: 15.0, right: 15, bottom: 100),
+                          EdgeInsets.only(left: 15.0, right: 15, bottom: 50),
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 30,
-                          ),
-                          Text(
-                            "All Rights Reserved to the Rightful Owner",
-                            style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 30,
+                            height: 50,
                           ),
                           ListTile(
+                            dense: true,
+                            contentPadding: EdgeInsets.all(0),
                             leading: Image.asset(
                               "./assets/aquino.png",
                               width: 50,
@@ -572,7 +574,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                               "Rev. Msgr. Benedicto S. Aquino",
                               style: TextStyle(
                                   fontFamily: 'Inter',
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w700),
                             ),
                             subtitle: Text(
@@ -584,6 +586,8 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                             ),
                           ),
                           ListTile(
+                            dense: true,
+                            contentPadding: EdgeInsets.all(0),
                             leading: Image.asset(
                               "./assets/abriol.jpg",
                               width: 50,
@@ -592,7 +596,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                               "Rt. Rev. Msgr. Jose C. Abriol",
                               style: TextStyle(
                                   fontFamily: 'Inter',
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w700),
                             ),
                             subtitle: Text(
@@ -602,6 +606,20 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500),
                             ),
+                          ),
+                          SizedBox(
+                            height: 50,
+                          ),
+                          Text(
+                            "All Rights Reserved to the Rightful Owner",
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 16,
+                                color: Colors.grey[700],
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 50,
                           ),
                         ],
                       ),

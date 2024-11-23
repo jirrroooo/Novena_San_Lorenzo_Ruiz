@@ -156,40 +156,11 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  "All Rights Reserved",
-                  style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "COPYRIGHT 2004",
-                  style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "Commission on Lay Apostolate",
-                  style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "Diocese of Legazpi",
-                  style: const TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 30,
+                  height: 50,
                 ),
                 ListTile(
+                  dense: true,
+                  contentPadding: EdgeInsets.all(0),
                   leading: Image.asset(
                     "./assets/bernarte.png",
                     width: 50,
@@ -198,7 +169,7 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
                     "Rev. Msgr. Crispin C. Bernarte Jr.",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text(
@@ -210,6 +181,8 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
                   ),
                 ),
                 ListTile(
+                  dense: true,
+                  contentPadding: EdgeInsets.all(0),
                   leading: Image.asset(
                     "./assets/pavilando.jpg",
                     width: 50,
@@ -218,7 +191,7 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
                     "Rev. Msgr. Don Vito Pavilando",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text(
@@ -230,6 +203,8 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
                   ),
                 ),
                 ListTile(
+                  dense: true,
+                  contentPadding: EdgeInsets.all(0),
                   leading: Image.asset(
                     "./assets/sorra.jpg",
                     width: 50,
@@ -238,7 +213,7 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
                     "+ Most. Rev. Jose C. Sorra, DD",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text(
@@ -249,6 +224,42 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
                         fontWeight: FontWeight.w500),
                   ),
                 ),
+                SizedBox(
+                  height: 50,
+                ),
+                Text(
+                  "All Rights Reserved",
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "COPYRIGHT 2004",
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "Commission on Lay Apostolate",
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "Diocese of Legazpi",
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 50)
               ],
             ),
           ),

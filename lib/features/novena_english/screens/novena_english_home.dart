@@ -153,19 +153,11 @@ class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  "All Rights Reserved to the Rightful Owner",
-                  style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 30,
+                  height: 50,
                 ),
                 ListTile(
+                  dense: true,
+                  contentPadding: EdgeInsets.all(0),
                   leading: Image.asset(
                     "./assets/aquino.png",
                     width: 50,
@@ -174,7 +166,7 @@ class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
                     "Rev. Msgr. Benedicto S. Aquino",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text(
@@ -186,6 +178,8 @@ class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
                   ),
                 ),
                 ListTile(
+                  dense: true,
+                  contentPadding: EdgeInsets.all(0),
                   leading: Image.asset(
                     "./assets/abriol.jpg",
                     width: 50,
@@ -194,7 +188,7 @@ class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
                     "Rt. Rev. Msgr. Jose C. Abriol",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w700),
                   ),
                   subtitle: Text(
@@ -204,6 +198,20 @@ class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
                         fontSize: 16,
                         fontWeight: FontWeight.w500),
                   ),
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                Text(
+                  "All Rights Reserved to the Rightful Owner",
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 50,
                 ),
               ],
             ),
