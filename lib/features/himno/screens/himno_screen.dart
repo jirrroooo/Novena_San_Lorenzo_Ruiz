@@ -119,11 +119,11 @@ class _HimnoScreenState extends State<HimnoScreen> {
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: 300,
+                height: 480,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: Image.asset(
-                    "./assets/lorenzo.jpg",
+                    "./assets/lorenzo4.webp",
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -142,7 +142,7 @@ class _HimnoScreenState extends State<HimnoScreen> {
                 style: TextStyle(
                     fontFamily: 'Inter', fontSize: 12, color: Colors.grey[600]),
               ),
-              SizedBox(height: 15),
+              SizedBox(height: 5),
               Row(
                 children: [
                   Container(
@@ -166,7 +166,7 @@ class _HimnoScreenState extends State<HimnoScreen> {
                     child: Column(
                       children: [
                         SizedBox(
-                          height: 5,
+                          height: 25,
                         ),
                         SliderTheme(
                           data: SliderTheme.of(context).copyWith(

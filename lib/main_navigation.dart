@@ -35,18 +35,18 @@ class _MainNavigationState extends State<MainNavigation> {
       body: screens.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home_rounded), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.church), label: "Home"),
           BottomNavigationBarItem(
               icon: Icon(Icons.add_box_rounded), label: "Novena"),
           BottomNavigationBarItem(
               icon: Icon(Icons.music_note_rounded), label: "Hymn"),
-          BottomNavigationBarItem(icon: Icon(Icons.church), label: "Prayers"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.fireplace_rounded), label: "Prayers"),
           BottomNavigationBarItem(icon: Icon(Icons.info), label: "About"),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        unselectedItemColor: Colors.black54,
+        selectedItemColor: Colors.red[400],
+        unselectedItemColor: Colors.grey[700],
         showUnselectedLabels: true,
         onTap: _onItemTapped,
       ),

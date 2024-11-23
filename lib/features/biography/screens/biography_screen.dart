@@ -140,20 +140,33 @@ class _BiographyScreenState extends State<BiographyScreen> {
             SliverAppBar(
               centerTitle: true,
               pinned: true,
-              expandedHeight: 200,
-              backgroundColor: Colors.amber[200],
+              expandedHeight: 250,
+              backgroundColor: Colors.red[400],
               title: AnimatedOpacity(
                   opacity: isCollapsed ? 1.0 : 0.0, // Show title when collapsed
                   duration: const Duration(milliseconds: 300),
                   child: Text(
                     "Biography of San Lorenzo Ruiz",
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white),
                   )),
+              leading: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  size: 20,
+                  color: Colors.white,
+                ),
+              ),
               flexibleSpace: FlexibleSpaceBar(
                 collapseMode: CollapseMode.parallax,
                 background: Image.asset(
-                  "./assets/lorenzo.jpg",
-                  height: 200.0,
+                  "./assets/lorenzo2.jpg",
+                  height: 250.0,
                   fit: BoxFit.cover,
                 ),
               ),

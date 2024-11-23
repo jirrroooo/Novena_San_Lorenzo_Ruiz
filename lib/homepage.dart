@@ -6,7 +6,6 @@ import 'package:novena_lorenzo/features/biography/bloc/biography_bloc.dart';
 import 'package:novena_lorenzo/features/biography/models/biography_model.dart';
 import 'package:novena_lorenzo/features/prayers/bloc/prayer_bloc.dart';
 import 'package:novena_lorenzo/features/prayers/models/prayer_model.dart';
-import 'package:novena_lorenzo/features/prayers/screens/prayer_screen_page.dart';
 import 'package:novena_lorenzo/widgets/scripture/screens/scripture.dart';
 
 class HomePage extends StatefulWidget {
@@ -47,20 +46,20 @@ class _HomePageState extends State<HomePage> {
   }
 
   final List<Map<String, String>> _homepageSelection = [
-    {"title": "Himno", "img_url": "./assets/background.jpg", "nav": '/himno'},
+    {"title": "Himno", "img_url": "./assets/himno.jpg", "nav": '/himno'},
     {
       "title": "Perpetual Novena",
-      "img_url": "./assets/background.jpg",
+      "img_url": "./assets/perpetual.jpg",
       "nav": "/perpetual-novena"
     },
     {
       "title": "Bicol Novena",
-      "img_url": "./assets/background.jpg",
+      "img_url": "./assets/bicol.jpg",
       "nav": "/bicol-novena-home"
     },
     {
       "title": "English Novena",
-      "img_url": "./assets/background.jpg",
+      "img_url": "./assets/english.jpg",
       "nav": "/english-novena-home"
     },
   ];
@@ -77,20 +76,23 @@ class _HomePageState extends State<HomePage> {
           centerTitle: true,
           pinned: true,
           automaticallyImplyLeading: false,
-          expandedHeight: 200,
-          backgroundColor: Colors.amber[200],
+          expandedHeight: 250,
+          backgroundColor: Colors.red[400],
           title: AnimatedOpacity(
               opacity: isCollapsed ? 1.0 : 0.0, // Show title when collapsed
               duration: const Duration(milliseconds: 300),
               child: const Text(
                 "Novena to Saint Lorenzo Ruiz",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
+                style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white),
               )),
           flexibleSpace: FlexibleSpaceBar(
             collapseMode: CollapseMode.parallax,
             background: Image.asset(
-              "./assets/background.jpg",
-              height: 200.0,
+              "./assets/lorenzo5.jpg",
+              height: 250.0,
               fit: BoxFit.cover,
             ),
           ),
@@ -118,6 +120,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Image.asset(
                         _homepageSelection[index]["img_url"]!,
+                        height: 110,
                         fit: BoxFit.cover,
                       ),
                       const SizedBox(
@@ -137,92 +140,33 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         SliverToBoxAdapter(
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const Text(
-                  "Prayers to St. Lorenzo Ruiz",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    size: 15,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, "/prayers-home");
+            },
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 250,
+                    child: Image.asset("./assets/prayers.jpg"),
                   ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, "/prayers-home");
-                  },
-                )
-              ],
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    "Prayers to St. Lorenzo Ruiz",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-        BlocConsumer<PrayerBloc, PrayerState>(
-          listener: (context, state) {
-            if (state is PrayerFetchedLoading) {}
-
-            if (state is PrayerFetchedFailure) {
-              showError(context, state.error);
-            }
-
-            if (state is PrayerFetchedSuccess) {
-              prayers = state.prayers;
-            }
-          },
-          builder: (context, state) {
-            if (prayers == null) {
-              return const SliverToBoxAdapter(
-                child: Center(
-                  child: CircularProgressIndicator.adaptive(),
-                ),
-              );
-            }
-
-            return SliverToBoxAdapter(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: List.generate(prayers!.length, (index) {
-                    // Replace ListView.builder
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PrayerScreenPage(
-                                    prayerModel: prayers![index])));
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "./assets/background.jpg",
-                              height: 50,
-                              fit: BoxFit.fill,
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              prayers![index].shortTitle,
-                              style: const TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w500),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }),
-                ),
-              ),
-            );
-          },
         ),
         BlocConsumer<BiographyBloc, BiographyState>(
           listener: (context, state) {
@@ -247,10 +191,14 @@ class _HomePageState extends State<HomePage> {
             return SliverToBoxAdapter(
               child: Container(
                 padding: const EdgeInsets.only(
-                    top: 30, right: 10, left: 10, bottom: 10),
+                    top: 0, right: 10, left: 10, bottom: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Divider(),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Row(
                       children: [
                         const Text(
@@ -275,7 +223,7 @@ class _HomePageState extends State<HomePage> {
                       height: 20,
                     ),
                     Image.asset(
-                      "./assets/lorenzo.jpg",
+                      "./assets/lorenzo3.jpg",
                       fit: BoxFit.cover,
                       width: double.infinity,
                     ),

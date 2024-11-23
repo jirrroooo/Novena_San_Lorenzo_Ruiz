@@ -148,10 +148,11 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                     child: Icon(
                       Icons.arrow_back_ios_new_rounded,
                       size: 20,
+                      color: Colors.white,
                     ),
                   ),
-                  expandedHeight: 200,
-                  backgroundColor: Colors.amber[200],
+                  expandedHeight: 250,
+                  backgroundColor: Colors.red[400],
                   title: AnimatedOpacity(
                       opacity:
                           isCollapsed ? 1.0 : 0.0, // Show title when collapsed
@@ -159,13 +160,15 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                       child: Text(
                         "Bicol Novena | ${data.proper.aldaw}",
                         style: TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.w700),
+                            fontSize: 17,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white),
                       )),
                   flexibleSpace: FlexibleSpaceBar(
                     collapseMode: CollapseMode.parallax,
                     background: Image.asset(
-                      "./assets/background.jpg",
-                      height: 200.0,
+                      "./assets/bicol.jpg",
+                      height: 250.0,
                       fit: BoxFit.cover,
                     ),
                   ),
