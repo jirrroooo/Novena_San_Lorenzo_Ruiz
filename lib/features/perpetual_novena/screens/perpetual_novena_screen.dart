@@ -396,8 +396,8 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                       }),
                 ),
                 SliverPadding(
-                  padding: EdgeInsets.only(
-                      top: 25, left: 15, right: 15, bottom: 100),
+                  padding:
+                      EdgeInsets.only(top: 25, left: 15, right: 15, bottom: 30),
                   sliver: SliverToBoxAdapter(
                     child: Column(
                       children: [
@@ -429,6 +429,181 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                     ),
                   ),
                 ),
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Divider(),
+                  ),
+                ),
+                if (translation == Translation.bicol)
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding:
+                          EdgeInsets.only(left: 15.0, right: 15, bottom: 100),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 30,
+                          ),
+                          Text(
+                            "All Rights Reserved",
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "COPYRIGHT 2004",
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "Commission on Lay Apostolate",
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "Diocese of Legazpi",
+                            style: const TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          ListTile(
+                            leading: Image.asset(
+                              "./assets/bernarte.png",
+                              width: 50,
+                            ),
+                            title: Text(
+                              "Rev. Msgr. Crispin C. Bernarte Jr.",
+                              style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            subtitle: Text(
+                              "Author",
+                              style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Image.asset(
+                              "./assets/pavilando.jpg",
+                              width: 50,
+                            ),
+                            title: Text(
+                              "Rev. Msgr. Don Vito Pavilando",
+                              style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            subtitle: Text(
+                              "Nihil Obstat",
+                              style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Image.asset(
+                              "./assets/sorra.jpg",
+                              width: 50,
+                            ),
+                            title: Text(
+                              "+ Most. Rev. Jose C. Sorra, DD",
+                              style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            subtitle: Text(
+                              "Imprimatur",
+                              style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                if (translation == Translation.english)
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding:
+                          EdgeInsets.only(left: 15.0, right: 15, bottom: 100),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 30,
+                          ),
+                          Text(
+                            "All Rights Reserved to the Rightful Owner",
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          ListTile(
+                            leading: Image.asset(
+                              "./assets/aquino.png",
+                              width: 50,
+                            ),
+                            title: Text(
+                              "Rev. Msgr. Benedicto S. Aquino",
+                              style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            subtitle: Text(
+                              "Nihil Obstat",
+                              style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Image.asset(
+                              "./assets/abriol.jpg",
+                              width: 50,
+                            ),
+                            title: Text(
+                              "Rt. Rev. Msgr. Jose C. Abriol",
+                              style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            subtitle: Text(
+                              "Imprimatur",
+                              style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
               ],
             );
           },

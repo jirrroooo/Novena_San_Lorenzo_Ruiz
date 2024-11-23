@@ -1,6 +1,6 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"  package="com.jiro.st_lorenzo_ruiz_novena">
     <application
-        android:label="novena_lorenzo"
+        android:label="St. Lorenzo Ruiz Novena"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

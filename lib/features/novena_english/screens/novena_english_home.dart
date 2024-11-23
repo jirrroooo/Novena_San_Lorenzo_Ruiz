@@ -53,7 +53,7 @@ class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
           automaticallyImplyLeading: false,
           leading: GestureDetector(
             onTap: () {
-              Navigator.pushReplacementNamed(context, '/');
+              Navigator.pushReplacementNamed(context, '/main-navigation');
             },
             child: Icon(
               Icons.arrow_back_ios_new_rounded,
@@ -147,6 +147,68 @@ class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
             );
           },
         ),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.only(left: 15.0, right: 15, bottom: 50),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  "All Rights Reserved to the Rightful Owner",
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                ListTile(
+                  leading: Image.asset(
+                    "./assets/aquino.png",
+                    width: 50,
+                  ),
+                  title: Text(
+                    "Rev. Msgr. Benedicto S. Aquino",
+                    style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700),
+                  ),
+                  subtitle: Text(
+                    "Nihil Obstat",
+                    style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+                ListTile(
+                  leading: Image.asset(
+                    "./assets/abriol.jpg",
+                    width: 50,
+                  ),
+                  title: Text(
+                    "Rt. Rev. Msgr. Jose C. Abriol",
+                    style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700),
+                  ),
+                  subtitle: Text(
+                    "Imprimatur",
+                    style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        )
       ],
     ));
   }

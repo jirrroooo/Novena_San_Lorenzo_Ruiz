@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:novena_lorenzo/common/splash_screen.dart';
 import 'package:novena_lorenzo/features/about/screens/about_screen.dart';
 import 'package:novena_lorenzo/features/biography/bloc/biography_bloc.dart';
 import 'package:novena_lorenzo/features/biography/repository/biography_repository.dart';
@@ -67,7 +68,8 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         initialRoute: "/",
         routes: {
-          "/": (BuildContext context) => const MainNavigation(),
+          "/": (BuildContext context) => const SplashScreen(),
+          "/main-navigation": (BuildContext context) => const MainNavigation(),
           "/homepage": (BuildContext context) => const HomePage(),
           "/bicol-novena-home": (BuildContext context) => NovenaBikolHome(),
           "/bicol-novena-page": (BuildContext context) =>

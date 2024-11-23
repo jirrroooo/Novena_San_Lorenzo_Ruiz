@@ -54,9 +54,9 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
           automaticallyImplyLeading: false,
           leading: GestureDetector(
             onTap: () {
-              Navigator.pushReplacementNamed(context, '/');
+              Navigator.pushReplacementNamed(context, '/main-navigation');
             },
-            child: Icon(
+            child: const Icon(
               Icons.arrow_back_ios_new_rounded,
               size: 20,
               color: Colors.white,
@@ -67,7 +67,7 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
           title: AnimatedOpacity(
               opacity: isCollapsed ? 1.0 : 0.0, // Show title when collapsed
               duration: const Duration(milliseconds: 300),
-              child: Text(
+              child: const Text(
                 "Bicol Novena",
                 style: TextStyle(
                     fontSize: 17,
@@ -83,10 +83,10 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
             ),
           ),
         ),
-        Scripture(
+        const Scripture(
           translation: Translation.bicol,
         ),
-        SliverToBoxAdapter(
+        const SliverToBoxAdapter(
           child: Divider(
             thickness: 2,
           ),
@@ -107,7 +107,7 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
             if (state is NovenaBikolPageFetcedLoading ||
                 data == null ||
                 data!.isEmpty) {
-              return SliverToBoxAdapter(
+              return const SliverToBoxAdapter(
                 child: Center(
                   child: CircularProgressIndicator.adaptive(),
                 ),
@@ -123,11 +123,11 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
                         leading: Image.asset("./assets/cross.png", height: 30),
                         title: Text(
                           data![index].title,
-                          style: TextStyle(fontWeight: FontWeight.w700),
+                          style: const TextStyle(fontWeight: FontWeight.w700),
                         ),
                         subtitle: Text(
                           data![index].aldaw,
-                          style: TextStyle(fontStyle: FontStyle.italic),
+                          style: const TextStyle(fontStyle: FontStyle.italic),
                         ),
                         onTap: () {
                           Navigator.push(
@@ -150,6 +150,109 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
             );
           },
         ),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15.0),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  "All Rights Reserved",
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "COPYRIGHT 2004",
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "Commission on Lay Apostolate",
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "Diocese of Legazpi",
+                  style: const TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                ListTile(
+                  leading: Image.asset(
+                    "./assets/bernarte.png",
+                    width: 50,
+                  ),
+                  title: Text(
+                    "Rev. Msgr. Crispin C. Bernarte Jr.",
+                    style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700),
+                  ),
+                  subtitle: Text(
+                    "Author",
+                    style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+                ListTile(
+                  leading: Image.asset(
+                    "./assets/pavilando.jpg",
+                    width: 50,
+                  ),
+                  title: Text(
+                    "Rev. Msgr. Don Vito Pavilando",
+                    style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700),
+                  ),
+                  subtitle: Text(
+                    "Nihil Obstat",
+                    style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+                ListTile(
+                  leading: Image.asset(
+                    "./assets/sorra.jpg",
+                    width: 50,
+                  ),
+                  title: Text(
+                    "+ Most. Rev. Jose C. Sorra, DD",
+                    style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700),
+                  ),
+                  subtitle: Text(
+                    "Imprimatur",
+                    style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        )
       ],
     ));
   }

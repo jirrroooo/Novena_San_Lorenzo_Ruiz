@@ -66,7 +66,7 @@ class _PrayersScreenHomeState extends State<PrayersScreenHome> {
           automaticallyImplyLeading: false,
           leading: GestureDetector(
             onTap: () {
-              Navigator.pushReplacementNamed(context, '/');
+              Navigator.pushReplacementNamed(context, '/main-navigation');
             },
             child: Icon(
               Icons.arrow_back_ios_new_rounded,
