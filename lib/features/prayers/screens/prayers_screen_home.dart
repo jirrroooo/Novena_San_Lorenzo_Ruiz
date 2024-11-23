@@ -164,6 +164,11 @@ class _PrayersScreenHomeState extends State<PrayersScreenHome> {
             );
           },
         ),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 100,
+          ),
+        )
       ],
     ));
   }

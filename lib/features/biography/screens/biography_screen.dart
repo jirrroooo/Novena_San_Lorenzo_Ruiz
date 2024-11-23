@@ -214,7 +214,7 @@ class _BiographyScreenState extends State<BiographyScreen> {
                   opacity: isCollapsed ? 1.0 : 0.0, // Show title when collapsed
                   duration: const Duration(milliseconds: 300),
                   child: Text(
-                    "Biography of San Lorenzo Ruiz",
+                    "Biography of St. Lorenzo Ruiz",
                     style: TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.w700,

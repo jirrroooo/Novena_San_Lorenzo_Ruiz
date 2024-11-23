@@ -92,8 +92,7 @@ class _HimnoScreenState extends State<HimnoScreen> {
     return Scaffold(
       body: CustomScrollView(slivers: [
         SliverAppBar(
-          floating: true, // Makes the app bar appear when scrolling up
-          snap: true, // Smoothly snaps the app bar into view
+          pinned: true,
           centerTitle: true,
           title: Text(
             "Himno",
