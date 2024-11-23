@@ -1,12 +1,17 @@
+import 'dart:async';
 import 'dart:math';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:novena_lorenzo/common/error.dart';
 import 'package:novena_lorenzo/data/translation.dart';
 import 'package:novena_lorenzo/features/biography/bloc/biography_bloc.dart';
 import 'package:novena_lorenzo/features/biography/models/biography_model.dart';
+import 'package:novena_lorenzo/utils/log_service.dart';
 import 'package:novena_lorenzo/widgets/scripture/screens/scripture.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class BiographyScreen extends StatefulWidget {
   const BiographyScreen({super.key});
@@ -27,6 +32,13 @@ class _BiographyScreenState extends State<BiographyScreen> {
   double? subTitleFontSize = 18;
   double? prayerFontSize = 17;
 
+  late YoutubePlayerController _controller;
+
+  List<ConnectivityResult> _connectionStatus = [ConnectivityResult.none];
+  final Connectivity _connectivity = Connectivity();
+  late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
+  bool hasInternet = false;
+
   @override
   void initState() {
     super.initState();
@@ -41,12 +53,65 @@ class _BiographyScreenState extends State<BiographyScreen> {
     });
 
     context.read<BiographyBloc>().add(BiographyFetched());
+
+    _controller = YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId(
+          "https://www.youtube.com/watch?v=vtO7Ubf9ygg")!,
+      flags: const YoutubePlayerFlags(
+        autoPlay: true, // Automatically play the video
+        mute: false, // Start with sound
+      ),
+    );
+
+    _connectivitySubscription =
+        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+
+    initConnectivity();
+  }
+
+  Future<void> initConnectivity() async {
+    late List<ConnectivityResult> result;
+
+    try {
+      result = await _connectivity.checkConnectivity();
+    } on PlatformException catch (e) {
+      LogService().logError(e.toString());
+
+      print("Connectivity Error ===> $e");
+      return;
+    }
+
+    if (!mounted) {
+      return Future.value(null);
+    }
+
+    return _updateConnectionStatus(result);
+  }
+
+  Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
+    setState(() {
+      _connectionStatus = result;
+    });
+
+    if (_connectionStatus[_connectionStatus.length - 1] ==
+        ConnectivityResult.none) {
+      setState(() {
+        hasInternet = false;
+      });
+    } else {
+      setState(() {
+        hasInternet = true;
+      });
+    }
   }
 
   @override
   void dispose() {
-    _scrollController.dispose();
     super.dispose();
+
+    _scrollController.dispose();
+    _controller.dispose();
+    _connectivitySubscription.cancel();
   }
 
   Translation randomTranslation() {
@@ -68,7 +133,7 @@ class _BiographyScreenState extends State<BiographyScreen> {
           children: [
             if (isExpanded)
               FloatingActionButton(
-                backgroundColor: Colors.amber[200],
+                backgroundColor: Colors.red[400],
                 onPressed: () {
                   setState(() {
                     titleFontSize = 18;
@@ -77,7 +142,8 @@ class _BiographyScreenState extends State<BiographyScreen> {
                     isExpanded = !isExpanded;
                   });
                 },
-                child: Text('Small', style: TextStyle(fontSize: 14.0)),
+                child: Text('Small',
+                    style: TextStyle(fontSize: 14.0, color: Colors.white)),
               ),
             if (isExpanded)
               SizedBox(
@@ -85,7 +151,7 @@ class _BiographyScreenState extends State<BiographyScreen> {
               ),
             if (isExpanded)
               FloatingActionButton(
-                backgroundColor: Colors.amber[200],
+                backgroundColor: Colors.red[400],
                 onPressed: () {
                   setState(() {
                     titleFontSize = 20;
@@ -94,7 +160,8 @@ class _BiographyScreenState extends State<BiographyScreen> {
                     isExpanded = !isExpanded;
                   });
                 },
-                child: Text('Normal', style: TextStyle(fontSize: 14.0)),
+                child: Text('Normal',
+                    style: TextStyle(fontSize: 14.0, color: Colors.white)),
               ),
             if (isExpanded)
               SizedBox(
@@ -102,7 +169,7 @@ class _BiographyScreenState extends State<BiographyScreen> {
               ),
             if (isExpanded)
               FloatingActionButton(
-                backgroundColor: Colors.amber[200],
+                backgroundColor: Colors.red[400],
                 onPressed: () {
                   setState(() {
                     titleFontSize = 21;
@@ -111,7 +178,8 @@ class _BiographyScreenState extends State<BiographyScreen> {
                     isExpanded = !isExpanded;
                   });
                 },
-                child: Text('Large', style: TextStyle(fontSize: 14.0)),
+                child: Text('Large',
+                    style: TextStyle(fontSize: 14.0, color: Colors.white)),
               ),
             if (isExpanded)
               SizedBox(
@@ -119,13 +187,13 @@ class _BiographyScreenState extends State<BiographyScreen> {
               ),
             FloatingActionButton(
                 backgroundColor:
-                    isExpanded ? Colors.grey[300] : Colors.amber[200],
+                    isExpanded ? Colors.grey[300] : Colors.red[400],
                 elevation: 5,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50)),
                 child: Icon(
                   isExpanded ? Icons.close : Icons.text_fields,
-                  color: Colors.black,
+                  color: isExpanded ? Colors.black : Colors.white,
                 ),
                 onPressed: () {
                   setState(() {
@@ -165,7 +233,7 @@ class _BiographyScreenState extends State<BiographyScreen> {
               flexibleSpace: FlexibleSpaceBar(
                 collapseMode: CollapseMode.parallax,
                 background: Image.asset(
-                  "./assets/lorenzo2.jpg",
+                  "./assets/lorenzo1.jpg",
                   height: 250.0,
                   fit: BoxFit.cover,
                 ),
@@ -179,6 +247,19 @@ class _BiographyScreenState extends State<BiographyScreen> {
                 thickness: 2,
               ),
             ),
+            if (hasInternet)
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Center(
+                    child: YoutubePlayer(
+                      controller: _controller,
+                      showVideoProgressIndicator: true,
+                      progressIndicatorColor: Colors.red[400],
+                    ),
+                  ),
+                ),
+              ),
             BlocConsumer<BiographyBloc, BiographyState>(
               listener: (context, state) {
                 if (state is BiographyFetchedFailure) {
@@ -267,7 +348,7 @@ class _BiographyScreenState extends State<BiographyScreen> {
                                           leading: Icon(
                                             Icons.circle,
                                             size: 14,
-                                            color: Colors.red[700],
+                                            color: Colors.red[400],
                                           ),
                                         );
                                       }),

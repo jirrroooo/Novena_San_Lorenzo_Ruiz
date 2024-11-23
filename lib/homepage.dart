@@ -211,7 +211,7 @@ class _HomePageState extends State<HomePage> {
                           child: Text("Read More",
                               style: TextStyle(
                                   fontSize: 12,
-                                  color: Colors.grey[500],
+                                  color: Colors.grey[700],
                                   fontWeight: FontWeight.w400)),
                           onPressed: () {
                             Navigator.pushNamed(context, "/biography");
@@ -222,10 +222,15 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       height: 20,
                     ),
-                    Image.asset(
-                      "./assets/lorenzo3.jpg",
-                      fit: BoxFit.cover,
-                      width: double.infinity,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, "/biography");
+                      },
+                      child: Image.asset(
+                        "./assets/lorenzo3.jpg",
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      ),
                     ),
                     const SizedBox(
                       height: 25,

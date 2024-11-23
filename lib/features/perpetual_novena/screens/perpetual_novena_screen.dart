@@ -57,7 +57,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
           children: [
             if (isExpanded)
               FloatingActionButton(
-                backgroundColor: Colors.amber[200],
+                backgroundColor: Colors.red[400],
                 onPressed: () {
                   setState(() {
                     titleFontSize = 18;
@@ -66,7 +66,8 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                     isExpanded = !isExpanded;
                   });
                 },
-                child: Text('Small', style: TextStyle(fontSize: 14.0)),
+                child: Text('Small',
+                    style: TextStyle(fontSize: 14.0, color: Colors.white)),
               ),
             if (isExpanded)
               SizedBox(
@@ -74,7 +75,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
               ),
             if (isExpanded)
               FloatingActionButton(
-                backgroundColor: Colors.amber[200],
+                backgroundColor: Colors.red[400],
                 onPressed: () {
                   setState(() {
                     titleFontSize = 20;
@@ -83,7 +84,8 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                     isExpanded = !isExpanded;
                   });
                 },
-                child: Text('Normal', style: TextStyle(fontSize: 14.0)),
+                child: Text('Normal',
+                    style: TextStyle(fontSize: 14.0, color: Colors.white)),
               ),
             if (isExpanded)
               SizedBox(
@@ -91,7 +93,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
               ),
             if (isExpanded)
               FloatingActionButton(
-                backgroundColor: Colors.amber[200],
+                backgroundColor: Colors.red[400],
                 onPressed: () {
                   setState(() {
                     titleFontSize = 21;
@@ -100,7 +102,8 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                     isExpanded = !isExpanded;
                   });
                 },
-                child: Text('Large', style: TextStyle(fontSize: 14.0)),
+                child: Text('Large',
+                    style: TextStyle(fontSize: 14.0, color: Colors.white)),
               ),
             if (isExpanded)
               SizedBox(
@@ -108,13 +111,13 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
               ),
             FloatingActionButton(
                 backgroundColor:
-                    isExpanded ? Colors.grey[300] : Colors.amber[200],
+                    isExpanded ? Colors.grey[300] : Colors.red[400],
                 elevation: 5,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50)),
                 child: Icon(
                   isExpanded ? Icons.close : Icons.text_fields,
-                  color: Colors.black,
+                  color: isExpanded ? Colors.black : Colors.white,
                 ),
                 onPressed: () {
                   setState(() {

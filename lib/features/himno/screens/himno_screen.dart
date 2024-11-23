@@ -255,7 +255,7 @@ class _HimnoScreenState extends State<HimnoScreen> {
                             height: 25,
                           ),
                           Text(
-                            "Chorus: ",
+                            "Koro: ",
                             style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14,
@@ -288,7 +288,7 @@ class _HimnoScreenState extends State<HimnoScreen> {
                                   child: Column(
                                     children: [
                                       Text(
-                                        "Verse ${i + 1}:",
+                                        "Verso ${i + 1}:",
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             color: Colors.grey[700]),
