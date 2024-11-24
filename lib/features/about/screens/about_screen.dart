@@ -76,7 +76,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   height: 30,
                 ),
                 Text(
-                  "About the Developer:",
+                  "About the App:",
                   style: TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 18,
@@ -125,14 +125,14 @@ class _AboutScreenState extends State<AboutScreen> {
                               overflow: TextOverflow.visible,
                             ),
                             Text(
-                              "Altar Server since April 11, 2011",
+                              "Programmer X Future Priest",
                               style: TextStyle(
                                   fontFamily: 'Inter',
                                   fontWeight: FontWeight.w400,
                                   fontSize: 14),
                             ),
                             Text(
-                              "Programmer X Future Priest",
+                              "App Developer",
                               style: TextStyle(
                                   fontFamily: 'Inter',
                                   fontWeight: FontWeight.w400,
@@ -143,6 +143,108 @@ class _AboutScreenState extends State<AboutScreen> {
                       ),
                     ),
                   ],
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  "Welcome to the St. Lorenzo Ruiz Novena App, created to deepen devotion to the first Filipino saint, St. Lorenzo Ruiz.",
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400),
+                  textAlign: TextAlign.justify,
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  "The novena included in this app is not an original work of the developer. Proper attribution to its author is provided within the app.",
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400),
+                  textAlign: TextAlign.justify,
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  "The developer is dedicated to creating Catholic-themed applications designed to strengthen faith and foster devotion through technology. This humble work is dedicated to the Almighty God.",
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400),
+                  textAlign: TextAlign.justify,
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  "For enhanced experienced, the developer decided not to put advertisements to his apps as it distracts the focus of the devotees. However, if you wish to support financially, click the Donate Now button to access the QR code.",
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400),
+                  textAlign: TextAlign.justify,
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Dialog(
+                            insetPadding: EdgeInsets
+                                .zero, // Ensures the dialog uses the full screen
+                            child: GestureDetector(
+                              onTap: () => Navigator.of(context)
+                                  .pop(), // Close dialog on tap
+                              child: Container(
+                                color: Colors
+                                    .black, // Optional: Background color for better visibility
+                                child: InteractiveViewer(
+                                  minScale: 0.1, // Minimum zoom level
+                                  maxScale: 3.0, // Maximum zoom level
+                                  child: Image.asset(
+                                    './assets/donate.png',
+                                    fit: BoxFit
+                                        .contain, // Adjust to fit the screen nicely
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Text(
+                      "Donate Now",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    style: ButtonStyle(
+                        elevation: WidgetStatePropertyAll(0),
+                        backgroundColor:
+                            WidgetStatePropertyAll(Colors.red[400]),
+                        textStyle: WidgetStatePropertyAll(TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16))),
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  "For feedback, suggestions, or corrections, feel free to reach out at jiro.octavo@gmail.com.",
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400),
+                  textAlign: TextAlign.justify,
                 ),
                 SizedBox(
                   height: 30,

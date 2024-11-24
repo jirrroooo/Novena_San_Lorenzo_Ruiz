@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:novena_lorenzo/common/splash_screen.dart';
 import 'package:novena_lorenzo/features/about/screens/about_screen.dart';
 import 'package:novena_lorenzo/features/biography/bloc/biography_bloc.dart';
@@ -24,10 +25,26 @@ import 'package:novena_lorenzo/homepage.dart';
 import 'package:novena_lorenzo/main_navigation.dart';
 import 'package:novena_lorenzo/features/novena_bikol/screens/novena_bikol_home.dart';
 import 'package:novena_lorenzo/features/novena_bikol/screens/novena_bikol_page.dart';
+import 'package:novena_lorenzo/utils/notification_scheduler.dart';
 import 'package:novena_lorenzo/widgets/scripture/bloc/scripture_bloc.dart';
 import 'package:novena_lorenzo/widgets/scripture/repository/scripture_repository.dart';
 
-void main() {
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  const AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings('@mipmap/ic_launcher');
+
+  const InitializationSettings initializationSettings =
+      InitializationSettings(android: initializationSettingsAndroid);
+
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+
+  await scheduleNotifications();
+
   runApp(const MyApp());
 }
 

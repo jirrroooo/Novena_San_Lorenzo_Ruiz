@@ -35,6 +35,10 @@ dependencies:
   just_audio: ^0.9.42
   youtube_player_flutter: ^9.1.1
   connectivity_plus: ^6.1.0
+  flutter_local_notifications: ^18.0.1
+  permission_handler: ^11.3.1
+  shared_preferences: ^2.3.3
+  flutter_timezone: ^3.0.1
 
   
 

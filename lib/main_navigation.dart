@@ -45,6 +45,7 @@ class _MainNavigationState extends State<MainNavigation> {
     return Scaffold(
       body: screens.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.music_note_rounded), label: "Hymn"),
