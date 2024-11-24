@@ -220,16 +220,17 @@ class _BiographyScreenState extends State<BiographyScreen> {
                         fontWeight: FontWeight.w700,
                         color: Colors.white),
                   )),
-              leading: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(
-                  Icons.arrow_back_ios_new_rounded,
-                  size: 20,
-                  color: Colors.white,
-                ),
-              ),
+              automaticallyImplyLeading: false,
+              // leading: GestureDetector(
+              //   onTap: () {
+              //     Navigator.pop(context);
+              //   },
+              //   child: Icon(
+              //     Icons.arrow_back_ios_new_rounded,
+              //     size: 20,
+              //     color: Colors.white,
+              //   ),
+              // ),
               flexibleSpace: FlexibleSpaceBar(
                 collapseMode: CollapseMode.parallax,
                 background: Image.asset(
@@ -337,19 +338,41 @@ class _BiographyScreenState extends State<BiographyScreen> {
                                       physics: NeverScrollableScrollPhysics(),
                                       itemCount: data!.longDetails[i].length,
                                       itemBuilder: (context, j) {
-                                        return ListTile(
-                                          title: Text(
-                                            data!.longDetails[i][j],
-                                            style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: prayerFontSize,
-                                                fontWeight: FontWeight.w400),
-                                          ),
-                                          leading: Icon(
-                                            Icons.circle,
-                                            size: 14,
-                                            color: Colors.red[400],
-                                          ),
+                                        return Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              width: 80,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  Icon(
+                                                    Icons.circle,
+                                                    size: 14,
+                                                    color: Colors.red[400],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            // SizedBox(width: 15),
+                                            Expanded(
+                                              child: Text(
+                                                data!.longDetails[i][j],
+                                                style: TextStyle(
+                                                  fontFamily: 'Inter',
+                                                  fontSize: prayerFontSize,
+                                                  fontWeight: FontWeight.w400,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         );
                                       }),
                                   SizedBox(
@@ -364,6 +387,11 @@ class _BiographyScreenState extends State<BiographyScreen> {
                 );
               },
             ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 30,
+              ),
+            )
           ],
         ));
   }

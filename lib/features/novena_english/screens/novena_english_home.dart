@@ -206,7 +206,7 @@ class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
                   "All Rights Reserved to the Rightful Owner",
                   style: TextStyle(
                       fontFamily: 'Inter',
-                      fontSize: 16,
+                      fontSize: 14,
                       color: Colors.grey[700],
                       fontWeight: FontWeight.bold),
                 ),

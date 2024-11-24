@@ -6,6 +6,7 @@ import 'package:novena_lorenzo/features/biography/bloc/biography_bloc.dart';
 import 'package:novena_lorenzo/features/biography/models/biography_model.dart';
 import 'package:novena_lorenzo/features/prayers/bloc/prayer_bloc.dart';
 import 'package:novena_lorenzo/features/prayers/models/prayer_model.dart';
+import 'package:novena_lorenzo/main_navigation.dart';
 import 'package:novena_lorenzo/widgets/scripture/screens/scripture.dart';
 
 class HomePage extends StatefulWidget {
@@ -82,7 +83,7 @@ class _HomePageState extends State<HomePage> {
               opacity: isCollapsed ? 1.0 : 0.0, // Show title when collapsed
               duration: const Duration(milliseconds: 300),
               child: const Text(
-                "Novena to Saint Lorenzo Ruiz",
+                "Saint Lorenzo Ruiz Novena",
                 style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w700,
@@ -113,8 +114,17 @@ class _HomePageState extends State<HomePage> {
               (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(
-                        context, _homepageSelection[index]["nav"]!);
+                    if (_homepageSelection[index]["nav"]! == "/himno") {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MainNavigation(
+                                    index: 0,
+                                  )));
+                    } else {
+                      Navigator.pushNamed(
+                          context, _homepageSelection[index]["nav"]!);
+                    }
                   },
                   child: Column(
                     children: [
@@ -142,7 +152,12 @@ class _HomePageState extends State<HomePage> {
         SliverToBoxAdapter(
           child: GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, "/prayers-home");
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => MainNavigation(
+                            index: 1,
+                          )));
             },
             child: Container(
               padding: const EdgeInsets.all(10),
@@ -214,7 +229,12 @@ class _HomePageState extends State<HomePage> {
                                   color: Colors.grey[700],
                                   fontWeight: FontWeight.w400)),
                           onPressed: () {
-                            Navigator.pushNamed(context, "/biography");
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MainNavigation(
+                                          index: 3,
+                                        )));
                           },
                         ),
                       ],

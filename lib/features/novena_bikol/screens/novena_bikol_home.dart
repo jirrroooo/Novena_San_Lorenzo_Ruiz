@@ -231,7 +231,7 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
                   "All Rights Reserved",
                   style: TextStyle(
                       fontFamily: 'Inter',
-                      fontSize: 16,
+                      fontSize: 14,
                       color: Colors.grey[700],
                       fontWeight: FontWeight.bold),
                 ),
@@ -239,7 +239,7 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
                   "COPYRIGHT 2004",
                   style: TextStyle(
                       fontFamily: 'Inter',
-                      fontSize: 16,
+                      fontSize: 14,
                       color: Colors.grey[700],
                       fontWeight: FontWeight.bold),
                 ),
@@ -247,7 +247,7 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
                   "Commission on Lay Apostolate",
                   style: TextStyle(
                       fontFamily: 'Inter',
-                      fontSize: 16,
+                      fontSize: 14,
                       color: Colors.grey[700],
                       fontWeight: FontWeight.bold),
                 ),
@@ -255,7 +255,7 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
                   "Diocese of Legazpi",
                   style: TextStyle(
                       fontFamily: 'Inter',
-                      fontSize: 16,
+                      fontSize: 14,
                       color: Colors.grey[700],
                       fontWeight: FontWeight.bold),
                 ),

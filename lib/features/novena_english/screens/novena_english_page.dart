@@ -57,9 +57,9 @@ class _NovenaEnglishPageState extends State<NovenaEnglishPage> {
                 backgroundColor: Colors.red[400],
                 onPressed: () {
                   setState(() {
-                    titleFontSize = 18;
-                    subTitleFontSize = 17;
-                    prayerFontSize = 16;
+                    titleFontSize = 16;
+                    subTitleFontSize = 15;
+                    prayerFontSize = 14;
                     isExpanded = !isExpanded;
                   });
                 },
@@ -93,9 +93,9 @@ class _NovenaEnglishPageState extends State<NovenaEnglishPage> {
                 backgroundColor: Colors.red[400],
                 onPressed: () {
                   setState(() {
-                    titleFontSize = 21;
-                    subTitleFontSize = 20;
-                    prayerFontSize = 18;
+                    titleFontSize = 22;
+                    subTitleFontSize = 21;
+                    prayerFontSize = 20;
                     isExpanded = !isExpanded;
                   });
                 },

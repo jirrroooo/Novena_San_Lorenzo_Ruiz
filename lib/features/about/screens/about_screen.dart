@@ -246,7 +246,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     "All Rights Reserved",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 16,
+                        fontSize: 14,
                         color: Colors.grey[700],
                         fontWeight: FontWeight.bold),
                   ),
@@ -256,7 +256,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     "COPYRIGHT 2004",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 16,
+                        fontSize: 14,
                         color: Colors.grey[700],
                         fontWeight: FontWeight.bold),
                   ),
@@ -266,7 +266,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     "Commission on Lay Apostolate",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 16,
+                        fontSize: 14,
                         color: Colors.grey[700],
                         fontWeight: FontWeight.bold),
                   ),
@@ -276,7 +276,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     "Diocese of Legazpi",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 16,
+                        fontSize: 14,
                         color: Colors.grey[700],
                         fontWeight: FontWeight.bold),
                   ),
@@ -361,7 +361,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     "All Rights Reserved to the Rightful Owner",
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 16,
+                        fontSize: 14,
                         color: Colors.grey[700],
                         fontWeight: FontWeight.bold),
                   ),

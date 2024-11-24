@@ -5,7 +5,6 @@ import 'package:just_audio/just_audio.dart';
 import 'package:novena_lorenzo/common/error.dart';
 import 'package:novena_lorenzo/features/himno/bloc/himno_bloc.dart';
 import 'package:novena_lorenzo/features/himno/models/himno_model.dart';
-import 'package:novena_lorenzo/main_navigation.dart';
 import 'package:novena_lorenzo/utils/log_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -94,27 +93,30 @@ class _HimnoScreenState extends State<HimnoScreen> {
         SliverAppBar(
           pinned: true,
           centerTitle: true,
+          backgroundColor: Colors.red[400],
           title: Text(
             "Himno",
             style: TextStyle(
               fontFamily: 'Inter',
               fontSize: 16,
+              color: Colors.white,
               fontWeight: FontWeight.w700,
             ),
           ),
           automaticallyImplyLeading: false,
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => MainNavigation()),
-              );
-            },
-            child: Icon(
-              Icons.arrow_back_ios_new_rounded,
-              size: 20,
-            ),
-          ),
+          // leading: GestureDetector(
+          //   onTap: () {
+          //     Navigator.pushReplacement(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => MainNavigation()),
+          //     );
+          //   },
+          //   child: Icon(
+          //     Icons.arrow_back_ios_new_rounded,
+          //     size: 20,
+          //     color: Colors.white,
+          //   ),
+          // ),
         ),
         SliverToBoxAdapter(
           child: Container(
@@ -415,7 +417,7 @@ class _HimnoScreenState extends State<HimnoScreen> {
                   "All Rights Reserved",
                   style: TextStyle(
                       fontFamily: 'Inter',
-                      fontSize: 16,
+                      fontSize: 14,
                       color: Colors.grey[700],
                       fontWeight: FontWeight.bold),
                 ),
@@ -423,7 +425,7 @@ class _HimnoScreenState extends State<HimnoScreen> {
                   "COPYRIGHT 2004",
                   style: TextStyle(
                       fontFamily: 'Inter',
-                      fontSize: 16,
+                      fontSize: 14,
                       color: Colors.grey[700],
                       fontWeight: FontWeight.bold),
                 ),
@@ -431,7 +433,7 @@ class _HimnoScreenState extends State<HimnoScreen> {
                   "Commission on Lay Apostolate",
                   style: TextStyle(
                       fontFamily: 'Inter',
-                      fontSize: 16,
+                      fontSize: 14,
                       color: Colors.grey[700],
                       fontWeight: FontWeight.bold),
                 ),
@@ -439,7 +441,7 @@ class _HimnoScreenState extends State<HimnoScreen> {
                   "Diocese of Legazpi",
                   style: TextStyle(
                       fontFamily: 'Inter',
-                      fontSize: 16,
+                      fontSize: 14,
                       color: Colors.grey[700],
                       fontWeight: FontWeight.bold),
                 ),

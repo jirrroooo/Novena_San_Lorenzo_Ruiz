@@ -60,9 +60,9 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                 backgroundColor: Colors.red[400],
                 onPressed: () {
                   setState(() {
-                    titleFontSize = 18;
-                    subTitleFontSize = 17;
-                    prayerFontSize = 16;
+                    titleFontSize = 16;
+                    subTitleFontSize = 15;
+                    prayerFontSize = 14;
                     isExpanded = !isExpanded;
                   });
                 },
@@ -96,9 +96,9 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                 backgroundColor: Colors.red[400],
                 onPressed: () {
                   setState(() {
-                    titleFontSize = 21;
-                    subTitleFontSize = 20;
-                    prayerFontSize = 18;
+                    titleFontSize = 22;
+                    subTitleFontSize = 21;
+                    prayerFontSize = 20;
                     isExpanded = !isExpanded;
                   });
                 },
@@ -520,7 +520,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                             "All Rights Reserved",
                             style: TextStyle(
                                 fontFamily: 'Inter',
-                                fontSize: 16,
+                                fontSize: 14,
                                 color: Colors.grey[700],
                                 fontWeight: FontWeight.bold),
                           ),
@@ -528,7 +528,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                             "COPYRIGHT 2004",
                             style: TextStyle(
                                 fontFamily: 'Inter',
-                                fontSize: 16,
+                                fontSize: 14,
                                 color: Colors.grey[700],
                                 fontWeight: FontWeight.bold),
                           ),
@@ -536,7 +536,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                             "Commission on Lay Apostolate",
                             style: TextStyle(
                                 fontFamily: 'Inter',
-                                fontSize: 16,
+                                fontSize: 14,
                                 color: Colors.grey[700],
                                 fontWeight: FontWeight.bold),
                           ),
@@ -544,7 +544,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                             "Diocese of Legazpi",
                             style: TextStyle(
                                 fontFamily: 'Inter',
-                                fontSize: 16,
+                                fontSize: 14,
                                 color: Colors.grey[700],
                                 fontWeight: FontWeight.bold),
                           ),
@@ -614,7 +614,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                             "All Rights Reserved to the Rightful Owner",
                             style: TextStyle(
                                 fontFamily: 'Inter',
-                                fontSize: 16,
+                                fontSize: 14,
                                 color: Colors.grey[700],
                                 fontWeight: FontWeight.bold),
                           ),

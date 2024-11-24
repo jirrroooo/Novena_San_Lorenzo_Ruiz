@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"  package="com.jiro.st_lorenzo_ruiz_novena">
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="St. Lorenzo Ruiz Novena"
         android:name="${applicationName}"
