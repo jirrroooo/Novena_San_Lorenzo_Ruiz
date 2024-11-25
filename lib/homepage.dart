@@ -246,10 +246,13 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         Navigator.pushNamed(context, "/biography");
                       },
-                      child: Image.asset(
-                        "./assets/lorenzo3.jpg",
-                        fit: BoxFit.cover,
-                        width: double.infinity,
+                      child: SizedBox(
+                        height: 480,
+                        child: Image.asset(
+                          "./assets/lorenzo3.jpg",
+                          fit: BoxFit.contain,
+                          width: double.infinity,
+                        ),
                       ),
                     ),
                     const SizedBox(
