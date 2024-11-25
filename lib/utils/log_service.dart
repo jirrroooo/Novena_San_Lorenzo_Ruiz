@@ -6,13 +6,13 @@ enum LogLevel { info, warn, error }
 class LogService {
   static const int maxLogSize = 10 * 1024; // 10KB
 
-  Future<void> printLogFilePath() async {
-    final directories = await getExternalStorageDirectories();
+  // Future<void> printLogFilePath() async {
+  //   final directories = await getExternalStorageDirectories();
 
-    if (directories != null && directories.isNotEmpty) {
-      print('Log file path +++++ ====>>>>>>> ${directories[0].path}/app_log');
-    }
-  }
+  //   if (directories != null && directories.isNotEmpty) {
+  //     print('Log file path +++++ ====>>>>>>> ${directories[0].path}/app_log');
+  //   }
+  // }
 
   Future<File> _getLogFile() async {
     final directory = await getExternalStorageDirectories();
@@ -21,8 +21,6 @@ class LogService {
 
   Future<void> log(String message, {LogLevel level = LogLevel.info}) async {
     final file = await _getLogFile();
-
-    // await printLogFilePath();
 
     if (await file.exists()) {
       final fileSize = await file.length();

@@ -7,8 +7,6 @@ Future<bool> requestNotificationPermission() async {
 
   var status = await permission.status;
 
-  print("status: $status");
-
   if (status.isGranted) {
     return true;
   } else if (status.isDenied) {
@@ -32,8 +30,6 @@ Future<bool> requestExactAlarmPermission() async {
   const Permission permission = Permission.scheduleExactAlarm;
 
   var status = await permission.status;
-
-  print("status: $status");
 
   if (status.isGranted) {
     return true;

@@ -55,8 +55,6 @@ class _HimnoScreenState extends State<HimnoScreen> {
         );
       });
 
-      print("Error loading music ====> ${e.toString()}");
-
       LogService().logError(e.toString());
     }
   }

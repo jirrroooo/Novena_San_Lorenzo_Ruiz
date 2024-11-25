@@ -77,7 +77,6 @@ class _BiographyScreenState extends State<BiographyScreen> {
     } on PlatformException catch (e) {
       LogService().logError(e.toString());
 
-      print("Connectivity Error ===> $e");
       return;
     }
 
