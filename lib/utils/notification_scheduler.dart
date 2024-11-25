@@ -15,8 +15,7 @@ Future<void> scheduleNotifications() async {
     return;
   }
 
-  if (await requestExactAlarmPermission() == false ||
-      await requestNotificationPermission() == false) {
+  if (await requestNotificationPermission() == false) {
     return;
   }
 
@@ -107,4 +106,6 @@ Future<void> scheduleNotifications() async {
 
   await prefs.setBool('isScheduled', true);
   await prefs.setInt('year', DateTime.now().year);
+
+  print("===> Scheduled!");
 }
