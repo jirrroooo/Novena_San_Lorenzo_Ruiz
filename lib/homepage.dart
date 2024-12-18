@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:novena_lorenzo/common/error.dart';
+import 'package:novena_lorenzo/data/navbar_selection.dart';
 import 'package:novena_lorenzo/data/translation.dart';
 import 'package:novena_lorenzo/features/biography/bloc/biography_bloc.dart';
 import 'package:novena_lorenzo/features/biography/models/biography_model.dart';
@@ -119,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => MainNavigation(
-                                    index: 0,
+                                    index: NavbarSelection.hymn.index,
                                   )));
                     } else {
                       Navigator.pushNamed(
@@ -156,7 +157,7 @@ class _HomePageState extends State<HomePage> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => MainNavigation(
-                            index: 1,
+                            index: NavbarSelection.prayers.index,
                           )));
             },
             child: Container(
@@ -233,7 +234,8 @@ class _HomePageState extends State<HomePage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => MainNavigation(
-                                          index: 3,
+                                          index:
+                                              NavbarSelection.biography.index,
                                         )));
                           },
                         ),
@@ -244,7 +246,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, "/biography");
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MainNavigation(
+                                      index: NavbarSelection.biography.index,
+                                    )));
                       },
                       child: SizedBox(
                         height: 480,

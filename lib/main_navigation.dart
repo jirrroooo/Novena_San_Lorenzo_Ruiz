@@ -18,10 +18,10 @@ class _MainNavigationState extends State<MainNavigation> {
   int _selectedIndex = 0;
 
   static const List screens = [
-    HimnoScreen(),
-    PrayersScreenHome(),
-    HomePage(),
     BiographyScreen(),
+    HimnoScreen(),
+    HomePage(),
+    PrayersScreenHome(),
     AboutScreen()
   ];
 
@@ -48,13 +48,13 @@ class _MainNavigationState extends State<MainNavigation> {
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.music_note_rounded), label: "Hymn"),
+              icon: Icon(Icons.subtitles), label: "Biography"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.fireplace_rounded), label: "Prayers"),
+              icon: Icon(Icons.music_note_rounded), label: "Hymn"),
           BottomNavigationBarItem(
               icon: Icon(Icons.home_rounded), label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.subtitles), label: "Biography"),
+              icon: Icon(Icons.fireplace_rounded), label: "Prayers"),
           BottomNavigationBarItem(icon: Icon(Icons.info), label: "About"),
         ],
         currentIndex: _selectedIndex,
