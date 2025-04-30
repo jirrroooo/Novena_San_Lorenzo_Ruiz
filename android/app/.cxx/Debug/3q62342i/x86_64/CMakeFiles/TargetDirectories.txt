@@ -1,0 +1,2 @@
+E:/Flutter Apps/novena_lorenzo/android/app/.cxx/Debug/3q62342i/x86_64/CMakeFiles/edit_cache.dir
+E:/Flutter Apps/novena_lorenzo/android/app/.cxx/Debug/3q62342i/x86_64/CMakeFiles/rebuild_cache.dir
