@@ -1,6 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:novena_lorenzo/features/novena_bikol/bloc/novena_bikol_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutScreen extends StatefulWidget {
   const AboutScreen({super.key});
@@ -12,6 +14,8 @@ class AboutScreen extends StatefulWidget {
 class _AboutScreenState extends State<AboutScreen> {
   ScrollController _scrollController = ScrollController();
   bool isCollapsed = false;
+  final String privacyPolicyUrl =
+      'https://www.termsfeed.com/live/7263e95b-e3b4-47f2-aa5e-92a8050331a3';
 
   @override
   void initState() {
@@ -33,6 +37,15 @@ class _AboutScreenState extends State<AboutScreen> {
   void dispose() {
     _scrollController.dispose();
     super.dispose();
+  }
+
+  Future<void> launchPrivacyPolicyUrl() async {
+    final uri = Uri.parse(privacyPolicyUrl);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, webOnlyWindowName: "Privacy Policy");
+    } else {
+      throw 'Could not launch $privacyPolicyUrl';
+    }
   }
 
   @override
@@ -68,14 +81,14 @@ class _AboutScreenState extends State<AboutScreen> {
         ),
         SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Text(
+                const Text(
                   "About the App:",
                   style: TextStyle(
                       fontFamily: 'Inter',
@@ -83,7 +96,7 @@ class _AboutScreenState extends State<AboutScreen> {
                       fontWeight: FontWeight.bold),
                   textAlign: TextAlign.start,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Row(
@@ -103,51 +116,49 @@ class _AboutScreenState extends State<AboutScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Expanded(
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Bro. John Rommel B. Octavo",
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16),
-                              maxLines: 2,
-                              overflow: TextOverflow.visible,
-                            ),
-                            Text(
-                              "Programmer X Future Priest",
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14),
-                            ),
-                            Text(
-                              "App Developer",
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14),
-                            ),
-                          ],
-                        ),
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Bro. John Rommel B. Octavo",
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
+                            maxLines: 2,
+                            overflow: TextOverflow.visible,
+                          ),
+                          Text(
+                            "Programmer X Future Priest",
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14),
+                          ),
+                          Text(
+                            "App Developer",
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Text(
+                const Text(
                   "Welcome to the St. Lorenzo Ruiz Novena App, created to deepen devotion to the first Filipino saint, St. Lorenzo Ruiz.",
                   style: TextStyle(
                       fontFamily: 'Inter',
@@ -155,10 +166,10 @@ class _AboutScreenState extends State<AboutScreen> {
                       fontWeight: FontWeight.w400),
                   textAlign: TextAlign.justify,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
-                Text(
+                const Text(
                   "The novena included in this app is not an original work of the developer. Proper attribution to its author is provided within the app.",
                   style: TextStyle(
                       fontFamily: 'Inter',
@@ -166,10 +177,10 @@ class _AboutScreenState extends State<AboutScreen> {
                       fontWeight: FontWeight.w400),
                   textAlign: TextAlign.justify,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
-                Text(
+                const Text(
                   "The developer is dedicated to creating Catholic-themed applications designed to strengthen faith and foster devotion through technology. This humble work is dedicated to the Almighty God.",
                   style: TextStyle(
                       fontFamily: 'Inter',
@@ -177,18 +188,18 @@ class _AboutScreenState extends State<AboutScreen> {
                       fontWeight: FontWeight.w400),
                   textAlign: TextAlign.justify,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
-                Text(
-                  "For enhanced experienced, the developer decided not to put advertisements to his apps as it distracts the focus of the devotees. However, if you wish to support financially, click the Donate Now button to access the QR code.",
+                const Text(
+                  "For enhanced experienced, the developer decided not to put advertisements to his apps as it distracts the focus of the devotees. However, if you wish to support the developer, click the Donate Now button to access the QR code.",
                   style: TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 16,
                       fontWeight: FontWeight.w400),
                   textAlign: TextAlign.justify,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Center(
@@ -221,49 +232,82 @@ class _AboutScreenState extends State<AboutScreen> {
                         },
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       "Donate Now",
                       style: TextStyle(color: Colors.white),
                     ),
                     style: ButtonStyle(
-                        elevation: WidgetStatePropertyAll(0),
+                        elevation: const WidgetStatePropertyAll(0),
                         backgroundColor:
                             WidgetStatePropertyAll(Colors.red[400]),
-                        textStyle: WidgetStatePropertyAll(TextStyle(
+                        textStyle: const WidgetStatePropertyAll(TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
                             fontSize: 16))),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Text(
+                const Text(
                   "For feedback, suggestions, or corrections, feel free to reach out at jiro.octavo@gmail.com.",
                   style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400),
+                    fontFamily: 'Inter',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
                   textAlign: TextAlign.justify,
                 ),
-                SizedBox(
+                const SizedBox(
+                  height: 15,
+                ),
+                RichText(
+                  textAlign: TextAlign.justify,
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black87, // Important to set color!
+                    ),
+                    children: [
+                      const TextSpan(
+                        text:
+                            'We value your privacy and are committed to protecting your data. To learn more, please read our ',
+                      ),
+                      TextSpan(
+                        text: 'Privacy Policy',
+                        style: const TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 14,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = launchPrivacyPolicyUrl,
+                      ),
+                      const TextSpan(text: '.'),
+                    ],
+                  ),
+                ),
+                const SizedBox(
                   height: 30,
                 ),
-                Divider()
+                const Divider()
               ],
             ),
           ),
         ),
         SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Text(
+                const Text(
                   "Bicol Novena:",
                   style: TextStyle(
                       fontFamily: 'Inter',
@@ -271,24 +315,24 @@ class _AboutScreenState extends State<AboutScreen> {
                       fontWeight: FontWeight.bold),
                   textAlign: TextAlign.start,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 ListTile(
                   dense: true,
-                  contentPadding: EdgeInsets.all(0),
+                  contentPadding: const EdgeInsets.all(0),
                   leading: Image.asset(
                     "./assets/bernarte.png",
                     width: 50,
                   ),
-                  title: Text(
+                  title: const Text(
                     "Rev. Msgr. Crispin C. Bernarte Jr.",
                     style: TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 16,
                         fontWeight: FontWeight.w700),
                   ),
-                  subtitle: Text(
+                  subtitle: const Text(
                     "Author",
                     style: TextStyle(
                         fontFamily: 'Inter',
@@ -298,19 +342,19 @@ class _AboutScreenState extends State<AboutScreen> {
                 ),
                 ListTile(
                   dense: true,
-                  contentPadding: EdgeInsets.all(0),
+                  contentPadding: const EdgeInsets.all(0),
                   leading: Image.asset(
                     "./assets/pavilando.jpg",
                     width: 50,
                   ),
-                  title: Text(
+                  title: const Text(
                     "Rev. Msgr. Don Vito Pavilando",
                     style: TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 16,
                         fontWeight: FontWeight.w700),
                   ),
-                  subtitle: Text(
+                  subtitle: const Text(
                     "Nihil Obstat",
                     style: TextStyle(
                         fontFamily: 'Inter',
@@ -320,19 +364,19 @@ class _AboutScreenState extends State<AboutScreen> {
                 ),
                 ListTile(
                   dense: true,
-                  contentPadding: EdgeInsets.all(0),
+                  contentPadding: const EdgeInsets.all(0),
                   leading: Image.asset(
                     "./assets/sorra.jpg",
                     width: 50,
                   ),
-                  title: Text(
+                  title: const Text(
                     "+ Most. Rev. Jose C. Sorra, DD",
                     style: TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 16,
                         fontWeight: FontWeight.w700),
                   ),
-                  subtitle: Text(
+                  subtitle: const Text(
                     "Imprimatur",
                     style: TextStyle(
                         fontFamily: 'Inter',
@@ -340,7 +384,7 @@ class _AboutScreenState extends State<AboutScreen> {
                         fontWeight: FontWeight.w500),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Center(
@@ -383,24 +427,24 @@ class _AboutScreenState extends State<AboutScreen> {
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Divider()
+                const Divider()
               ],
             ),
           ),
         ),
         SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.only(left: 15.0, right: 15, bottom: 50),
+            padding: const EdgeInsets.only(left: 15.0, right: 15, bottom: 50),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Text(
+                const Text(
                   "English Novena:",
                   style: TextStyle(
                       fontFamily: 'Inter',
@@ -408,24 +452,24 @@ class _AboutScreenState extends State<AboutScreen> {
                       fontWeight: FontWeight.bold),
                   textAlign: TextAlign.start,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 ListTile(
                   dense: true,
-                  contentPadding: EdgeInsets.all(0),
+                  contentPadding: const EdgeInsets.all(0),
                   leading: Image.asset(
                     "./assets/aquino.png",
                     width: 50,
                   ),
-                  title: Text(
+                  title: const Text(
                     "Rev. Msgr. Benedicto S. Aquino",
                     style: TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 16,
                         fontWeight: FontWeight.w700),
                   ),
-                  subtitle: Text(
+                  subtitle: const Text(
                     "Nihil Obstat",
                     style: TextStyle(
                         fontFamily: 'Inter',
@@ -435,19 +479,19 @@ class _AboutScreenState extends State<AboutScreen> {
                 ),
                 ListTile(
                   dense: true,
-                  contentPadding: EdgeInsets.all(0),
+                  contentPadding: const EdgeInsets.all(0),
                   leading: Image.asset(
                     "./assets/abriol.jpg",
                     width: 50,
                   ),
-                  title: Text(
+                  title: const Text(
                     "Rt. Rev. Msgr. Jose C. Abriol",
                     style: TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 16,
                         fontWeight: FontWeight.w700),
                   ),
-                  subtitle: Text(
+                  subtitle: const Text(
                     "Imprimatur",
                     style: TextStyle(
                         fontFamily: 'Inter',
@@ -455,7 +499,7 @@ class _AboutScreenState extends State<AboutScreen> {
                         fontWeight: FontWeight.w500),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Center(
@@ -468,7 +512,7 @@ class _AboutScreenState extends State<AboutScreen> {
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
               ],
