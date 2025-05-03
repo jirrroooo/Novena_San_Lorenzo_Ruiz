@@ -178,7 +178,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                   flexibleSpace: FlexibleSpaceBar(
                     collapseMode: CollapseMode.parallax,
                     background: Image.asset(
-                      "./assets/perpetual.jpg",
+                      "./assets/perpetual.webp",
                       height: 250.0,
                       fit: BoxFit.cover,
                     ),
@@ -451,7 +451,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                             dense: true,
                             contentPadding: EdgeInsets.all(0),
                             leading: Image.asset(
-                              "./assets/bernarte.png",
+                              "./assets/bernarte.webp",
                               width: 50,
                             ),
                             title: Text(
@@ -473,7 +473,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                             dense: true,
                             contentPadding: EdgeInsets.all(0),
                             leading: Image.asset(
-                              "./assets/pavilando.jpg",
+                              "./assets/pavilando.webp",
                               width: 50,
                             ),
                             title: Text(
@@ -495,7 +495,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                             dense: true,
                             contentPadding: EdgeInsets.all(0),
                             leading: Image.asset(
-                              "./assets/sorra.jpg",
+                              "./assets/sorra.webp",
                               width: 50,
                             ),
                             title: Text(
@@ -567,7 +567,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                             dense: true,
                             contentPadding: EdgeInsets.all(0),
                             leading: Image.asset(
-                              "./assets/aquino.png",
+                              "./assets/aquino.webp",
                               width: 50,
                             ),
                             title: Text(
@@ -589,7 +589,7 @@ class _PerpetualNovenaScreenState extends State<PerpetualNovenaScreen> {
                             dense: true,
                             contentPadding: EdgeInsets.all(0),
                             leading: Image.asset(
-                              "./assets/abriol.jpg",
+                              "./assets/abriol.webp",
                               width: 50,
                             ),
                             title: Text(

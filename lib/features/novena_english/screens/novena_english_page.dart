@@ -170,7 +170,7 @@ class _NovenaEnglishPageState extends State<NovenaEnglishPage> {
                   flexibleSpace: FlexibleSpaceBar(
                     collapseMode: CollapseMode.parallax,
                     background: Image.asset(
-                      "./assets/english.jpg",
+                      "./assets/english.webp",
                       height: 250.0,
                       fit: BoxFit.cover,
                     ),

@@ -233,7 +233,7 @@ class _BiographyScreenState extends State<BiographyScreen> {
               flexibleSpace: FlexibleSpaceBar(
                 collapseMode: CollapseMode.parallax,
                 background: Image.asset(
-                  "./assets/lorenzo1.jpg",
+                  "./assets/lorenzo1.webp",
                   height: 250.0,
                   fit: BoxFit.cover,
                 ),

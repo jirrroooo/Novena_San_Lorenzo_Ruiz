@@ -77,7 +77,7 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
           flexibleSpace: FlexibleSpaceBar(
             collapseMode: CollapseMode.parallax,
             background: Image.asset(
-              "./assets/bicol.jpg",
+              "./assets/bicol.webp",
               height: 250.0,
               fit: BoxFit.cover,
             ),
@@ -184,7 +184,7 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
                   dense: true,
                   contentPadding: EdgeInsets.all(0),
                   leading: Image.asset(
-                    "./assets/pavilando.jpg",
+                    "./assets/pavilando.webp",
                     width: 50,
                   ),
                   title: Text(
@@ -206,7 +206,7 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
                   dense: true,
                   contentPadding: EdgeInsets.all(0),
                   leading: Image.asset(
-                    "./assets/sorra.jpg",
+                    "./assets/sorra.webp",
                     width: 50,
                   ),
                   title: Text(

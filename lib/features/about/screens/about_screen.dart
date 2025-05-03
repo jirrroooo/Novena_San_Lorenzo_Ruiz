@@ -73,7 +73,7 @@ class _AboutScreenState extends State<AboutScreen> {
           flexibleSpace: FlexibleSpaceBar(
             collapseMode: CollapseMode.parallax,
             background: Image.asset(
-              "./assets/background.png",
+              "./assets/background.webp",
               height: 250.0,
               fit: BoxFit.cover,
             ),
@@ -112,7 +112,7 @@ class _AboutScreenState extends State<AboutScreen> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(360),
                         child: Image.asset(
-                          './assets/jiro.jpg',
+                          './assets/jiro.webp',
                         ),
                       ),
                     ),
@@ -221,7 +221,7 @@ class _AboutScreenState extends State<AboutScreen> {
                                   minScale: 0.1, // Minimum zoom level
                                   maxScale: 3.0, // Maximum zoom level
                                   child: Image.asset(
-                                    './assets/donate.png',
+                                    './assets/donate.webp',
                                     fit: BoxFit
                                         .contain, // Adjust to fit the screen nicely
                                   ),
@@ -322,7 +322,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   dense: true,
                   contentPadding: const EdgeInsets.all(0),
                   leading: Image.asset(
-                    "./assets/bernarte.png",
+                    "./assets/bernarte.webp",
                     width: 50,
                   ),
                   title: const Text(
@@ -344,7 +344,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   dense: true,
                   contentPadding: const EdgeInsets.all(0),
                   leading: Image.asset(
-                    "./assets/pavilando.jpg",
+                    "./assets/pavilando.webp",
                     width: 50,
                   ),
                   title: const Text(
@@ -366,7 +366,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   dense: true,
                   contentPadding: const EdgeInsets.all(0),
                   leading: Image.asset(
-                    "./assets/sorra.jpg",
+                    "./assets/sorra.webp",
                     width: 50,
                   ),
                   title: const Text(
@@ -459,7 +459,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   dense: true,
                   contentPadding: const EdgeInsets.all(0),
                   leading: Image.asset(
-                    "./assets/aquino.png",
+                    "./assets/aquino.webp",
                     width: 50,
                   ),
                   title: const Text(
@@ -481,7 +481,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   dense: true,
                   contentPadding: const EdgeInsets.all(0),
                   leading: Image.asset(
-                    "./assets/abriol.jpg",
+                    "./assets/abriol.webp",
                     width: 50,
                   ),
                   title: const Text(

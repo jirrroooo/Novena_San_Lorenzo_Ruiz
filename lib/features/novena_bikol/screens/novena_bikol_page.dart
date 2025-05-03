@@ -170,7 +170,7 @@ class _NovenaBikolPageState extends State<NovenaBikolPage> {
                   flexibleSpace: FlexibleSpaceBar(
                     collapseMode: CollapseMode.parallax,
                     background: Image.asset(
-                      "./assets/bicol.jpg",
+                      "./assets/bicol.webp",
                       height: 250.0,
                       fit: BoxFit.cover,
                     ),

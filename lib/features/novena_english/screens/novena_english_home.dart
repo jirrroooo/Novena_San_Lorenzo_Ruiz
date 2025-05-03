@@ -76,7 +76,7 @@ class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
           flexibleSpace: FlexibleSpaceBar(
             collapseMode: CollapseMode.parallax,
             background: Image.asset(
-              "./assets/english.jpg",
+              "./assets/english.webp",
               height: 250.0,
               fit: BoxFit.cover,
             ),
@@ -159,7 +159,7 @@ class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
                   dense: true,
                   contentPadding: EdgeInsets.all(0),
                   leading: Image.asset(
-                    "./assets/aquino.png",
+                    "./assets/aquino.webp",
                     width: 50,
                   ),
                   title: Text(
@@ -181,7 +181,7 @@ class _NovenaEnglishHomeState extends State<NovenaEnglishHome> {
                   dense: true,
                   contentPadding: EdgeInsets.all(0),
                   leading: Image.asset(
-                    "./assets/abriol.jpg",
+                    "./assets/abriol.webp",
                     width: 50,
                   ),
                   title: Text(

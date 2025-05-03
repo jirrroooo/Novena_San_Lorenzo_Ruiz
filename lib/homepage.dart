@@ -48,20 +48,20 @@ class _HomePageState extends State<HomePage> {
   }
 
   final List<Map<String, String>> _homepageSelection = [
-    {"title": "Himno", "img_url": "./assets/himno.jpg", "nav": '/himno'},
+    {"title": "Himno", "img_url": "./assets/himno.webp", "nav": '/himno'},
     {
       "title": "Perpetual Novena",
-      "img_url": "./assets/perpetual.jpg",
+      "img_url": "./assets/perpetual.webp",
       "nav": "/perpetual-novena"
     },
     {
       "title": "Bicol Novena",
-      "img_url": "./assets/bicol.jpg",
+      "img_url": "./assets/bicol.webp",
       "nav": "/bicol-novena-home"
     },
     {
       "title": "English Novena",
-      "img_url": "./assets/english.jpg",
+      "img_url": "./assets/english.webp",
       "nav": "/english-novena-home"
     },
   ];
@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
           flexibleSpace: FlexibleSpaceBar(
             collapseMode: CollapseMode.parallax,
             background: Image.asset(
-              "./assets/lorenzo5.jpg",
+              "./assets/lorenzo5.webp",
               height: 250.0,
               fit: BoxFit.cover,
             ),
@@ -167,7 +167,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Container(
                     height: 250,
-                    child: Image.asset("./assets/prayers.jpg"),
+                    child: Image.asset("./assets/prayers.webp"),
                   ),
                   SizedBox(
                     height: 15,
@@ -256,7 +256,7 @@ class _HomePageState extends State<HomePage> {
                       child: SizedBox(
                         height: 480,
                         child: Image.asset(
-                          "./assets/lorenzo3.jpg",
+                          "./assets/lorenzo3.webp",
                           fit: BoxFit.contain,
                           width: double.infinity,
                         ),

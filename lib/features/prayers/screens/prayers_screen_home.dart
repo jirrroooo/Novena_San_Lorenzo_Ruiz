@@ -89,7 +89,7 @@ class _PrayersScreenHomeState extends State<PrayersScreenHome> {
           flexibleSpace: FlexibleSpaceBar(
             collapseMode: CollapseMode.parallax,
             background: Image.asset(
-              "./assets/prayers.jpg",
+              "./assets/prayers.webp",
               height: 250.0,
               fit: BoxFit.cover,
             ),
