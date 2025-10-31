@@ -137,7 +137,7 @@ class _AboutScreenState extends State<AboutScreen> {
                             overflow: TextOverflow.visible,
                           ),
                           Text(
-                            "Programmer X Future Priest",
+                            "Jesuit Candidate",
                             style: TextStyle(
                                 fontFamily: 'Inter',
                                 fontWeight: FontWeight.w400,
@@ -183,71 +183,14 @@ class _AboutScreenState extends State<AboutScreen> {
                 const Text(
                   "The developer is dedicated to creating Catholic-themed applications designed to strengthen faith and foster devotion through technology. This humble work is dedicated to the Almighty God.",
                   style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400),
+                    fontFamily: 'Inter',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
                   textAlign: TextAlign.justify,
                 ),
                 const SizedBox(
                   height: 15,
-                ),
-                const Text(
-                  "For enhanced experienced, the developer decided not to put advertisements to his apps as it distracts the focus of the devotees. However, if you wish to support the developer, click the Donate Now button to access the QR code.",
-                  style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400),
-                  textAlign: TextAlign.justify,
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return Dialog(
-                            insetPadding: EdgeInsets
-                                .zero, // Ensures the dialog uses the full screen
-                            child: GestureDetector(
-                              onTap: () => Navigator.of(context)
-                                  .pop(), // Close dialog on tap
-                              child: Container(
-                                color: Colors
-                                    .black, // Optional: Background color for better visibility
-                                child: InteractiveViewer(
-                                  minScale: 0.1, // Minimum zoom level
-                                  maxScale: 3.0, // Maximum zoom level
-                                  child: Image.asset(
-                                    './assets/donate.webp',
-                                    fit: BoxFit
-                                        .contain, // Adjust to fit the screen nicely
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                    child: const Text(
-                      "Donate Now",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    style: ButtonStyle(
-                        elevation: const WidgetStatePropertyAll(0),
-                        backgroundColor:
-                            WidgetStatePropertyAll(Colors.red[400]),
-                        textStyle: const WidgetStatePropertyAll(TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16))),
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
                 ),
                 const Text(
                   "For feedback, suggestions, or corrections, feel free to reach out at jiro.octavo@gmail.com.",
@@ -259,14 +202,14 @@ class _AboutScreenState extends State<AboutScreen> {
                   textAlign: TextAlign.justify,
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 RichText(
                   textAlign: TextAlign.justify,
                   text: TextSpan(
                     style: const TextStyle(
                       fontFamily: 'Inter',
-                      fontSize: 14,
+                      fontSize: 16,
                       fontWeight: FontWeight.w400,
                       color: Colors.black87, // Important to set color!
                     ),
