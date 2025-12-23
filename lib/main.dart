@@ -83,7 +83,7 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
         title: 'Novena to San Lorenzo Ruiz',
         debugShowCheckedModeBanner: false,
-        initialRoute: "/main-navigation",
+        initialRoute: "/",
         routes: {
           "/": (BuildContext context) => const SplashScreen(),
           "/main-navigation": (BuildContext context) => const MainNavigation(),
