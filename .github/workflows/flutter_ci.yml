@@ -1,19 +1,21 @@
-name: CI
+name: Flutter CI/CD
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-  flutter-ci:
+  test:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 0: Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Step 1: Set up Flutter
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -21,11 +23,47 @@ jobs:
           channel: 'stable'
           cache: true
 
+      # Step 2: Install dependencies
       - name: Install dependencies
         run: flutter pub get
 
+      # Step 3: Run lint (analyze)
       - name: Run Flutter Analyze (Lint)
-        run: flutter analyze --no-fatal-infos --no-fatal-warnings
+        run: flutter analyze
 
-      - name: Run Flutter tests
+      # Step 4: Run tests
+      - name: Run Flutter Tests
         run: flutter test --coverage
+          
+  build:
+    needs: [test]
+    name: Generate APK
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 0: Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 1: Set up Flutter
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.35.7'
+          channel: 'stable'
+          cache: true
+
+      # Step 2: Install dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Step 3: Build APK
+      - name: Build APK
+        run: flutter build apk --release
+
+      # Step 4: Upload APK as artifact
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
