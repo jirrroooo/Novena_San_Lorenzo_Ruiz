@@ -1,4 +1,4 @@
-name: Flutter Lint
+name: CI
 
 on:
   push:
@@ -26,3 +26,6 @@ jobs:
 
       - name: Run Flutter Analyze (Lint)
         run: flutter analyze --no-fatal-infos --no-fatal-warnings
+
+      - name: Run Flutter tests
+        run: flutter test --coverage
