@@ -127,24 +127,22 @@ class _HomePageState extends State<HomePage> {
                           context, _homepageSelection[index]["nav"]!);
                     }
                   },
-                  child: Flexible(
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          _homepageSelection[index]["img_url"]!,
-                          height: 110,
-                          fit: BoxFit.cover,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          _homepageSelection[index]["title"]!,
-                          style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w500),
-                        )
-                      ],
-                    ),
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        _homepageSelection[index]["img_url"]!,
+                        height: 110,
+                        fit: BoxFit.cover,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        _homepageSelection[index]["title"]!,
+                        style: const TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
+                      )
+                    ],
                   ),
                 );
               },
