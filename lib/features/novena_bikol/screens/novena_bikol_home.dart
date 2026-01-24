@@ -162,7 +162,7 @@ class _NovenaBikolHomeState extends State<NovenaBikolHome> {
                   dense: true,
                   contentPadding: EdgeInsets.all(0),
                   leading: Image.asset(
-                    "./assets/bernarte.png",
+                    "./assets/bernarte.webp",
                     width: 50,
                   ),
                   title: Text(
