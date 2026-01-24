@@ -37,7 +37,7 @@ jobs:
           
   build:
     needs: [test]
-    name: Generate APK
+    name: Generate AAB
     runs-on: ubuntu-latest
 
     steps:
