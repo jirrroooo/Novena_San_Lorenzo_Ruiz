@@ -100,27 +100,26 @@ jobs:
           channel: 'stable'
           cache: true
 
-      # # Step 2: Install dependencies
-      # - name: Install dependencies
-      #   run: flutter pub get
+      # Step 2: Increment Code Version
+      - name: Version Bump
+        uses: chkfung/android-version-actions@v1.2.3
+        with:
+          gradlePath: android/app/build.gradle
+          versionCode: ${{ github.run_number }}
 
-      # - name: Version Bump
-      #   uses: chkfung/android-version-actions@v1.2.3
-      #   with:
-      #     gradlePath: android/app/build.gradle
-      #     versionCode: ${{ github.run_number }}
-
-      # Step 4: Decode Keystore
+      # Step 3: Decode Keystore
       - name: Decode Keystore
         run: echo "${{ secrets.KEYSTORE }}" | base64 --decode > android/app/keystore.jks
 
-      # Step 5: Build APK
+      # Step 4: Build APK
       - name: Build AAB
         run: flutter build appbundle --release
 
+      # Step 5: Parse auth json file
       - name: Setup Autorization with Google Play Store
         run: echo '${{ secrets.PLAY_AUTH_JSON }}' > android/app/service_account.json
       
+      # Step 6: Deploy to Google Play
       - name: Deploy bundle to Google Play
         uses: r0adkll/upload-google-play@v1.1.3
         with:
