@@ -82,6 +82,11 @@ jobs:
     # needs: build
     runs-on: ubuntu-latest
 
+    env:
+      STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+
     steps:
       # Step 0: Checkout repo
       - name: Checkout repository
