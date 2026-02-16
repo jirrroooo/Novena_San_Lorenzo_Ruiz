@@ -95,15 +95,15 @@ jobs:
           channel: 'stable'
           cache: true
 
-      # Step 2: Install dependencies
-      - name: Install dependencies
-        run: flutter pub get
+      # # Step 2: Install dependencies
+      # - name: Install dependencies
+      #   run: flutter pub get
 
-      - name: Version Bump
-        uses: chkfung/android-version-actions@v1.2.3
-        with:
-          gradlePath: android/app/build.gradle
-          versionCode: ${{ github.run_number }}
+      # - name: Version Bump
+      #   uses: chkfung/android-version-actions@v1.2.3
+      #   with:
+      #     gradlePath: android/app/build.gradle
+      #     versionCode: ${{ github.run_number }}
 
       # Step 4: Decode Keystore
       - name: Decode Keystore
@@ -121,4 +121,3 @@ jobs:
           releaseFiles: build/app/outputs/bundle/release/app-release.aab
           track: internal
           status: "draft"
-          whatsNewDirectory: 
