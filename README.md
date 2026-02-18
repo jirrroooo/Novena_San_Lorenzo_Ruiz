@@ -1,16 +1,71 @@
-# novena_lorenzo
+<div align="center" width="30">
+<img src="./assets/logo.png" alt="Mihon logo" title="AniPlay logo" width="100"/>
+</div>
+<div align="center">
+  
+# St. Lorenzo Ruiz Novena
+</div>
+<div align="center">
 
-A new Flutter project.
+<p>Novena to St. Lorenzo Ruiz is an offline novena app for devotees. It contains different prayers in English and in Bicol Language.</p>
 
-## Getting Started
+[![forthebadge](data:image/svg+xml;base64,PHN2ZyBkYXRhLXYtM2M4N2I3YjQ9IiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzExLjU2MjUiIGhlaWdodD0iMzUiIHZpZXdCb3g9IjAgMCAzMTEuNTYyNSAzNSIgY2xhc3M9ImJhZGdlLXN2ZyI+PGRlZnMgZGF0YS12LTNjODdiN2I0PSIiPjwhLS0tLT48IS0tLS0+PCEtLS0tPjwvZGVmcz48cmVjdCBkYXRhLXYtM2M4N2I3YjQ9IiIgd2lkdGg9IjExNC40Mzc1IiBoZWlnaHQ9IjM1IiBmaWxsPSIjZjQyZjJmIi8+PHJlY3QgZGF0YS12LTNjODdiN2I0PSIiIHg9IjExNC40Mzc1IiB3aWR0aD0iMTEyLjY1NjI1IiBoZWlnaHQ9IjM1IiBmaWxsPSIjMzg5QUQ1Ii8+PCEtLS0tPjx0ZXh0IGRhdGEtdi0zYzg3YjdiND0iIiB4PSI1Ny4yMTg3NSIgeT0iMTcuNSIgZHk9IjAuMzVlbSIgZm9udC1zaXplPSIxMiIgZm9udC1mYW1pbHk9IlJvYm90bywgc2Fucy1zZXJpZiIgZmlsbD0iI0ZGRkZGRiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjIiIGZvbnQtd2VpZ2h0PSI2MDAiIGZvbnQtc3R5bGU9Im5vcm1hbCIgdGV4dC1kZWNvcmF0aW9uPSJub25lIiBmaWxsLW9wYWNpdHk9IjEiIGZvbnQtdmFyaWFudD0ibm9ybWFsIiBzdHlsZT0idGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsiPkJVSUxUIFdJVEg6PC90ZXh0PjxnIGRhdGEtdi0zYzg3YjdiND0iIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMjQuNDM3NSwgOS41KSBzY2FsZSgwLjY2NjY2NjY2NjY2NjY2NjYpIj48cGF0aCBkYXRhLXYtM2M4N2I3YjQ9IiIgZD0iTTE0LjMxNCAwTDIuMyAxMiA2IDE1LjcgMjEuNjg0LjAxM2gtNy4zNTd6bS4wMTQgMTEuMDcyTDcuODU3IDE3LjUzbDYuNDcgNi40N0gyMS43bC02LjQ2LTYuNDY4IDYuNDYtNi40NmgtNy4zN3oiIGZpbGw9IiNGRkZGRkYiLz48L2c+PHRleHQgZGF0YS12LTNjODdiN2I0PSIiIHg9IjE4MC43NjU2MjUiIHk9IjE3LjUiIGR5PSIwLjM1ZW0iIGZvbnQtc2l6ZT0iMTIiIGZvbnQtZmFtaWx5PSJNb250c2VycmF0LCBzYW5zLXNlcmlmIiBmaWxsPSIjRkZGRkZGIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iOTAwIiBsZXR0ZXItc3BhY2luZz0iMiIgZm9udC1zdHlsZT0ibm9ybWFsIiB0ZXh0LWRlY29yYXRpb249Im5vbmUiIGZpbGwtb3BhY2l0eT0iMSIgZm9udC12YXJpYW50PSJub3JtYWwiIHN0eWxlPSJ0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlOyI+RkxVVFRFUjwvdGV4dD48cmVjdCBkYXRhLXYtM2M4N2I3YjQ9IiIgeD0iMjI3LjA5Mzc1IiB3aWR0aD0iODQuNDY4NzUiIGhlaWdodD0iMzUiIGZpbGw9IiMyNjc0QTQiLz48ZyBkYXRhLXYtM2M4N2I3YjQ9IiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjM3LjA5Mzc1LCA5LjUpIHNjYWxlKDAuNjY2NjY2NjY2NjY2NjY2NikiPjxwYXRoIGRhdGEtdi0zYzg3YjdiND0iIiBkPSJNNC4xMDUgNC4xMDVTOS4xNTggMS41OCAxMS42ODQuMzE2YTMuMDc5IDMuMDc5IDAgMCAxIDEuNDgxLS4zMTVjLjc2Ni4wNDcgMS42NzcuNzg4IDEuNjc3Ljc4OEwyNCA5Ljk0OHY5Ljc4OWgtNC4yNjNWMjRIOS43ODlsLTktOUMuMzAzIDE0LjUgMCAxMy43OTUgMCAxMy4xMDVjMC0uMzE5LjE4LS44MTguMzE2LTEuMTA1bDMuNzg5LTcuODk1em0uNjc5LjY3OXYxMS43ODdjLjAwMi41NDMuMDIxIDEuMDI0LjQ5OCAxLjUwOEwxMC4yMDQgMjNoOC41MzN2LTQuMjYzTDQuNzg0IDQuNzg0em0xMi4wNTUtLjY3OGMtLjg5OS0uODk2LTEuODA5LTEuNzgtMi43NC0yLjY0My0uMzAyLS4yNjctLjU2Ny0uNDY4LTEuMDctLjQ2Mi0uMzcuMDE0LS44Ny4xOTUtLjg3LjE5NUw2LjM0MSA0LjEwNWwxMC40OTguMDAxeiIgZmlsbD0iI0ZGRkZGRiIvPjwvZz48dGV4dCBkYXRhLXYtM2M4N2I3YjQ9IiIgeD0iMjc5LjMyODEyNSIgeT0iMTcuNSIgZHk9IjAuMzVlbSIgZm9udC1zaXplPSIxMiIgZm9udC1mYW1pbHk9IlJvYm90bywgc2Fucy1zZXJpZiIgZmlsbD0iI0ZGRkZGRiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9IjUwMCIgbGV0dGVyLXNwYWNpbmc9IjIiIGZvbnQtc3R5bGU9Im5vcm1hbCIgdGV4dC1kZWNvcmF0aW9uPSJub25lIiBmaWxsLW9wYWNpdHk9IjEiIGZvbnQtdmFyaWFudD0ibm9ybWFsIiBzdHlsZT0idGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsiPkRBUlQ8L3RleHQ+PC9zdmc+)](https://flutter.dev/)
 
-This project is a starting point for a Flutter application.
+**DOWNLOAD THE APPLICATION**
 
-A few resources to get you started if this is your first Flutter project:
+[![forthebadge](data:image/svg+xml;base64,PHN2ZyBkYXRhLXYtM2M4N2I3YjQ9IiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjYwLjkwNjI1IiBoZWlnaHQ9IjM1IiB2aWV3Qm94PSIwIDAgMjYwLjkwNjI1IDM1IiBjbGFzcz0iYmFkZ2Utc3ZnIj48ZGVmcyBkYXRhLXYtM2M4N2I3YjQ9IiI+PCEtLS0tPjwhLS0tLT48IS0tLS0+PC9kZWZzPjxyZWN0IGRhdGEtdi0zYzg3YjdiND0iIiB3aWR0aD0iMTA4IiBoZWlnaHQ9IjM1IiBmaWxsPSIjZjQyZjJmIi8+PHJlY3QgZGF0YS12LTNjODdiN2I0PSIiIHg9IjEwOCIgd2lkdGg9IjE1Mi45MDYyNSIgaGVpZ2h0PSIzNSIgZmlsbD0iIzM4OUFENSIvPjwhLS0tLT48dGV4dCBkYXRhLXYtM2M4N2I3YjQ9IiIgeD0iNTQiIHk9IjE3LjUiIGR5PSIwLjM1ZW0iIGZvbnQtc2l6ZT0iMTIiIGZvbnQtZmFtaWx5PSJSb2JvdG8sIHNhbnMtc2VyaWYiIGZpbGw9IiNGRkZGRkYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIyIiBmb250LXdlaWdodD0iNjAwIiBmb250LXN0eWxlPSJub3JtYWwiIHRleHQtZGVjb3JhdGlvbj0ibm9uZSIgZmlsbC1vcGFjaXR5PSIxIiBmb250LXZhcmlhbnQ9Im5vcm1hbCIgc3R5bGU9InRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7Ij5ET1dOTE9BRDwvdGV4dD48ZyBkYXRhLXYtM2M4N2I3YjQ9IiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTE4LCA5LjUpIHNjYWxlKDAuNjY2NjY2NjY2NjY2NjY2NikiPjxwYXRoIGRhdGEtdi0zYzg3YjdiND0iIiBkPSJNMjIuMDE4IDEzLjI5OGwtMy45MTkgMi4yMTgtMy41MTUtMy40OTMgMy41NDMtMy41MjEgMy44OTEgMi4yMDJhMS40OSAxLjQ5IDAgMCAxIDAgMi41OTR6TTEuMzM3LjkyNGExLjQ4NiAxLjQ4NiAwIDAgMC0uMTEyLjU2OHYyMS4wMTdjMCAuMjE3LjA0NS40MTkuMTI0LjZsMTEuMTU1LTExLjA4N0wxLjMzNy45MjR6bTEyLjIwNyAxMC4wNjVsMy4yNTgtMy4yMzhMMy40NS4xOTVhMS40NjYgMS40NjYgMCAwIDAtLjk0Ni0uMTc5bDExLjA0IDEwLjk3M3ptMCAyLjA2N2wtMTEgMTAuOTMzYy4yOTguMDM2LjYxMi0uMDE2LjkwNi0uMTgzbDEzLjMyNC03LjU0LTMuMjMtMy4yMXoiIGZpbGw9IiNGRkZGRkYiLz48L2c+PHRleHQgZGF0YS12LTNjODdiN2I0PSIiIHg9IjE5NC40NTMxMjUiIHk9IjE3LjUiIGR5PSIwLjM1ZW0iIGZvbnQtc2l6ZT0iMTIiIGZvbnQtZmFtaWx5PSJNb250c2VycmF0LCBzYW5zLXNlcmlmIiBmaWxsPSIjRkZGRkZGIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iOTAwIiBsZXR0ZXItc3BhY2luZz0iMiIgZm9udC1zdHlsZT0ibm9ybWFsIiB0ZXh0LWRlY29yYXRpb249Im5vbmUiIGZpbGwtb3BhY2l0eT0iMSIgZm9udC12YXJpYW50PSJub3JtYWwiIHN0eWxlPSJ0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlOyI+R09PR0xFIFBMQVk8L3RleHQ+PCEtLS0tPjwvc3ZnPg==)](https://play.google.com/store/apps/details?id=com.jiro.st_lorenzo_ruiz_novena)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+</div>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
+
+
+<div align="center">
+<img src="./assets/Screenshot1.png" width=180>
+<img src="./assets/Screenshot2.png" width=180>
+<img src="./assets/Screenshot3.png" width=180>
+<img src="./assets/Screenshot4.png" width=180>
+<img src="./assets/Screenshot5.png" width=180>
+</div>
+
+## App Contents
+- Novena in Bicol and English: Pray in the language you prefer.
+- Perpetual Novena: Available in both Bicol and English versions.
+- Hymn to St. Lorenzo Ruiz: Sing along with the beautiful hymn in Bicol, complete with lyrics.
+- Ten Special Prayers to St. Lorenzo:
+    - Financial Blessings
+    - Family Guidance
+    - Support for Overseas Filipino Workers
+    - Job Seekers
+    - Students
+    - Overcoming Doubts and Fears
+    - Strengthening Faith
+    - Morning and Night Prayers
+    - Healing Prayer
+    - Biography of St. Lorenzo Ruiz: Learn about the life and martyrdom of the first Filipino saint.
+
+
+## App Features
+- Hymn Player: Listen to the hymn while following along with the lyrics.
+- Smart Notifications:
+    - Reminders every 28th day of the month to pray the Perpetual Novena.
+    - Daily reminders from September 19 to 27 to pray the Novena leading up to his feast day.
+    - Special notification on September 28 (St. Lorenzo Ruiz's Feast Day) to play the hymn.
+    - Customizable Prayer Text: Adjust the font size (Small, Normal, Large) to suit your reading preference.
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
