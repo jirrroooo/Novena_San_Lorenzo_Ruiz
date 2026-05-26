@@ -1,7 +1,6 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
 }
 
@@ -9,6 +8,51 @@ def keystoreProperties = new Properties()
 def keystorePropertiesFile = rootProject.file('key.properties')
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+def signingProperty = { String name ->
+    def envValue = System.getenv(name)
+    if (envValue != null && !envValue.trim().isEmpty()) {
+        return envValue.trim()
+    }
+
+    def propertyValue = keystoreProperties[name]
+    if (propertyValue != null && !propertyValue.toString().trim().isEmpty()) {
+        return propertyValue.toString().trim()
+    }
+
+    return null
+}
+
+def releaseTaskRequested = gradle.startParameter.taskNames.any { taskName ->
+    def normalizedTaskName = taskName.toLowerCase(Locale.ROOT)
+    normalizedTaskName.contains("release")
+}
+
+def resolvedKeyAlias = signingProperty("KEY_ALIAS")
+def resolvedKeyPassword = signingProperty("KEY_PASSWORD")
+def resolvedStorePassword = signingProperty("STORE_PASSWORD")
+def resolvedStoreFile = signingProperty("STORE_FILE")
+
+if (resolvedStoreFile == null && resolvedKeyAlias && resolvedKeyPassword && resolvedStorePassword) {
+    resolvedStoreFile = "keystore.jks"
+}
+
+if (releaseTaskRequested) {
+    def missingSigningProperties = []
+    if (!resolvedKeyAlias) missingSigningProperties.add("KEY_ALIAS")
+    if (!resolvedKeyPassword) missingSigningProperties.add("KEY_PASSWORD")
+    if (!resolvedStorePassword) missingSigningProperties.add("STORE_PASSWORD")
+    if (!resolvedStoreFile) missingSigningProperties.add("STORE_FILE or android/app/keystore.jks")
+
+    if (!missingSigningProperties.isEmpty()) {
+        throw new GradleException("Release signing is incomplete. Provide ${missingSigningProperties.join(', ')} through CI secrets/environment variables or android/key.properties.")
+    }
+
+    def resolvedStoreFileObject = file(resolvedStoreFile)
+    if (!resolvedStoreFileObject.exists()) {
+        throw new GradleException("Release signing store file was not found at ${resolvedStoreFileObject}. Set STORE_FILE or decode the CI keystore to android/app/keystore.jks.")
+    }
 }
 
 android {
@@ -27,10 +71,7 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.jiro.st_lorenzo_ruiz_novena"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
@@ -44,22 +85,12 @@ android {
 
     signingConfigs {
         release {
-            keyAlias = System.getenv("KEY_ALIAS")
-            keyPassword = System.getenv("KEY_PASSWORD")
-            storeFile = file("keystore.jks")
-            storePassword = System.getenv("STORE_PASSWORD")
+            keyAlias = resolvedKeyAlias
+            keyPassword = resolvedKeyPassword
+            storeFile = resolvedStoreFile ? file(resolvedStoreFile) : null
+            storePassword = resolvedStorePassword
         }
     }
-
-    // LOCAL SETUP
-    // signingConfigs {
-    //     release {
-    //         keyAlias = keystoreProperties['KEY_ALIAS']
-    //         keyPassword = keystoreProperties['KEY_PASSWORD']
-    //         storeFile = keystoreProperties['STORE_FILE'] ? file(keystoreProperties['STORE_FILE'])  : null
-    //         storePassword = keystoreProperties['STORE_PASSWORD']
-    //     }
-    // }
 
     buildTypes {
         release {
