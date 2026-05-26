@@ -1,7 +1,7 @@
 name: novena_lorenzo
 description: An offline novena app to St. Lorenzo Ruiz
 publish_to: 'none'
-version: 1.0.7+8
+version: 1.0.7+9
 
 environment:
   sdk: ^3.5.2
