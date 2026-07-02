@@ -128,20 +128,13 @@ class _AboutScreenState extends State<AboutScreen> {
                             height: 10,
                           ),
                           Text(
-                            "Bro. John Rommel B. Octavo",
+                            "John Rommel B. Octavo",
                             style: TextStyle(
                                 fontFamily: 'Inter',
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16),
                             maxLines: 2,
                             overflow: TextOverflow.visible,
-                          ),
-                          Text(
-                            "Jesuit Candidate",
-                            style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14),
                           ),
                           Text(
                             "App Developer",
