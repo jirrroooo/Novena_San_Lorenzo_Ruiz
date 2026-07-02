@@ -45,6 +45,11 @@ Future<void> scheduleNotifications() async {
               importance: Importance.max,
               priority: Priority.high,
             ),
+            iOS: DarwinNotificationDetails(
+              presentAlert: true,
+              presentBadge: true,
+              presentSound: true,
+            ),
           ),
           androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
           uiLocalNotificationDateInterpretation:
@@ -73,6 +78,11 @@ Future<void> scheduleNotifications() async {
                 importance: Importance.max,
                 priority: Priority.high,
               ),
+              iOS: DarwinNotificationDetails(
+                presentAlert: true,
+                presentBadge: true,
+                presentSound: true,
+              ),
             ),
 
             androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
@@ -97,6 +107,11 @@ Future<void> scheduleNotifications() async {
             channelDescription: 'Notifications for September 19–28',
             importance: Importance.max,
             priority: Priority.high,
+          ),
+          iOS: DarwinNotificationDetails(
+            presentAlert: true,
+            presentBadge: true,
+            presentSound: true,
           ),
         ),
 
