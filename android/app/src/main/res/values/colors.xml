@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tint for the notification icon (pastel red, matches AppColors.rose). -->
+    <color name="notification_accent">#E56B6F</color>
+</resources>

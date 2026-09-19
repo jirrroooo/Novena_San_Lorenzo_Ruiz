@@ -46,6 +46,19 @@ class ReminderService {
     icon: 'ic_stat_cross',
   );
 
+  /// Channel for Firebase push announcements. Also set as FCM's default
+  /// channel in AndroidManifest.xml, so it must keep this id.
+  static const announcementChannelId = 'announcements';
+
+  static const _announcementChannel = AndroidNotificationDetails(
+    announcementChannelId,
+    'Announcements',
+    channelDescription: 'News and announcements about the novena',
+    importance: Importance.high,
+    priority: Priority.high,
+    icon: 'ic_stat_cross',
+  );
+
   static const _darwinDetails = DarwinNotificationDetails(
     presentAlert: true,
     presentBadge: false,
@@ -77,6 +90,19 @@ class ReminderService {
         macOS: darwin,
       ),
     );
+    // Create the push channel up front so background FCM messages use it.
+    await _plugin
+        .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin
+        >()
+        ?.createNotificationChannel(
+          const AndroidNotificationChannel(
+            announcementChannelId,
+            'Announcements',
+            description: 'News and announcements about the novena',
+            importance: Importance.high,
+          ),
+        );
     _initialized = true;
   }
 
@@ -106,6 +132,23 @@ class ReminderService {
             false;
       default:
         return false;
+    }
+  }
+
+  /// Shows a push message received while the app is in the foreground.
+  Future<void> showAnnouncement({String? title, String? body}) async {
+    try {
+      await _ensureInitialized();
+      await _plugin.show(
+        id: DateTime.now().millisecondsSinceEpoch.remainder(1 << 30),
+        title: title,
+        body: body,
+        notificationDetails: const NotificationDetails(
+          android: _announcementChannel,
+        ),
+      );
+    } catch (e, s) {
+      await LogService.instance.error(e, s);
     }
   }
 

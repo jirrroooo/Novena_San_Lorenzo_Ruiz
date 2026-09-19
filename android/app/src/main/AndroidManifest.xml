@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- The app is fully offline. Links (YouTube, privacy policy, e-mail) open in
-         other apps, so no INTERNET permission is needed in release builds.
+    <!-- Devotional content is fully offline; links open in other apps. INTERNET
+         is added by the Firebase Messaging library (merged manifest) for push.
          Reminders use inexact alarms, so the restricted SCHEDULE_EXACT_ALARM /
          USE_EXACT_ALARM permissions are intentionally not requested. -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
@@ -45,6 +45,19 @@
                 <action android:name="com.htc.intent.action.QUICKBOOT_POWERON"/>
             </intent-filter>
         </receiver>
+
+        <!-- Firebase Cloud Messaging: defaults for notifications shown by the OS
+             while the app is in the background. The channel is created in
+             ReminderService (lib/core/services/reminder_service.dart). -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="announcements" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_stat_cross" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/notification_accent" />
 
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->

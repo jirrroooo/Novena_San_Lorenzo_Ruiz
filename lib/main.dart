@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:novena_lorenzo/app/app.dart';
+import 'package:novena_lorenzo/core/services/push_service.dart';
 import 'package:novena_lorenzo/core/services/reminder_service.dart';
 import 'package:novena_lorenzo/core/settings/app_settings.dart';
 
@@ -25,5 +26,7 @@ Future<void> main() async {
       // again on every launch. Users can re-enable reminders there.
       await settings.setRemindersEnabled(false);
     }
+    // Firebase push (no-op until the Firebase config files are added).
+    await PushService.instance.start();
   });
 }

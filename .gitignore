@@ -40,3 +40,6 @@ app.*.map.json
 **/key.properties
 *.jks
 *.keystore
+
+# Firebase Android config comes from the GOOGLE_SERVICES_JSON secret in CI
+android/app/google-services.json
