@@ -35,3 +35,8 @@ app.*.map.json
 /android/key.properties
 /android/app/keystore.jks
 /android/app/service_account.json
+
+# Android release signing secrets (never commit; CI uses GitHub secrets)
+**/key.properties
+*.jks
+*.keystore
