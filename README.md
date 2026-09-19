@@ -1,12 +1,12 @@
 <div align="center">
-  <img src="./assets/logo.png" alt="St. Lorenzo Ruiz Novena logo" width="112" />
+  <img src="./docs/logo.png" alt="St. Lorenzo Ruiz Novena logo" width="112" />
 
   # St. Lorenzo Ruiz Novena
 
   An offline Flutter devotional app for praying the novena to St. Lorenzo Ruiz in English and Bikol.
 
-  [![Flutter](https://img.shields.io/badge/Flutter-3.35.7-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev/)
-  [![Dart](https://img.shields.io/badge/Dart-3.5%2B-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
+  [![Flutter](https://img.shields.io/badge/Flutter-3.44-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev/)
+  [![Dart](https://img.shields.io/badge/Dart-3.12%2B-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
   [![Android](https://img.shields.io/badge/Android-release-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://developer.android.com/)
   [![CI/CD](https://img.shields.io/github/actions/workflow/status/jirrroooo/Novena_San_Lorenzo_Ruiz/flutter_ci_cd.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=CI%2FCD)](https://github.com/jirrroooo/Novena_San_Lorenzo_Ruiz/actions)
 
@@ -22,11 +22,11 @@ The app is built with Flutter and uses local JSON content files, BLoC state mana
 ## Screenshots
 
 <div align="center">
-  <img src="./assets/Screenshot1.png" alt="Home screen" width="170" />
-  <img src="./assets/Screenshot2.png" alt="Novena screen" width="170" />
-  <img src="./assets/Screenshot3.png" alt="Prayer screen" width="170" />
-  <img src="./assets/Screenshot4.png" alt="Hymn screen" width="170" />
-  <img src="./assets/Screenshot5.png" alt="About screen" width="170" />
+  <img src="./docs/screenshots/screenshot1.png" alt="Home screen" width="170" />
+  <img src="./docs/screenshots/screenshot2.png" alt="Novena days" width="170" />
+  <img src="./docs/screenshots/screenshot3.png" alt="Novena day screen" width="170" />
+  <img src="./docs/screenshots/screenshot4.png" alt="Hymn screen" width="170" />
+  <img src="./docs/screenshots/screenshot5.png" alt="Settings screen" width="170" />
 </div>
 
 ## Features
@@ -38,24 +38,31 @@ The app is built with Flutter and uses local JSON content files, BLoC state mana
 | Hymn player | Includes the St. Lorenzo Ruiz hymn audio asset with lyrics. |
 | Prayer reminders | Schedules monthly devotion reminders every 28th day and annual novena reminders from September 19 to 28. |
 | Feast day notification | Sends a September 28 reminder for the feast day of St. Lorenzo Ruiz. |
-| Adjustable reading experience | Prayer screens support readable devotional content for mobile use. |
-| App release automation | GitHub Actions builds the Android App Bundle, creates a GitHub release, and uploads to Google Play internal testing. |
+| Adjustable reading experience | Persistent text size control on every reading screen, plus light, dark and system themes. |
+| App release automation | GitHub Actions builds the Android App Bundle, creates a GitHub release, and uploads a draft to the Google Play production and closed testing tracks. |
 
 ## App Modules
 
 ```text
 lib/
-├── common/                  Shared app screens and error UI
-├── data/                    Local JSON devotional content and app data
-├── features/
-│   ├── biography/           Biography content and BLoC flow
-│   ├── himno/               Hymn player feature
-│   ├── novena_bikol/        Bikol novena feature
-│   ├── novena_english/      English novena feature
-│   ├── perpetual_novena/    Perpetual novena feature
-│   └── prayers/             Special prayers feature
-├── utils/                   Notifications, permissions, and logging helpers
-└── widgets/                 Reusable UI widgets, including scripture
+├── app/                     App shell (MaterialApp, bottom navigation)
+├── core/
+│   ├── content/             JSON content loader, generic ContentCubit, devotion calendar
+│   ├── services/            Reminders, logging, external links
+│   ├── settings/            Persisted theme, text size and reminder settings
+│   ├── theme/               Colours and light/dark ThemeData
+│   └── widgets/             Shared headers, header art, reading typography, cards
+├── data/                    Local JSON devotional content
+└── features/
+    ├── about/               Settings & about tab
+    ├── biography/           Life of St. Lorenzo Ruiz
+    ├── himno/               Hymn player and lyrics
+    ├── home/                Home tab
+    ├── novena_bikol/        Bicol novena
+    ├── novena_english/      English novena
+    ├── perpetual_novena/    Perpetual novena (every 28th)
+    ├── prayers/             Prayers for intentions
+    └── scripture/           Random scripture verse card
 ```
 
 ## Tech Stack
@@ -64,19 +71,20 @@ lib/
 | --- | --- |
 | Framework | Flutter |
 | Language | Dart |
-| State management | flutter_bloc |
-| Audio | just_audio |
-| Notifications | flutter_local_notifications, flutter_timezone, permission_handler |
+| State management | flutter_bloc (one ContentCubit per screen) |
+| Audio | just_audio, audio_session |
+| Notifications | flutter_local_notifications, flutter_timezone, timezone |
 | Persistence | shared_preferences |
-| Connectivity and links | connectivity_plus, url_launcher |
-| Android release | Gradle, GitHub Actions, Google Play upload action |
+| Links | url_launcher |
+| Android release | Gradle (AGP 8.13, Kotlin 2.2), GitHub Actions, Play Developer API (`scripts/play_upload.py`) |
 
 ## Getting Started
 
 ### Prerequisites
 
-- Flutter stable SDK `3.35.7` or compatible
-- Dart SDK compatible with `^3.5.2`
+- Flutter stable SDK `3.44.9` (the version used by CI)
+- Dart SDK `^3.12.0`
+- JDK 17
 - Android Studio or Android SDK command-line tools
 - A configured Android emulator or physical device
 
@@ -116,7 +124,7 @@ Required signing values:
 | `KEY_ALIAS` | Alias of the signing key inside the keystore. |
 | `STORE_FILE` | Optional path to the keystore file. Defaults to `android/app/keystore.jks` in CI. |
 
-Example local `android/key.properties`:
+Example local `android/key.properties` (git-ignored, never commit it):
 
 ```properties
 STORE_PASSWORD=your-store-password
@@ -139,17 +147,17 @@ If a release build is missing signing values or the keystore file cannot be foun
 
 ## CI/CD
 
-The workflow in `.github/workflows/flutter_ci_cd.yml` runs on pushes to `main` and performs the release pipeline:
+The workflow in `.github/workflows/flutter_ci_cd.yml` has two jobs:
 
-1. Reads the app version from `pubspec.yaml`.
-2. Skips the pipeline if a matching release tag already exists.
-3. Validates signing secrets before creating a tag.
-4. Creates and pushes a version tag.
-5. Installs Flutter and project dependencies.
-6. Decodes the Android keystore.
-7. Builds a release Android App Bundle.
-8. Creates a GitHub release with the generated `.aab`.
-9. Uploads the release to Google Play internal testing as a draft.
+- **Analyze & test** runs on every push and pull request (`dart format`, `flutter analyze`, `flutter test`).
+- **Build & upload release** runs on pushes to `main` after the checks pass:
+  1. Reads the version from `pubspec.yaml` and skips the release if tag `v<version>` already exists.
+  2. Validates the signing and Play secrets.
+  3. Builds a signed release App Bundle.
+  4. Creates the GitHub release and tag (only after a successful build).
+  5. Uploads the bundle once and adds it as a **draft** to both the **production** and **closed testing** (`alpha`) tracks. Nothing goes live until it is released in the Play Console.
+
+To use a custom closed testing track, change `PLAY_TRACKS` in the workflow.
 
 Required GitHub Actions secrets:
 
@@ -163,7 +171,7 @@ Required GitHub Actions secrets:
 
 ## Content and Assets
 
-The app content is stored locally under `lib/data/`, while images and audio are stored under `assets/`. These paths are registered in `pubspec.yaml` so the app can work without an internet connection for devotional content.
+The app content is stored locally under `lib/data/`, while images and audio are stored under `assets/`. `assets/splash/` holds the native splash sources (not bundled) and `docs/` holds README media. The bundled paths are registered in `pubspec.yaml` so the app can work without an internet connection for devotional content.
 
 ## Release Versioning
 
