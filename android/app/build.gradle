@@ -61,13 +61,10 @@ android {
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        // Required by flutter_local_notifications for scheduled notifications.
         coreLibraryDesugaringEnabled true
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11
     }
 
     defaultConfig {
@@ -77,11 +74,6 @@ android {
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
-
-    dependencies {
-        coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'   
-    }
-
 
     signingConfigs {
         release {
@@ -97,6 +89,18 @@ android {
             signingConfig = signingConfigs.release
         }
     }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.1.5"
+    // WindowCompat.enableEdgeToEdge() for the edge-to-edge window setup in MainActivity.
+    implementation "androidx.core:core-ktx:1.17.0"
 }
 
 flutter {
