@@ -76,7 +76,7 @@ jobs:
           VERSION_NAME=${APP_VERSION%%+*}
           VERSION_CODE=${APP_VERSION#*+}
           if [ -z "$VERSION_NAME" ] || [ "$VERSION_NAME" = "$APP_VERSION" ]; then
-            echo "::error::pubspec.yaml version must be name+code, e.g. 1.1.0+10"
+            echo "::error::pubspec.yaml version must be name+code, e.g. 2.0.0+11"
             exit 1
           fi
           echo "name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
