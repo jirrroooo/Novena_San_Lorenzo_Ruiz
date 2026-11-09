@@ -5,8 +5,8 @@
 
   An offline Flutter devotional app for praying the novena to St. Lorenzo Ruiz in English and Bikol.
 
-  [![Flutter](https://img.shields.io/badge/Flutter-3.44-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev/)
-  [![Dart](https://img.shields.io/badge/Dart-3.12%2B-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
+  [![Flutter](https://img.shields.io/badge/Flutter-3.47.9-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev/)
+  [![Dart](https://img.shields.io/badge/Dart-3.13.7-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
   [![Android](https://img.shields.io/badge/Android-release-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://developer.android.com/)
   [![CI/CD](https://img.shields.io/github/actions/workflow/status/jirrroooo/Novena_San_Lorenzo_Ruiz/flutter_ci_cd.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=CI%2FCD)](https://github.com/jirrroooo/Novena_San_Lorenzo_Ruiz/actions)
 
@@ -76,16 +76,14 @@ lib/
 | Notifications | flutter_local_notifications, flutter_timezone, timezone |
 | Persistence | shared_preferences |
 | Links | url_launcher |
-| Android release | Gradle (AGP 8.13, Kotlin 2.2), GitHub Actions, Play Developer API (`scripts/play_upload.py`) |
+| Android release | Gradle 9.3.1 (AGP 9.1.1, Kotlin 2.4), GitHub Actions, Play Developer API (`scripts/play_upload.py`) |
 
 ## Getting Started
 
 ### Prerequisites
 
-- Flutter stable SDK `3.44.9` (the version used by CI)
-- Dart SDK `^3.12.0`
-- JDK 17
-- Android Studio or Android SDK command-line tools
+- Flutter stable SDK `3.47.9` (the version used by CI), with Dart `3.13.7`
+- Android Studio Rabbit 2 with its bundled JDK 25, or Android SDK command-line tools and JDK 25
 - A configured Android emulator or physical device
 
 ### Install Dependencies
@@ -149,13 +147,13 @@ If a release build is missing signing values or the keystore file cannot be foun
 
 The workflow in `.github/workflows/flutter_ci_cd.yml` has two jobs:
 
-- **Analyze & test** runs on every push and pull request (`dart format`, `flutter analyze`, `flutter test`).
+- **Analyze & test** checks Dart formatting, runs analysis and tests, and builds a debug APK on pushes and pull requests.
 - **Build & upload release** runs on pushes to `main` after the checks pass:
   1. Reads the version from `pubspec.yaml` and skips the release if tag `v<version>` already exists.
   2. Validates the signing and Play secrets.
   3. Builds a signed release App Bundle.
-  4. Creates the GitHub release and tag (only after a successful build).
-  5. Uploads the bundle once and adds it as a **draft** to both the **production** and **closed testing** (`alpha`) tracks. Nothing goes live until it is released in the Play Console.
+  4. Uploads the bundle once as a **draft** to both the **production** and **closed testing** (`alpha`) tracks for manual release in Play Console.
+  5. Creates the GitHub release and tag after the draft upload succeeds.
 
 To use a custom closed testing track, change `PLAY_TRACKS` in the workflow.
 

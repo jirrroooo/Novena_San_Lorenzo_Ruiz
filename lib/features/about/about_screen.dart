@@ -9,8 +9,8 @@ import 'package:novena_lorenzo/core/widgets/reading.dart';
 import 'package:novena_lorenzo/core/widgets/reading_settings_sheet.dart';
 import 'package:novena_lorenzo/data/translation.dart';
 
-const _privacyPolicyUrl =
-    'https://www.termsfeed.com/live/7263e95b-e3b4-47f2-aa5e-92a8050331a3';
+const _privacyPolicyUrl = 'https://johnrommeloctavo.com/novena/privacy';
+const _termsOfServiceUrl = 'https://johnrommeloctavo.com/novena/terms';
 const _contactEmail = 'jiro.octavo@gmail.com';
 
 /// "More" tab: settings, credits and information about the app.
@@ -123,6 +123,13 @@ class AboutScreen extends StatelessWidget {
                     title: const Text('Privacy policy'),
                     trailing: const Icon(Icons.open_in_new_rounded, size: 20),
                     onTap: () => LinkService.open(context, _privacyPolicyUrl),
+                  ),
+                  const Divider(indent: 16, endIndent: 16),
+                  ListTile(
+                    leading: const Icon(Icons.gavel_rounded),
+                    title: const Text('Terms of Service'),
+                    trailing: const Icon(Icons.open_in_new_rounded, size: 20),
+                    onTap: () => LinkService.open(context, _termsOfServiceUrl),
                   ),
                   const Divider(indent: 16, endIndent: 16),
                   ListTile(
