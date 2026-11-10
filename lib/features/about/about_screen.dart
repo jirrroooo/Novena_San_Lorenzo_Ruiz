@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:novena_lorenzo/core/services/link_service.dart';
 import 'package:novena_lorenzo/core/services/reminder_service.dart';
 import 'package:novena_lorenzo/core/settings/app_settings.dart';
-import 'package:novena_lorenzo/core/widgets/collapsing_header.dart';
+import 'package:novena_lorenzo/core/theme/app_theme.dart';
 import 'package:novena_lorenzo/core/widgets/credits.dart';
-import 'package:novena_lorenzo/core/widgets/header_art.dart';
+import 'package:novena_lorenzo/core/widgets/list_items.dart';
+import 'package:novena_lorenzo/core/widgets/page_header.dart';
 import 'package:novena_lorenzo/core/widgets/reading.dart';
 import 'package:novena_lorenzo/core/widgets/reading_settings_sheet.dart';
 import 'package:novena_lorenzo/data/translation.dart';
@@ -21,54 +22,44 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final scheme = Theme.of(context).colorScheme;
-
-    Widget heading(String text) => Padding(
-      padding: const EdgeInsets.only(top: 28, bottom: 8),
-      child: Text(
-        text,
-        style: textTheme.titleSmall?.copyWith(color: scheme.primary),
-      ),
+    final external = Icon(
+      Icons.open_in_new_rounded,
+      size: 20,
+      color: scheme.onSurfaceVariant,
     );
 
     return CustomScrollView(
       slivers: [
-        const CollapsingHeader(
-          title: 'Settings & About',
-          subtitle: 'St. Lorenzo Ruiz Novena',
-          background: HeaderArt(
-            icon: Icons.tune_rounded,
-            palette: ArtPalette.stone,
-          ),
-        ),
+        const PageHeader(title: 'Settings & About'),
         ReadingSliver(
           top: 0,
           children: [
-            heading('Reading'),
+            const GroupLabel('Reading'),
             const Card(
               child: Padding(
-                padding: EdgeInsets.all(16),
+                padding: EdgeInsets.all(Space.l),
                 child: ReadingSettingsPanel(inSheet: false),
               ),
             ),
-            heading('Reminders'),
+            const GroupLabel('Reminders'),
             const Card(child: _RemindersTile()),
-            heading('About the app'),
+            const GroupLabel('About the app'),
             Card(
               child: Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(Space.l),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
                         CircleAvatar(
-                          radius: 30,
+                          radius: 24,
                           backgroundImage: const AssetImage(
                             'assets/images/jiro.webp',
                           ),
-                          backgroundColor: scheme.primaryContainer,
+                          backgroundColor: scheme.surfaceContainerHighest,
                         ),
-                        const SizedBox(width: 14),
+                        const SizedBox(width: Space.l),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,14 +70,16 @@ class AboutScreen extends StatelessWidget {
                               ),
                               Text(
                                 'App Developer',
-                                style: textTheme.bodyMedium,
+                                style: textTheme.bodySmall?.copyWith(
+                                  color: scheme.onSurfaceVariant,
+                                ),
                               ),
                             ],
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: Space.l),
                     const _Body(
                       'Welcome to the St. Lorenzo Ruiz Novena App, created to deepen '
                       'devotion to the first Filipino saint, St. Lorenzo Ruiz.',
@@ -99,53 +92,57 @@ class AboutScreen extends StatelessWidget {
                       'The developer is dedicated to creating Catholic-themed applications '
                       'designed to strengthen faith and foster devotion through technology. '
                       'This humble work is dedicated to the Almighty God.',
+                      last: true,
                     ),
                   ],
                 ),
               ),
             ),
-            const SizedBox(height: 12),
-            Card(
-              child: Column(
-                children: [
-                  ListTile(
-                    leading: const Icon(Icons.mail_outline_rounded),
-                    title: const Text('Feedback & corrections'),
-                    subtitle: const Text(_contactEmail),
-                    onTap: () => LinkService.open(
-                      context,
-                      'mailto:$_contactEmail?subject=St.%20Lorenzo%20Ruiz%20Novena',
-                    ),
+            const SizedBox(height: Space.m),
+            ListGroup(
+              dividerIndent: ListRow.textIndentWithIcon,
+              children: [
+                ListRow(
+                  leading: const Icon(Icons.mail_outline_rounded),
+                  title: 'Feedback & corrections',
+                  subtitle: _contactEmail,
+                  trailing: external,
+                  onTap: () => LinkService.email(
+                    context,
+                    _contactEmail,
+                    subject: 'St. Lorenzo Ruiz Novena',
                   ),
-                  const Divider(indent: 16, endIndent: 16),
-                  ListTile(
-                    leading: const Icon(Icons.privacy_tip_outlined),
-                    title: const Text('Privacy policy'),
-                    trailing: const Icon(Icons.open_in_new_rounded, size: 20),
-                    onTap: () => LinkService.open(context, _privacyPolicyUrl),
+                ),
+                ListRow(
+                  leading: const Icon(Icons.privacy_tip_outlined),
+                  title: 'Privacy policy',
+                  trailing: external,
+                  onTap: () => LinkService.open(context, _privacyPolicyUrl),
+                ),
+                ListRow(
+                  leading: const Icon(Icons.gavel_rounded),
+                  title: 'Terms of Service',
+                  trailing: external,
+                  onTap: () => LinkService.open(context, _termsOfServiceUrl),
+                ),
+                ListRow(
+                  leading: const Icon(Icons.description_outlined),
+                  title: 'Open-source licenses',
+                  onTap: () => showLicensePage(
+                    context: context,
+                    applicationName: 'St. Lorenzo Ruiz Novena',
                   ),
-                  const Divider(indent: 16, endIndent: 16),
-                  ListTile(
-                    leading: const Icon(Icons.gavel_rounded),
-                    title: const Text('Terms of Service'),
-                    trailing: const Icon(Icons.open_in_new_rounded, size: 20),
-                    onTap: () => LinkService.open(context, _termsOfServiceUrl),
-                  ),
-                  const Divider(indent: 16, endIndent: 16),
-                  ListTile(
-                    leading: const Icon(Icons.description_outlined),
-                    title: const Text('Open-source licenses'),
-                    onTap: () => showLicensePage(
-                      context: context,
-                      applicationName: 'St. Lorenzo Ruiz Novena',
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-            heading('Novena texts'),
-            const ApprovalCredits(translation: Translation.bicol),
-            const ApprovalCredits(translation: Translation.english),
+            const ApprovalCredits(
+              translation: Translation.bicol,
+              heading: 'Bicol novena text',
+            ),
+            const ApprovalCredits(
+              translation: Translation.english,
+              heading: 'English novena text',
+            ),
           ],
         ),
       ],
@@ -154,15 +151,20 @@ class AboutScreen extends StatelessWidget {
 }
 
 class _Body extends StatelessWidget {
-  const _Body(this.text);
+  const _Body(this.text, {this.last = false});
 
   final String text;
+  final bool last;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Text(text, style: Theme.of(context).textTheme.bodyLarge),
+      padding: EdgeInsets.only(bottom: last ? 0 : Space.m),
+      child: Text(
+        text,
+        style: Theme.of(context).textTheme.bodyLarge
+            ?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
+      ),
     );
   }
 }
@@ -199,7 +201,11 @@ class _RemindersTileState extends State<_RemindersTile> {
   Widget build(BuildContext context) {
     final settings = AppSettingsScope.of(context);
     return SwitchListTile(
-      secondary: const Icon(Icons.notifications_active_outlined),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: Space.l,
+        vertical: Space.xs,
+      ),
+      secondary: const Icon(Icons.notifications_none_rounded),
       title: const Text('Prayer reminders'),
       subtitle: const Text(
         'Novena days (Sept 19–27), the feast day (Sept 28) '

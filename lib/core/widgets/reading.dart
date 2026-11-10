@@ -1,11 +1,12 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:novena_lorenzo/core/settings/app_settings.dart';
 import 'package:novena_lorenzo/core/theme/app_theme.dart';
 import 'package:novena_lorenzo/data/translation.dart';
 
 /// Typography for devotional text, scaled by the user's reading text size.
+///
+/// Set like a missal: serif text, red italic rubrics, and red small capitals
+/// for who speaks. Three sizes (22, 17, 15) and two weights.
 class ReadingStyles {
   ReadingStyles._(this.scale, this.theme);
 
@@ -19,38 +20,44 @@ class ReadingStyles {
 
   ColorScheme get _scheme => theme.colorScheme;
 
-  TextStyle get body =>
-      TextStyle(fontSize: 17 * scale, height: 1.6, color: _scheme.onSurface);
+  TextStyle get body => TextStyle(
+    fontFamily: AppFonts.serif,
+    fontSize: 17 * scale,
+    height: 1.6,
+    color: _scheme.onSurface,
+  );
 
   TextStyle get emphasis => body.copyWith(fontStyle: FontStyle.italic);
 
   TextStyle get heading => TextStyle(
-    fontSize: 21 * scale,
+    fontFamily: AppFonts.serif,
+    fontSize: 22 * scale,
     height: 1.3,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w600,
     color: _scheme.onSurface,
   );
 
-  TextStyle get subheading => TextStyle(
-    fontSize: 16 * scale,
-    height: 1.4,
-    fontWeight: FontWeight.w600,
-    letterSpacing: 0.2,
-    color: _scheme.primary,
-  );
-
+  /// Instructions for the one praying (not read aloud): red italic.
   TextStyle get rubric => TextStyle(
+    fontFamily: AppFonts.serif,
     fontSize: 15 * scale,
     height: 1.5,
     fontStyle: FontStyle.italic,
-    color: _scheme.onSurfaceVariant,
+    color: _scheme.primary,
   );
 
-  TextStyle get speaker => TextStyle(
-    fontSize: 12.5 * scale,
-    fontWeight: FontWeight.w800,
-    letterSpacing: 1.4,
-    color: _scheme.onSurfaceVariant,
+  /// Secondary line under a heading.
+  TextStyle get note => rubric.copyWith(color: _scheme.onSurfaceVariant);
+
+  /// Who speaks ("Lider", "Gabos") and part names: red small capitals.
+  TextStyle get label => TextStyle(
+    fontFamily: AppFonts.serif,
+    fontSize: 15 * scale,
+    height: 1.4,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 0.6,
+    color: _scheme.primary,
+    fontFeatures: const [FontFeature.enable('smcp')],
   );
 }
 
@@ -60,25 +67,20 @@ class ReadingSliver extends StatelessWidget {
   const ReadingSliver({
     super.key,
     required this.children,
-    this.top = 24,
-    this.bottom = 32,
+    this.top = Space.xl,
+    this.bottom = Space.xxl,
   });
 
   final List<Widget> children;
   final double top;
   final double bottom;
 
-  static const double maxWidth = 680;
-
   @override
   Widget build(BuildContext context) {
     final bottomInset = MediaQuery.paddingOf(context).bottom;
     return SliverLayoutBuilder(
       builder: (context, constraints) {
-        final side = math.max(
-          20.0,
-          (constraints.crossAxisExtent - maxWidth) / 2,
-        );
+        final side = Space.side(constraints.crossAxisExtent);
         return SliverPadding(
           padding: EdgeInsets.fromLTRB(side, top, side, bottom + bottomInset),
           sliver: SliverList.list(children: children),
@@ -88,38 +90,46 @@ class ReadingSliver extends StatelessWidget {
   }
 }
 
-/// Ornamental divider with a small cross, used between prayer sections.
+/// Thin gold rule with a cross, marking the major parts of a prayer.
 class Ornament extends StatelessWidget {
   const Ornament({
     super.key,
-    this.padding = const EdgeInsets.symmetric(vertical: 8),
+    this.padding = const EdgeInsets.symmetric(vertical: Space.s),
   });
 
   final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.outlineVariant;
-    return Padding(
-      padding: padding,
-      child: Row(
-        children: [
-          Expanded(child: Divider(color: color)),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Text(
-              '✠',
-              style: TextStyle(fontSize: 16, color: AppColors.gold, height: 1),
+    final color = AppColors.gold.withValues(alpha: 0.5);
+    return ExcludeSemantics(
+      child: Padding(
+        padding: padding,
+        child: Row(
+          children: [
+            const Spacer(),
+            Expanded(child: Divider(color: color)),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: Space.m),
+              child: Text(
+                '✠',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: AppColors.gold,
+                  height: 1,
+                ),
+              ),
             ),
-          ),
-          Expanded(child: Divider(color: color)),
-        ],
+            Expanded(child: Divider(color: color)),
+            const Spacer(),
+          ],
+        ),
       ),
     );
   }
 }
 
-/// Label for a major part of a prayer (e.g. "Enot na Kabtang").
+/// Opens a major part of a prayer (e.g. "Enot na Kabtang").
 class PartLabel extends StatelessWidget {
   const PartLabel(this.text, {super.key});
 
@@ -127,61 +137,56 @@ class PartLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final styles = ReadingStyles.of(context);
     return Padding(
-      padding: const EdgeInsets.only(top: 28, bottom: 4),
-      child: Center(
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: scheme.secondaryContainer,
-            borderRadius: BorderRadius.circular(100),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+      padding: const EdgeInsets.only(top: Space.xxxl, bottom: Space.xs),
+      child: Column(
+        children: [
+          const Ornament(padding: EdgeInsets.zero),
+          const SizedBox(height: Space.m),
+          Semantics(
+            header: true,
             child: Text(
-              text.toUpperCase(),
+              text,
               textAlign: TextAlign.center,
-              style: styles.speaker.copyWith(
-                color: scheme.onSecondaryContainer,
-              ),
+              style: ReadingStyles.of(context).label,
             ),
           ),
-        ),
+        ],
       ),
     );
   }
 }
 
-/// Section heading with an optional subtitle.
+/// Section heading, with an optional red label above and a note below.
 class SectionTitle extends StatelessWidget {
-  const SectionTitle(
-    this.title, {
-    super.key,
-    this.subtitle,
-    this.ornament = true,
-  });
+  const SectionTitle(this.title, {super.key, this.eyebrow, this.subtitle});
 
   final String title;
+  final String? eyebrow;
   final String? subtitle;
-  final bool ornament;
 
   @override
   Widget build(BuildContext context) {
     final styles = ReadingStyles.of(context);
     return Padding(
-      padding: const EdgeInsets.only(top: 24, bottom: 12),
+      padding: const EdgeInsets.only(top: Space.xxl, bottom: Space.m),
       child: Column(
         children: [
-          if (ornament) const Ornament(padding: EdgeInsets.only(bottom: 16)),
-          Text(title, textAlign: TextAlign.center, style: styles.heading),
-          if (subtitle != null) ...[
-            const SizedBox(height: 6),
-            Text(
-              subtitle!,
+          if (eyebrow != null) ...[
+            Text(eyebrow!, textAlign: TextAlign.center, style: styles.label),
+            const SizedBox(height: Space.xs),
+          ],
+          Semantics(
+            header: true,
+            child: Text(
+              title,
               textAlign: TextAlign.center,
-              style: styles.subheading,
+              style: styles.heading,
             ),
+          ),
+          if (subtitle != null) ...[
+            const SizedBox(height: Space.xs),
+            Text(subtitle!, textAlign: TextAlign.center, style: styles.note),
           ],
         ],
       ),
@@ -206,7 +211,7 @@ class Paragraph extends StatelessWidget {
   Widget build(BuildContext context) {
     final styles = ReadingStyles.of(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: Space.s),
       child: Text(
         text,
         textAlign: center ? TextAlign.center : TextAlign.start,
@@ -250,7 +255,7 @@ class Rubric extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12),
+      padding: const EdgeInsets.symmetric(vertical: Space.m),
       child: Text(
         text,
         textAlign: TextAlign.center,
@@ -260,7 +265,7 @@ class Rubric extends StatelessWidget {
   }
 }
 
-/// Who reads the following lines, e.g. "Lider" or "Gabos".
+/// Who reads the following lines, e.g. "Lider" or "Koro".
 class Speaker extends StatelessWidget {
   const Speaker(this.label, {super.key});
 
@@ -269,16 +274,14 @@ class Speaker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 16, bottom: 2),
-      child: Text(
-        label.toUpperCase(),
-        style: ReadingStyles.of(context).speaker,
-      ),
+      padding: const EdgeInsets.only(top: Space.l, bottom: Space.xs),
+      child: Text(label, style: ReadingStyles.of(context).label),
     );
   }
 }
 
-/// A response said by everyone; visually set apart with an accent bar.
+/// A response said by everyone ("Gabos", "All"): a red label like the
+/// leader's, then the response in semibold so the people's part stands out.
 class ResponseBlock extends StatelessWidget {
   const ResponseBlock(this.text, {super.key, this.label});
 
@@ -287,36 +290,18 @@ class ResponseBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
     final styles = ReadingStyles.of(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: scheme.surfaceContainerHigh,
-          borderRadius: BorderRadius.circular(12),
-          border: Border(
-            left: BorderSide(
-              color: scheme.primary.withValues(alpha: 0.6),
-              width: 3,
-            ),
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 10, 16, 12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (label != null)
-                Text(label!.toUpperCase(), style: styles.speaker),
-              if (label != null) const SizedBox(height: 4),
-              Text(
-                text,
-                style: styles.emphasis.copyWith(fontWeight: FontWeight.w500),
-              ),
-            ],
-          ),
-        ),
+      padding: const EdgeInsets.only(top: Space.l, bottom: Space.s),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (label != null) ...[
+            Text(label!, style: styles.label),
+            const SizedBox(height: Space.xs),
+          ],
+          Text(text, style: styles.body.copyWith(fontWeight: FontWeight.w600)),
+        ],
       ),
     );
   }
@@ -333,7 +318,7 @@ class VerseLines extends StatelessWidget {
   Widget build(BuildContext context) {
     final styles = ReadingStyles.of(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: Space.s),
       child: Text(
         lines.join('\n'),
         textAlign: TextAlign.center,
@@ -351,20 +336,19 @@ class SignOfTheCross extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
     final styles = ReadingStyles.of(context);
     final isBicol = translation == Translation.bicol;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
+      padding: const EdgeInsets.symmetric(vertical: Space.l),
       child: Column(
         children: [
           Text(
-            isBicol ? '✠  Pag-antanda nin Krus  ✠' : '✠  Sign of the Cross  ✠',
+            isBicol ? 'Pag-antanda nin Krus' : 'Sign of the Cross',
             textAlign: TextAlign.center,
-            style: styles.subheading.copyWith(color: scheme.primary),
+            style: styles.label,
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: Space.xs),
           Text(
             isBicol
                 ? 'Sa ngaran kan Ama, asin kan Aki, pati an Espiritu Santo. Amen.'

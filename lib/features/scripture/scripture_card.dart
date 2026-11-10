@@ -1,10 +1,8 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:novena_lorenzo/core/content/content_cubit.dart';
 import 'package:novena_lorenzo/core/content/content_loader.dart';
-import 'package:novena_lorenzo/core/settings/app_settings.dart';
+import 'package:novena_lorenzo/core/content/devotion_calendar.dart';
 import 'package:novena_lorenzo/core/theme/app_theme.dart';
+import 'package:novena_lorenzo/core/widgets/reading.dart';
 import 'package:novena_lorenzo/data/translation.dart';
 
 class ScriptureVerse {
@@ -17,11 +15,11 @@ class ScriptureVerse {
 class ScriptureRepository {
   const ScriptureRepository();
 
-  /// A random verse; each call site gets its own, independent pick.
-  Future<ScriptureVerse> random(Translation translation) {
+  /// The verse for [date]: the same all day, a different one tomorrow.
+  Future<ScriptureVerse> forDate(Translation translation, DateTime date) {
     return ContentLoader.parse('scripture.json', 'scripture verse', (json) {
       final verses = json['verses'] as List;
-      final verse = verses[Random().nextInt(verses.length)];
+      final verse = verses[DevotionCalendar.dailyIndex(date, verses.length)];
       final isBicol = translation == Translation.bicol;
       return ScriptureVerse(
         reference: verse[isBicol ? 'bicol_verse' : 'english_verse'] as String,
@@ -31,81 +29,55 @@ class ScriptureRepository {
   }
 }
 
-/// A card with a random scripture verse related to martyrdom and faith.
+/// Today's scripture verse on martyrdom and faith, set as plain text.
 ///
-/// Each card loads its own verse; previously a single global bloc was shared,
-/// so opening one screen changed the verse (and language) shown on another.
-class ScriptureSliver extends StatelessWidget {
-  const ScriptureSliver({super.key, this.translation});
+/// Shows nothing while loading or if the verse cannot be read: it is a
+/// companion to the page, not its content.
+class VerseOfTheDay extends StatefulWidget {
+  const VerseOfTheDay({super.key, this.translation = Translation.english});
 
-  /// Language of the verse; a random one is picked when null.
-  final Translation? translation;
+  final Translation translation;
 
   @override
-  Widget build(BuildContext context) {
-    final language =
-        translation ??
-        (Random().nextBool() ? Translation.bicol : Translation.english);
-    return SliverPadding(
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-      sliver: ContentSliver<ScriptureVerse>(
-        load: () => const ScriptureRepository().random(language),
-        builder: (context, verse) =>
-            SliverToBoxAdapter(child: _ScriptureCard(verse: verse)),
-      ),
-    );
-  }
+  State<VerseOfTheDay> createState() => _VerseOfTheDayState();
 }
 
-class _ScriptureCard extends StatelessWidget {
-  const _ScriptureCard({required this.verse});
-
-  final ScriptureVerse verse;
+class _VerseOfTheDayState extends State<VerseOfTheDay> {
+  late final Future<ScriptureVerse> _verse = const ScriptureRepository()
+      .forDate(widget.translation, DateTime.now());
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
-    final scale = AppSettingsScope.of(context).textScale;
+    final scheme = Theme.of(context).colorScheme;
+    final styles = ReadingStyles.of(context);
 
-    return Center(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 680),
-        child: Card(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 16, 20, 18),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Icon(
-                  Icons.format_quote_rounded,
-                  color: AppColors.gold,
-                  size: 32,
-                ),
-                Text(
-                  verse.text,
-                  style: textTheme.bodyLarge?.copyWith(
-                    fontStyle: FontStyle.italic,
-                    fontSize: 16 * scale,
-                    height: 1.55,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Align(
-                  alignment: AlignmentDirectional.centerEnd,
-                  child: Text(
-                    '— ${verse.reference}',
-                    style: textTheme.labelLarge?.copyWith(
-                      color: scheme.primary,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-              ],
+    return FutureBuilder<ScriptureVerse>(
+      future: _verse,
+      builder: (context, snapshot) {
+        final verse = snapshot.data;
+        if (verse == null) return const SizedBox.shrink();
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Verse for today',
+              style: textTheme.titleSmall?.copyWith(
+                color: scheme.onSurfaceVariant,
+              ),
             ),
-          ),
-        ),
-      ),
+            const SizedBox(height: Space.s),
+            Text(verse.text, style: styles.emphasis),
+            const SizedBox(height: Space.s),
+            Text(
+              verse.reference,
+              style: textTheme.bodySmall?.copyWith(
+                color: scheme.onSurfaceVariant,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

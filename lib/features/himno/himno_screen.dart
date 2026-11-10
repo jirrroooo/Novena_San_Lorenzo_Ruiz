@@ -1,11 +1,10 @@
-import 'package:audio_session/audio_session.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:novena_lorenzo/core/content/content_cubit.dart';
-import 'package:novena_lorenzo/core/services/log_service.dart';
-import 'package:novena_lorenzo/core/widgets/collapsing_header.dart';
+import 'package:novena_lorenzo/core/services/hymn_audio.dart';
+import 'package:novena_lorenzo/core/theme/app_theme.dart';
 import 'package:novena_lorenzo/core/widgets/credits.dart';
-import 'package:novena_lorenzo/core/widgets/header_art.dart';
+import 'package:novena_lorenzo/core/widgets/page_header.dart';
 import 'package:novena_lorenzo/core/widgets/reading.dart';
 import 'package:novena_lorenzo/core/widgets/reading_settings_sheet.dart';
 import 'package:novena_lorenzo/data/translation.dart';
@@ -19,16 +18,12 @@ class HimnoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        const CollapsingHeader(
-          title: 'Himno ki San Lorenzo Ruiz',
+        const PageHeader(
+          title: HymnAudio.title,
           subtitle: 'Msgr. Crispin C. Bernarte Jr.',
-          background: HeaderArt(
-            icon: Icons.music_note_rounded,
-            palette: ArtPalette.mauve,
-          ),
           actions: [ReadingSettingsButton()],
         ),
-        const ReadingSliver(bottom: 0, children: [HymnPlayer()]),
+        const ReadingSliver(top: 8, bottom: 0, children: [HymnPlayer()]),
         ContentSliver<Hymn>(
           load: const HimnoRepository().load,
           builder: (context, hymn) => ReadingSliver(
@@ -49,6 +44,7 @@ class HimnoScreen extends StatelessWidget {
   }
 }
 
+/// Full player for the hymn: play/pause and a seek bar with times.
 class HymnPlayer extends StatefulWidget {
   const HymnPlayer({super.key});
 
@@ -57,162 +53,141 @@ class HymnPlayer extends StatefulWidget {
 }
 
 class _HymnPlayerState extends State<HymnPlayer> {
-  final AudioPlayer _player = AudioPlayer();
-  bool _failed = false;
+  final HymnAudio _audio = HymnAudio.instance;
   double? _dragValue;
 
   @override
   void initState() {
     super.initState();
-    _init();
-  }
-
-  Future<void> _init() async {
-    try {
-      final session = await AudioSession.instance;
-      await session.configure(const AudioSessionConfiguration.music());
-      await _player.setAsset('assets/audio/himno.mp3');
-    } catch (e, s) {
-      await LogService.instance.error(e, s);
-      if (mounted) setState(() => _failed = true);
-    }
-  }
-
-  @override
-  void dispose() {
-    _player.dispose();
-    super.dispose();
-  }
-
-  Future<void> _toggle(PlayerState state) async {
-    if (state.processingState == ProcessingState.completed) {
-      await _player.seek(Duration.zero);
-      await _player.play();
-    } else if (state.playing) {
-      await _player.pause();
-    } else {
-      await _player.play();
-    }
+    // Loads the audio so its length shows before the first play.
+    _audio.load();
   }
 
   static String _format(Duration d) {
-    final minutes = d.inMinutes.remainder(60).toString().padLeft(2, '0');
     final seconds = d.inSeconds.remainder(60).toString().padLeft(2, '0');
-    return '$minutes:$seconds';
+    return '${d.inMinutes}:$seconds';
   }
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
+    final theme = Theme.of(context);
+    final scheme = theme.colorScheme;
+    final timeStyle = theme.textTheme.bodySmall?.copyWith(
+      color: scheme.onSurfaceVariant,
+      fontFeatures: const [FontFeature.tabularFigures()],
+    );
 
-    if (_failed) {
-      return Card(
-        child: ListTile(
-          leading: Icon(Icons.error_outline_rounded, color: scheme.error),
-          title: const Text('The hymn audio could not be loaded.'),
-        ),
-      );
-    }
-
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                StreamBuilder<PlayerState>(
-                  stream: _player.playerStateStream,
-                  builder: (context, snapshot) {
-                    final state =
-                        snapshot.data ??
-                        PlayerState(false, ProcessingState.idle);
-                    final loading =
-                        state.processingState == ProcessingState.loading ||
-                        state.processingState == ProcessingState.buffering;
-                    final playing =
-                        state.playing &&
-                        state.processingState != ProcessingState.completed;
-                    return IconButton.filled(
-                      iconSize: 36,
-                      tooltip: playing ? 'Pause' : 'Play hymn',
-                      onPressed: loading ? null : () => _toggle(state),
-                      icon: Icon(
-                        playing
-                            ? Icons.pause_rounded
-                            : Icons.play_arrow_rounded,
-                      ),
-                    );
-                  },
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Himno ki San Lorenzo Ruiz',
-                        style: textTheme.titleMedium,
-                      ),
-                      Text(
-                        'Listen and sing along',
-                        style: textTheme.bodySmall?.copyWith(
-                          color: scheme.onSurfaceVariant,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+    return ValueListenableBuilder<bool>(
+      valueListenable: _audio.failed,
+      builder: (context, failed, _) {
+        if (failed) {
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.error_outline_rounded),
+              title: const Text('The hymn could not be played on this device.'),
             ),
-            StreamBuilder<Duration?>(
-              stream: _player.durationStream,
-              builder: (context, durationSnap) {
-                final total = durationSnap.data ?? Duration.zero;
-                return StreamBuilder<Duration>(
-                  stream: _player.positionStream,
-                  builder: (context, positionSnap) {
-                    final position = positionSnap.data ?? Duration.zero;
-                    final max = total.inMilliseconds.toDouble();
-                    final value =
-                        (_dragValue ?? position.inMilliseconds.toDouble())
-                            .clamp(0.0, max > 0 ? max : 1.0);
-                    return Column(
-                      children: [
-                        Slider(
-                          value: value,
-                          max: max > 0 ? max : 1.0,
-                          onChanged: max > 0
-                              ? (v) => setState(() => _dragValue = v)
-                              : null,
-                          onChangeEnd: (v) {
-                            _player.seek(Duration(milliseconds: v.round()));
-                            setState(() => _dragValue = null);
-                          },
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 24),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                _format(Duration(milliseconds: value.round())),
-                                style: textTheme.labelSmall,
+          );
+        }
+        final player = _audio.player;
+        return Container(
+          padding: const EdgeInsets.fromLTRB(
+            Space.l,
+            Space.l,
+            Space.xl,
+            Space.l,
+          ),
+          decoration: BoxDecoration(
+            color: AppTheme.groupColor(theme),
+            borderRadius: BorderRadius.circular(AppRadius.group),
+            boxShadow: AppShadows.raised(theme.brightness),
+          ),
+          child: Row(
+            children: [
+              StreamBuilder<PlayerState>(
+                stream: player.playerStateStream,
+                builder: (context, snapshot) {
+                  final state = snapshot.data;
+                  final loading =
+                      state == null ||
+                      state.processingState == ProcessingState.idle ||
+                      state.processingState == ProcessingState.loading;
+                  final playing = state != null && HymnAudio.isPlaying(state);
+                  return IconButton.filled(
+                    iconSize: 32,
+                    constraints: const BoxConstraints.tightFor(
+                      width: 56,
+                      height: 56,
+                    ),
+                    tooltip: playing ? 'Pause' : 'Play the hymn',
+                    onPressed: loading ? null : _audio.toggle,
+                    icon: Icon(
+                      playing ? Icons.pause_rounded : Icons.play_arrow_rounded,
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(width: Space.l),
+              Expanded(
+                child: StreamBuilder<Duration?>(
+                  stream: player.durationStream,
+                  builder: (context, durationSnap) {
+                    final total = durationSnap.data ?? Duration.zero;
+                    return StreamBuilder<Duration>(
+                      stream: player.positionStream,
+                      builder: (context, positionSnap) {
+                        final position = positionSnap.data ?? Duration.zero;
+                        final max = total.inMilliseconds.toDouble();
+                        final value =
+                            (_dragValue ?? position.inMilliseconds.toDouble())
+                                .clamp(0.0, max > 0 ? max : 1.0);
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SliderTheme(
+                              data: SliderTheme.of(context).copyWith(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: Space.m,
+                                ),
                               ),
-                              Text(_format(total), style: textTheme.labelSmall),
-                            ],
-                          ),
-                        ),
-                      ],
+                              child: Slider(
+                                value: value,
+                                max: max > 0 ? max : 1.0,
+                                semanticFormatterCallback: (v) =>
+                                    _format(Duration(milliseconds: v.round())),
+                                onChanged: max > 0
+                                    ? (v) => setState(() => _dragValue = v)
+                                    : null,
+                                onChangeEnd: (v) {
+                                  player.seek(
+                                    Duration(milliseconds: v.round()),
+                                  );
+                                  setState(() => _dragValue = null);
+                                },
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  _format(
+                                    Duration(milliseconds: value.round()),
+                                  ),
+                                  style: timeStyle,
+                                ),
+                                Text(_format(total), style: timeStyle),
+                              ],
+                            ),
+                          ],
+                        );
+                      },
                     );
                   },
-                );
-              },
-            ),
-          ],
-        ),
-      ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

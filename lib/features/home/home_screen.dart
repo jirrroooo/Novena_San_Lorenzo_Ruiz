@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:novena_lorenzo/app/main_navigation.dart';
 import 'package:novena_lorenzo/core/content/devotion_calendar.dart';
-import 'package:novena_lorenzo/core/widgets/collapsing_header.dart';
-import 'package:novena_lorenzo/core/widgets/header_art.dart';
+import 'package:novena_lorenzo/core/services/hymn_audio.dart';
+import 'package:novena_lorenzo/core/theme/app_theme.dart';
+import 'package:novena_lorenzo/core/widgets/list_items.dart';
+import 'package:novena_lorenzo/core/widgets/page_header.dart';
 import 'package:novena_lorenzo/core/widgets/reading.dart';
-import 'package:novena_lorenzo/data/translation.dart';
 import 'package:novena_lorenzo/features/novena_bikol/novena_bikol_screens.dart';
 import 'package:novena_lorenzo/features/novena_english/novena_english_screens.dart';
 import 'package:novena_lorenzo/features/perpetual_novena/perpetual_novena_screen.dart';
@@ -15,76 +16,57 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final nav = MainNavigation.of(context);
-
-    Widget sectionLabel(String text) => Padding(
-      padding: const EdgeInsets.only(top: 24, bottom: 12),
-      child: Text(
-        text,
-        style: textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
-      ),
-    );
 
     return CustomScrollView(
       slivers: [
-        const CollapsingHeader(
+        const PageHeader(
           title: 'San Lorenzo Ruiz',
-          subtitle: 'Novena · Prayers · Hymn',
-          expandedHeight: 300,
-          background: HeaderImage(
-            'assets/images/lorenzo5.webp',
-            alignment: Alignment(0, -0.6),
-          ),
+          subtitle: 'Feast day · September 28',
+          image: 'assets/images/lorenzo5.webp',
+          imageAlignment: Alignment(0, -0.6),
+          imageHeight: 320,
         ),
         ReadingSliver(
-          top: 16,
-          bottom: 0,
-          children: [_TodayCard(onOpenHymn: () => nav.select(AppTab.hymn))],
-        ),
-        const ScriptureSliver(translation: Translation.english),
-        ReadingSliver(
-          top: 0,
           children: [
-            sectionLabel('Pray'),
-            _FeatureGrid(
-              items: [
-                _Feature(
+            TodayCard(
+              onPlayHymn: () {
+                nav.select(AppTab.hymn);
+                HymnAudio.instance.play();
+              },
+            ),
+            const SizedBox(height: Space.xxl),
+            const VerseOfTheDay(),
+            const SectionHeading('Novenas'),
+            ListGroup(
+              dividerIndent: ListRow.textIndentWithIcon,
+              children: [
+                ListRow(
+                  leading: const Icon(Icons.church_outlined),
                   title: 'Bicol Novena',
-                  subtitle: 'Nobena sa Bikol',
-                  icon: Icons.church_rounded,
-                  palette: ArtPalette.rose,
+                  subtitle: 'Nobena sa Bikol · nine days',
                   onTap: () =>
                       Navigator.pushNamed(context, NovenaBikolHome.routeName),
                 ),
-                _Feature(
+                ListRow(
+                  leading: const Icon(Icons.menu_book_outlined),
                   title: 'English Novena',
-                  subtitle: 'Nine days of prayer',
-                  icon: Icons.menu_book_rounded,
-                  palette: ArtPalette.slate,
+                  subtitle: 'Nine days with St. Lorenzo Ruiz',
                   onTap: () =>
                       Navigator.pushNamed(context, NovenaEnglishHome.routeName),
                 ),
-                _Feature(
+                ListRow(
+                  leading: const Icon(Icons.event_repeat_outlined),
                   title: 'Perpetual Novena',
-                  subtitle: 'Every 28th',
-                  icon: Icons.event_repeat_rounded,
-                  palette: ArtPalette.sand,
+                  subtitle: 'Prayed on the 28th of every month',
                   onTap: () => Navigator.pushNamed(
                     context,
                     PerpetualNovenaScreen.routeName,
                   ),
                 ),
-                _Feature(
-                  title: 'Prayers',
-                  subtitle: 'For your intentions',
-                  icon: Icons.volunteer_activism_rounded,
-                  palette: ArtPalette.sage,
-                  onTap: () => nav.select(AppTab.prayers),
-                ),
               ],
             ),
-            sectionLabel('His life'),
+            const SectionHeading('His life'),
             _BiographyTeaser(onTap: () => nav.select(AppTab.life)),
           ],
         ),
@@ -93,205 +75,180 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class _Feature {
-  const _Feature({
-    required this.title,
-    required this.subtitle,
-    required this.icon,
-    required this.palette,
-    required this.onTap,
-  });
+/// What to pray today: a novena day, the feast or the monthly devotion, and
+/// otherwise how long until the next of them.
+class TodayCard extends StatelessWidget {
+  const TodayCard({super.key, required this.onPlayHymn, this.date});
 
-  final String title;
-  final String subtitle;
-  final IconData icon;
-  final ArtPalette palette;
-  final VoidCallback onTap;
-}
+  final VoidCallback onPlayHymn;
 
-class _FeatureGrid extends StatelessWidget {
-  const _FeatureGrid({required this.items});
-
-  final List<_Feature> items;
+  /// The day to describe; defaults to today.
+  final DateTime? date;
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final columns = constraints.maxWidth >= 560 ? 4 : 2;
-        const spacing = 12.0;
-        final width =
-            (constraints.maxWidth - spacing * (columns - 1)) / columns;
-        return Wrap(
-          spacing: spacing,
-          runSpacing: spacing,
-          children: [
-            for (final item in items)
-              SizedBox(
-                width: width,
-                child: _FeatureCard(item: item),
-              ),
-          ],
-        );
-      },
-    );
-  }
-}
-
-class _FeatureCard extends StatelessWidget {
-  const _FeatureCard({required this.item});
-
-  final _Feature item;
-
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return Card(
-      child: InkWell(
-        onTap: item.onTap,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(
-              height: 96,
-              child: HeaderArt(
-                icon: item.icon,
-                palette: item.palette,
-                medallionAlignment: Alignment.center,
-                medallionSize: 60,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    item.title,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: textTheme.titleSmall?.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  Text(
-                    item.subtitle,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: textTheme.bodySmall,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-/// Highlights what to pray today: a novena day, the feast or devotion day.
-class _TodayCard extends StatelessWidget {
-  const _TodayCard({required this.onOpenHymn});
-
-  final VoidCallback onOpenHymn;
-
-  @override
-  Widget build(BuildContext context) {
-    final now = DateTime.now();
+    final now = date ?? DateTime.now();
     final novenaDay = DevotionCalendar.novenaDay(now);
+    final daysToNovena = DevotionCalendar.daysBetween(
+      now,
+      DevotionCalendar.nextNovenaStart(now),
+    );
 
-    final (String title, String body, List<Widget> actions) content;
+    final _TodayContent content;
     if (novenaDay != null) {
-      content = (
-        'Novena Day $novenaDay',
-        'The novena to St. Lorenzo Ruiz is being prayed today.',
-        [
-          _action(
-            context,
-            'English',
-            () => _push(context, NovenaEnglishDayPage(day: novenaDay)),
+      content = _TodayContent(
+        label: 'Today · Novena to St. Lorenzo Ruiz',
+        value: 'Day $novenaDay of ${DevotionCalendar.novenaDays}',
+        progress: novenaDay,
+        body: 'Pray today’s novena in English or Bicol.',
+        actions: [
+          FilledButton.tonal(
+            onPressed: () =>
+                _push(context, NovenaEnglishDayPage(day: novenaDay)),
+            child: const Text('English'),
           ),
-          _action(
-            context,
-            'Bicol',
-            () => _push(context, NovenaBikolDayPage(day: novenaDay)),
+          FilledButton.tonal(
+            onPressed: () => _push(context, NovenaBikolDayPage(day: novenaDay)),
+            child: const Text('Bicol'),
           ),
         ],
       );
     } else if (DevotionCalendar.isFeastDay(now)) {
-      content = (
-        'Happy Feast Day!',
-        'Today is the feast of St. Lorenzo Ruiz. Celebrate with his hymn.',
-        [_action(context, 'Play the hymn', onOpenHymn)],
+      content = _TodayContent(
+        label: 'Today',
+        value: 'Feast of St. Lorenzo Ruiz',
+        body:
+            'The first Filipino saint, martyred in Nagasaki in 1637. '
+            'Celebrate with his hymn.',
+        actions: [
+          FilledButton.tonal(
+            onPressed: onPlayHymn,
+            child: const Text('Play the hymn'),
+          ),
+        ],
       );
     } else if (DevotionCalendar.isDevotionDay(now)) {
-      content = (
-        'Today is Devotion Day',
-        'Pray the Perpetual Novena, as is done every 28th of the month.',
-        [
-          _action(
-            context,
-            'Pray now',
-            () => Navigator.pushNamed(context, PerpetualNovenaScreen.routeName),
-          ),
-        ],
+      content = _TodayContent(
+        label: 'Today',
+        value: 'Day of devotion',
+        body: 'The Perpetual Novena is prayed on the 28th of every month.',
+        actions: [_perpetualButton(context, 'Pray the Perpetual Novena')],
+      );
+    } else if (daysToNovena <= 30) {
+      content = _TodayContent(
+        label: 'Novena to St. Lorenzo Ruiz',
+        value: 'Begins ${DevotionCalendar.relative(daysToNovena)}',
+        body:
+            'Nine days of prayer, September 19–27, '
+            'leading to his feast on the 28th.',
       );
     } else {
-      return const SizedBox.shrink();
+      final next = DevotionCalendar.nextDevotionDay(now);
+      content = _TodayContent(
+        label: 'Next day of devotion',
+        value: DevotionCalendar.formatDay(next),
+        meta: DevotionCalendar.relative(
+          DevotionCalendar.daysBetween(now, next),
+        ),
+        body: 'The Perpetual Novena is prayed on the 28th of every month.',
+        actions: [_perpetualButton(context, 'Pray it now')],
+      );
     }
 
-    final (title, body, actions) = content;
-    final scheme = Theme.of(context).colorScheme;
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: scheme.primaryContainer.withValues(alpha: 0.55),
-        border: Border.all(color: scheme.primary.withValues(alpha: 0.18)),
-      ),
-      padding: const EdgeInsets.fromLTRB(20, 18, 20, 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Icon(Icons.auto_awesome_rounded, color: scheme.primary, size: 20),
-              const SizedBox(width: 8),
-              Text(
-                title,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: scheme.onPrimaryContainer,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 6),
-          Text(
-            body,
-            style: TextStyle(color: scheme.onPrimaryContainer, height: 1.4),
-          ),
-          const SizedBox(height: 12),
-          Wrap(spacing: 8, runSpacing: 8, children: actions),
-        ],
-      ),
-    );
+    return _TodayCardView(content: content);
   }
 
-  static Widget _action(
-    BuildContext context,
-    String label,
-    VoidCallback onTap,
-  ) {
-    return FilledButton(
-      style: FilledButton.styleFrom(visualDensity: VisualDensity.compact),
-      onPressed: onTap,
-      child: Text(label),
-    );
-  }
+  static Widget _perpetualButton(BuildContext context, String label) =>
+      FilledButton.tonal(
+        onPressed: () =>
+            Navigator.pushNamed(context, PerpetualNovenaScreen.routeName),
+        child: Text(label),
+      );
 
   static void _push(BuildContext context, Widget page) {
     Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => page));
+  }
+}
+
+class _TodayContent {
+  const _TodayContent({
+    required this.label,
+    required this.value,
+    required this.body,
+    this.meta,
+    this.progress,
+    this.actions = const [],
+  });
+
+  final String label;
+  final String value;
+  final String? meta;
+  final String body;
+
+  /// Novena day to show as progress dots.
+  final int? progress;
+  final List<Widget> actions;
+}
+
+class _TodayCardView extends StatelessWidget {
+  const _TodayCardView({required this.content});
+
+  final _TodayContent content;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final scheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
+    final secondary = textTheme.bodyLarge?.copyWith(
+      color: scheme.onSurfaceVariant,
+    );
+
+    return Container(
+      padding: const EdgeInsets.all(Space.xl),
+      decoration: BoxDecoration(
+        color: AppTheme.groupColor(theme),
+        borderRadius: BorderRadius.circular(AppRadius.group),
+        boxShadow: AppShadows.raised(theme.brightness),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            content.label,
+            style: textTheme.titleSmall?.copyWith(
+              color: scheme.onSurfaceVariant,
+            ),
+          ),
+          const SizedBox(height: Space.s),
+          Text(content.value, style: textTheme.headlineSmall),
+          if (content.meta != null) ...[
+            const SizedBox(height: Space.xs),
+            Text(content.meta!, style: secondary),
+          ],
+          if (content.progress != null) ...[
+            const SizedBox(height: Space.l),
+            ProgressDots(
+              count: DevotionCalendar.novenaDays,
+              filled: content.progress!,
+            ),
+          ],
+          const SizedBox(height: Space.m),
+          Text(content.body, style: secondary),
+          if (content.actions.isNotEmpty) ...[
+            const SizedBox(height: Space.xl),
+            Row(
+              children: [
+                for (var i = 0; i < content.actions.length; i++) ...[
+                  if (i > 0) const SizedBox(width: Space.m),
+                  Expanded(child: content.actions[i]),
+                ],
+              ],
+            ),
+          ],
+        ],
+      ),
+    );
   }
 }
 
@@ -308,20 +265,20 @@ class _BiographyTeaser extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              width: 120,
-              height: 180,
+              width: 96,
+              height: 128,
               child: Image.asset(
                 'assets/images/lorenzo3.webp',
                 fit: BoxFit.cover,
                 alignment: const Alignment(0, -0.5),
+                excludeFromSemantics: true,
               ),
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(Space.l),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -329,23 +286,23 @@ class _BiographyTeaser extends StatelessWidget {
                       'The first Filipino saint',
                       style: textTheme.titleMedium,
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(height: Space.xs),
                     Text(
-                      'A husband, father and calligrapher from Binondo who died a '
-                      'martyr in Nagasaki in 1637, refusing to renounce his faith.',
-                      style: textTheme.bodyMedium?.copyWith(
+                      'Husband, father and calligrapher from Binondo, '
+                      'martyred in Nagasaki in 1637.',
+                      style: textTheme.bodySmall?.copyWith(
                         color: scheme.onSurfaceVariant,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      'Read his life →',
-                      style: textTheme.labelLarge?.copyWith(
-                        color: scheme.primary,
                       ),
                     ),
                   ],
                 ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: Space.l),
+              child: Icon(
+                Icons.chevron_right_rounded,
+                color: scheme.onSurfaceVariant,
               ),
             ),
           ],

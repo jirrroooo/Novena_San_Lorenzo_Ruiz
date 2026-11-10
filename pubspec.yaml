@@ -27,6 +27,7 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^6.0.0
   shared_preferences_platform_interface: ^2.4.2
+  url_launcher_platform_interface: ^2.3.2
   # Code generator only (run `dart run flutter_native_splash:create`).
   flutter_native_splash: ^2.4.8
 
@@ -35,4 +36,14 @@ flutter:
   assets:
     - assets/images/
     - assets/audio/
+    - assets/fonts/OFL.txt
     - lib/data/
+  # Literata (SIL OFL 1.1), subset to Latin, for prayer and title text.
+  fonts:
+    - family: Literata
+      fonts:
+        - asset: assets/fonts/Literata-Regular.ttf
+        - asset: assets/fonts/Literata-Italic.ttf
+          style: italic
+        - asset: assets/fonts/Literata-SemiBold.ttf
+          weight: 600

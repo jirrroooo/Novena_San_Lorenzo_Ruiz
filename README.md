@@ -22,11 +22,11 @@ The app is built with Flutter and uses local JSON content files, BLoC state mana
 ## Screenshots
 
 <div align="center">
-  <img src="./docs/screenshots/screenshot1.png" alt="Home screen" width="170" />
-  <img src="./docs/screenshots/screenshot2.png" alt="Novena days" width="170" />
-  <img src="./docs/screenshots/screenshot3.png" alt="Novena day screen" width="170" />
-  <img src="./docs/screenshots/screenshot4.png" alt="Hymn screen" width="170" />
-  <img src="./docs/screenshots/screenshot5.png" alt="Settings screen" width="170" />
+  <img src="./docs/screenshots/screenshot1.png" alt="Home screen with the next day of devotion" width="170" />
+  <img src="./docs/screenshots/screenshot2.png" alt="English novena day list" width="170" />
+  <img src="./docs/screenshots/screenshot3.png" alt="Novena day reading page" width="170" />
+  <img src="./docs/screenshots/screenshot4.png" alt="Hymn player and lyrics" width="170" />
+  <img src="./docs/screenshots/screenshot5.png" alt="Settings in dark mode" width="170" />
 </div>
 
 ## Features
@@ -35,10 +35,10 @@ The app is built with Flutter and uses local JSON content files, BLoC state mana
 | --- | --- |
 | Offline devotional content | English novena, Bikol novena, perpetual novena, scripture, biography, and prayers are bundled with the app. |
 | Bilingual prayer flow | Separate English and Bikol novena experiences help devotees pray in the language they prefer. |
-| Hymn player | Includes the St. Lorenzo Ruiz hymn audio asset with lyrics. |
+| Hymn player | Includes the St. Lorenzo Ruiz hymn audio asset with lyrics; a mini player keeps it controllable from any screen. |
 | Prayer reminders | Schedules monthly devotion reminders every 28th day and annual novena reminders from September 19 to 28. |
 | Feast day notification | Sends a September 28 reminder for the feast day of St. Lorenzo Ruiz. |
-| Adjustable reading experience | Persistent text size control on every reading screen, plus light, dark and system themes. |
+| Adjustable reading experience | Prayers are set in the Literata serif with a persistent text size control on every reading screen, plus light, dark and system themes. |
 | App release automation | GitHub Actions builds the Android App Bundle, creates a GitHub release, and uploads a draft to the Google Play production and closed testing tracks. |
 
 ## App Modules
@@ -48,10 +48,10 @@ lib/
 ├── app/                     App shell (MaterialApp, bottom navigation)
 ├── core/
 │   ├── content/             JSON content loader, generic ContentCubit, devotion calendar
-│   ├── services/            Reminders, logging, external links
+│   ├── services/            Reminders, logging, external links, hymn audio
 │   ├── settings/            Persisted theme, text size and reminder settings
 │   ├── theme/               Colours and light/dark ThemeData
-│   └── widgets/             Shared headers, header art, reading typography, cards
+│   └── widgets/             Page header, grouped lists, reading typography, mini player
 ├── data/                    Local JSON devotional content
 └── features/
     ├── about/               Settings & about tab
@@ -62,7 +62,7 @@ lib/
     ├── novena_english/      English novena
     ├── perpetual_novena/    Perpetual novena (every 28th)
     ├── prayers/             Prayers for intentions
-    └── scripture/           Random scripture verse card
+    └── scripture/           Verse of the day
 ```
 
 ## Tech Stack
@@ -169,7 +169,7 @@ Required GitHub Actions secrets:
 
 ## Content and Assets
 
-The app content is stored locally under `lib/data/`, while images and audio are stored under `assets/`. `assets/splash/` holds the native splash sources (not bundled) and `docs/` holds README media. The bundled paths are registered in `pubspec.yaml` so the app can work without an internet connection for devotional content.
+The app content is stored locally under `lib/data/`, while images, audio and fonts are stored under `assets/` (Literata is bundled under the SIL Open Font License, `assets/fonts/OFL.txt`). `assets/splash/` holds the native splash sources (not bundled) and `docs/` holds README media. The bundled paths are registered in `pubspec.yaml` so the app can work without an internet connection for devotional content.
 
 ## Release Versioning
 

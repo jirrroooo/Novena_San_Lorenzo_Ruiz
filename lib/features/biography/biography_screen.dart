@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:novena_lorenzo/core/content/content_cubit.dart';
 import 'package:novena_lorenzo/core/services/link_service.dart';
-import 'package:novena_lorenzo/core/widgets/collapsing_header.dart';
+import 'package:novena_lorenzo/core/theme/app_theme.dart';
+import 'package:novena_lorenzo/core/widgets/list_items.dart';
+import 'package:novena_lorenzo/core/widgets/page_header.dart';
 import 'package:novena_lorenzo/core/widgets/reading.dart';
 import 'package:novena_lorenzo/core/widgets/reading_settings_sheet.dart';
 import 'package:novena_lorenzo/features/biography/biography_repository.dart';
-import 'package:novena_lorenzo/features/scripture/scripture_card.dart';
 
 const _videoUrl = 'https://www.youtube.com/watch?v=vtO7Ubf9ygg';
 
-/// Life tab: key facts and the story of St. Lorenzo Ruiz.
+/// Life tab: key facts and the story of St. Lorenzo Ruiz as a timeline.
 class BiographyScreen extends StatelessWidget {
   const BiographyScreen({super.key});
 
@@ -17,28 +18,41 @@ class BiographyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        const CollapsingHeader(
+        const PageHeader(
           title: 'St. Lorenzo Ruiz',
           subtitle: 'First Filipino saint and martyr',
-          background: HeaderImage(
-            'assets/images/lorenzo1.webp',
-            alignment: Alignment(0, -0.4),
-          ),
+          image: 'assets/images/lorenzo1.webp',
+          imageAlignment: Alignment(0, -0.4),
+          imageHeight: 280,
           actions: [ReadingSettingsButton()],
         ),
-        const ScriptureSliver(),
         ContentSliver<Biography>(
           load: const BiographyRepository().load,
           builder: (context, bio) => ReadingSliver(
-            top: 20,
             children: [
-              _FactsCard(facts: bio.facts),
-              const SizedBox(height: 12),
-              const _VideoCard(),
-              for (final section in bio.sections) ...[
-                SectionTitle(section.title),
-                for (final point in section.points) _Point(point),
-              ],
+              _FactsGroup(facts: bio.facts),
+              const SizedBox(height: Space.m),
+              ListGroup(
+                children: [
+                  ListRow(
+                    leading: const _VideoThumbnail(),
+                    title: 'Watch his story',
+                    subtitle: 'On YouTube · needs internet',
+                    trailing: Icon(
+                      Icons.open_in_new_rounded,
+                      size: 20,
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+                    onTap: () => LinkService.open(context, _videoUrl),
+                  ),
+                ],
+              ),
+              const SectionHeading('His story'),
+              for (var i = 0; i < bio.sections.length; i++)
+                _TimelineEntry(
+                  section: bio.sections[i],
+                  isLast: i == bio.sections.length - 1,
+                ),
             ],
           ),
         ),
@@ -47,37 +61,63 @@ class BiographyScreen extends StatelessWidget {
   }
 }
 
-class _FactsCard extends StatelessWidget {
-  const _FactsCard({required this.facts});
+class _FactsGroup extends StatelessWidget {
+  const _FactsGroup({required this.facts});
 
   final List<BiographyFact> facts;
 
   @override
   Widget build(BuildContext context) {
     final styles = ReadingStyles.of(context);
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            for (var i = 0; i < facts.length; i++) ...[
-              if (i > 0) const Divider(),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(facts[i].label.toUpperCase(), style: styles.speaker),
-                    const SizedBox(height: 2),
-                    Text(
-                      facts[i].value,
-                      style: styles.body.copyWith(height: 1.4),
-                    ),
-                  ],
+    final textTheme = Theme.of(context).textTheme;
+    final scheme = Theme.of(context).colorScheme;
+    return ListGroup(
+      children: [
+        for (final fact in facts)
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: Space.l,
+              vertical: Space.m,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  fact.label,
+                  style: textTheme.bodySmall?.copyWith(
+                    color: scheme.onSurfaceVariant,
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(height: Space.xs),
+                Text(fact.value, style: styles.body.copyWith(height: 1.4)),
+              ],
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+class _VideoThumbnail extends StatelessWidget {
+  const _VideoThumbnail();
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child: SizedBox(
+        width: 64,
+        height: 48,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.asset(
+              'assets/images/lorenzo5.webp',
+              fit: BoxFit.cover,
+              excludeFromSemantics: true,
+            ),
+            const ColoredBox(color: Color(0x4D000000)),
+            const Icon(Icons.play_arrow_rounded, color: Colors.white),
           ],
         ),
       ),
@@ -85,53 +125,64 @@ class _FactsCard extends StatelessWidget {
   }
 }
 
-class _VideoCard extends StatelessWidget {
-  const _VideoCard();
+/// One chapter of his life on a vertical timeline.
+class _TimelineEntry extends StatelessWidget {
+  const _TimelineEntry({required this.section, required this.isLast});
+
+  final BiographySection section;
+  final bool isLast;
+
+  static const double _dot = 12;
+  static const double _line = 2;
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return Card(
-      child: InkWell(
-        onTap: () => LinkService.open(context, _videoUrl),
-        child: Row(
-          children: [
-            SizedBox(
-              width: 112,
-              height: 84,
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Image.asset('assets/images/lorenzo5.webp', fit: BoxFit.cover),
-                  const ColoredBox(color: Color(0x55000000)),
-                  const Icon(
-                    Icons.play_circle_fill_rounded,
-                    color: Colors.white,
-                    size: 40,
-                  ),
-                ],
-              ),
+    final scheme = Theme.of(context).colorScheme;
+    final styles = ReadingStyles.of(context);
+    final heading = styles.heading;
+    // Centres the dot on the first line of the heading.
+    final dotTop = (heading.fontSize! * heading.height! - _dot) / 2;
+
+    return Stack(
+      children: [
+        if (!isLast)
+          Positioned(
+            left: (_dot - _line) / 2,
+            top: dotTop + _dot,
+            bottom: 0,
+            width: _line,
+            child: ColoredBox(color: scheme.outlineVariant),
+          ),
+        Positioned(
+          left: 0,
+          top: dotTop,
+          child: Container(
+            width: _dot,
+            height: _dot,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: scheme.primary, width: 2),
             ),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Watch his story', style: textTheme.titleMedium),
-                  Text(
-                    'Opens in YouTube · requires internet',
-                    style: textTheme.bodySmall,
-                  ),
-                ],
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(right: 12),
-              child: Icon(Icons.open_in_new_rounded),
-            ),
-          ],
+          ),
         ),
-      ),
+        Padding(
+          padding: EdgeInsets.only(
+            left: _dot + Space.l,
+            bottom: isLast ? 0 : Space.xl,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Semantics(
+                header: true,
+                child: Text(section.title, style: heading),
+              ),
+              const SizedBox(height: Space.xs),
+              for (final point in section.points) _Point(point),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
@@ -145,19 +196,19 @@ class _Point extends StatelessWidget {
   Widget build(BuildContext context) {
     final styles = ReadingStyles.of(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.symmetric(vertical: Space.xs),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.only(
-              top: styles.body.fontSize! * 0.55,
-              right: 12,
+              top: styles.body.fontSize! * 0.65,
+              right: Space.m,
             ),
             child: Icon(
               Icons.circle,
-              size: 7,
-              color: Theme.of(context).colorScheme.primary,
+              size: 5,
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
             ),
           ),
           Expanded(child: Text(text, style: styles.body)),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:novena_lorenzo/core/content/devotion_calendar.dart';
+import 'package:novena_lorenzo/core/theme/app_theme.dart';
 import 'package:novena_lorenzo/core/widgets/list_items.dart';
+import 'package:novena_lorenzo/core/widgets/reading.dart';
 import 'package:novena_lorenzo/data/translation.dart';
 
-/// The nine novena days as tappable cards; today's day is highlighted during
+/// The nine novena days as one grouped list; today's day is marked during
 /// the novena (September 19–27).
 class NovenaDayList extends StatelessWidget {
   const NovenaDayList({
@@ -20,15 +22,15 @@ class NovenaDayList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final today = DevotionCalendar.novenaDay(DateTime.now());
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+    return ListGroup(
+      dividerIndent: ListRow.textIndentWithBadge,
       children: [
         for (var i = 0; i < titles.length; i++)
-          EntryCard(
-            leading: DayBadge(day: i + 1, highlighted: today == i + 1),
-            tag: today == i + 1 ? 'Today · ${dayNames[i]}' : dayNames[i],
-            highlightTag: today == i + 1,
+          ListRow(
+            leading: DayNumber(i + 1, today: today == i + 1),
             title: titles[i],
+            subtitle: today == i + 1 ? 'Today · ${dayNames[i]}' : dayNames[i],
+            highlightSubtitle: today == i + 1,
             onTap: () => onOpen(i + 1),
           ),
       ],
@@ -36,9 +38,9 @@ class NovenaDayList extends StatelessWidget {
   }
 }
 
-/// Footer on a novena day: go to the next day, or back to the list.
-class NextDayButton extends StatelessWidget {
-  const NextDayButton({
+/// Closes a novena day: progress through the nine days and the way on.
+class NovenaDayFooter extends StatelessWidget {
+  const NovenaDayFooter({
     super.key,
     required this.day,
     required this.totalDays,
@@ -51,21 +53,55 @@ class NextDayButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final scheme = Theme.of(context).colorScheme;
     final isLast = day >= totalDays;
+
     return Padding(
-      padding: const EdgeInsets.only(top: 24),
-      child: isLast
-          ? OutlinedButton.icon(
-              onPressed: () => Navigator.of(context).maybePop(),
-              icon: const Icon(Icons.check_rounded),
-              label: const Text('Novena completed'),
+      padding: const EdgeInsets.only(top: Space.xl),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Ornament(),
+          const SizedBox(height: Space.xl),
+          ProgressDots(
+            count: totalDays,
+            filled: day,
+            alignment: MainAxisAlignment.center,
+          ),
+          const SizedBox(height: Space.m),
+          Text(
+            isLast ? 'The novena is complete' : 'Day $day of $totalDays',
+            textAlign: TextAlign.center,
+            style: textTheme.titleLarge,
+          ),
+          if (isLast) ...[
+            const SizedBox(height: Space.s),
+            Text(
+              'May St. Lorenzo Ruiz pray for you. '
+              'His feast is on September 28.',
+              textAlign: TextAlign.center,
+              style: textTheme.bodyLarge?.copyWith(
+                color: scheme.onSurfaceVariant,
+              ),
+            ),
+          ],
+          const SizedBox(height: Space.xl),
+          if (isLast)
+            FilledButton(
+              onPressed: () =>
+                  Navigator.of(context).popUntil((route) => route.isFirst),
+              child: const Text('Back to Home'),
             )
-          : FilledButton.icon(
+          else
+            FilledButton.icon(
               onPressed: onNext,
               iconAlignment: IconAlignment.end,
               icon: const Icon(Icons.arrow_forward_rounded),
               label: Text('Continue to Day ${day + 1}'),
             ),
+        ],
+      ),
     );
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:novena_lorenzo/core/theme/app_theme.dart';
+import 'package:novena_lorenzo/core/widgets/list_items.dart';
 import 'package:novena_lorenzo/data/translation.dart';
 
 class _Credit {
@@ -45,10 +47,14 @@ class ApprovalCredits extends StatelessWidget {
   const ApprovalCredits({
     super.key,
     required this.translation,
+    this.heading,
     this.showHeading = true,
   });
 
   final Translation translation;
+
+  /// Label above the credits; defaults to "Bicol text" / "English text".
+  final String? heading;
   final bool showHeading;
 
   @override
@@ -62,35 +68,28 @@ class ApprovalCredits extends StatelessWidget {
         : 'All rights reserved to the rightful owner';
 
     return Padding(
-      padding: const EdgeInsets.only(top: 32),
+      padding: EdgeInsets.only(top: showHeading ? Space.l : Space.xxl),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           if (showHeading)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Text(
-                isBicol ? 'Bicol text' : 'English text',
-                style: textTheme.titleSmall?.copyWith(color: scheme.primary),
-              ),
-            ),
-          Card(
-            child: Column(
-              children: [
-                for (final credit in credits)
-                  ListTile(
-                    leading: CircleAvatar(
-                      radius: 22,
-                      backgroundColor: scheme.surfaceContainerHighest,
-                      backgroundImage: AssetImage(credit.photo),
-                    ),
-                    title: Text(credit.name),
-                    subtitle: Text(credit.role),
+            GroupLabel(heading ?? (isBicol ? 'Bicol text' : 'English text')),
+          ListGroup(
+            dividerIndent: ListRow.textIndentWithBadge,
+            children: [
+              for (final credit in credits)
+                ListRow(
+                  leading: CircleAvatar(
+                    radius: 20,
+                    backgroundColor: scheme.surfaceContainerHighest,
+                    backgroundImage: AssetImage(credit.photo),
                   ),
-              ],
-            ),
+                  title: credit.name,
+                  subtitle: credit.role,
+                ),
+            ],
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: Space.m),
           Text(
             footer,
             textAlign: TextAlign.center,

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:novena_lorenzo/app/app.dart';
@@ -11,6 +12,12 @@ Future<void> main() async {
   // Draw behind the status and navigation bars (Android 15+ enforces this);
   // screens handle the insets themselves.
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
+  // Bundled Literata font (SIL Open Font License), shown on the licenses page.
+  LicenseRegistry.addLicense(() async* {
+    final license = await rootBundle.loadString('assets/fonts/OFL.txt');
+    yield LicenseEntryWithLineBreaks(const ['Literata'], license);
+  });
 
   final settings = await AppSettings.load();
   runApp(NovenaApp(settings: settings));

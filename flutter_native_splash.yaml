@@ -1,6 +1,7 @@
 # Native launch screen (the only splash screen; the app has no Flutter splash).
 # Regenerate after editing:  dart run flutter_native_splash:create
-# Colours match AppColors in lib/core/theme/app_theme.dart.
+# The splash keeps the original pastel red; the in-app accent is AppColors.red
+# in lib/core/theme/app_theme.dart.
 flutter_native_splash:
   color: "#E56B6F"
   color_dark: "#2C2728"

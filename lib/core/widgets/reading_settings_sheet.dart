@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:novena_lorenzo/core/settings/app_settings.dart';
+import 'package:novena_lorenzo/core/theme/app_theme.dart';
 import 'package:novena_lorenzo/core/widgets/reading.dart';
 
-/// App bar action that opens [showReadingSettings].
+/// Toolbar action that opens [showReadingSettings].
 class ReadingSettingsButton extends StatelessWidget {
   const ReadingSettingsButton({super.key});
 
@@ -44,8 +45,8 @@ class ReadingSettingsPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final settings = AppSettingsScope.of(context);
-    final textTheme = Theme.of(context).textTheme;
-    final scheme = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
     final index = AppSettings.textScales.indexOf(settings.textScale);
 
     final content = Column(
@@ -53,17 +54,14 @@ class ReadingSettingsPanel extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         if (inSheet) ...[
-          Text('Reading settings', style: textTheme.titleLarge),
-          const SizedBox(height: 16),
+          Text('Reading', style: textTheme.titleLarge),
+          const SizedBox(height: Space.l),
         ],
         Row(
           children: [
-            Text('Text size', style: textTheme.titleSmall),
+            Text('Text size', style: textTheme.bodyLarge),
             const Spacer(),
-            Text(
-              _labels[index],
-              style: textTheme.labelLarge?.copyWith(color: scheme.primary),
-            ),
+            Text(_labels[index], style: textTheme.titleMedium),
           ],
         ),
         Row(
@@ -97,39 +95,30 @@ class ReadingSettingsPanel extends StatelessWidget {
             ),
           ],
         ),
+        const SizedBox(height: Space.s),
+        // Live sample of the prayer text at the chosen size.
         Container(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(Space.l),
           decoration: BoxDecoration(
-            color: scheme.surfaceContainerHighest.withValues(alpha: 0.5),
-            borderRadius: BorderRadius.circular(16),
+            color: theme.scaffoldBackgroundColor,
+            borderRadius: BorderRadius.circular(AppRadius.small),
           ),
           child: Text(
             'Blessed are they who are persecuted for the sake of righteousness, '
             'for theirs is the kingdom of heaven.',
-            style: ReadingStyles.of(context).emphasis,
+            style: ReadingStyles.of(context).body,
           ),
         ),
-        const SizedBox(height: 24),
-        Text('Appearance', style: textTheme.titleSmall),
-        const SizedBox(height: 8),
+        const SizedBox(height: Space.xl),
+        Text('Appearance', style: textTheme.bodyLarge),
+        const SizedBox(height: Space.s),
         SegmentedButton<ThemeMode>(
           showSelectedIcon: false,
+          expandedInsets: EdgeInsets.zero,
           segments: const [
-            ButtonSegment(
-              value: ThemeMode.system,
-              icon: Icon(Icons.brightness_auto_rounded),
-              label: Text('System'),
-            ),
-            ButtonSegment(
-              value: ThemeMode.light,
-              icon: Icon(Icons.light_mode_rounded),
-              label: Text('Light'),
-            ),
-            ButtonSegment(
-              value: ThemeMode.dark,
-              icon: Icon(Icons.dark_mode_rounded),
-              label: Text('Dark'),
-            ),
+            ButtonSegment(value: ThemeMode.system, label: Text('System')),
+            ButtonSegment(value: ThemeMode.light, label: Text('Light')),
+            ButtonSegment(value: ThemeMode.dark, label: Text('Dark')),
           ],
           selected: {settings.themeMode},
           onSelectionChanged: (s) => settings.setThemeMode(s.first),
@@ -139,7 +128,7 @@ class ReadingSettingsPanel extends StatelessWidget {
 
     if (!inSheet) return content;
     return SingleChildScrollView(
-      padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+      padding: const EdgeInsets.fromLTRB(Space.xl, 0, Space.xl, Space.xl),
       child: content,
     );
   }

@@ -1,156 +1,266 @@
 import 'package:flutter/material.dart';
 import 'package:novena_lorenzo/core/theme/app_theme.dart';
 
-/// Numbered medallion used for the novena days.
-class DayBadge extends StatelessWidget {
-  const DayBadge({super.key, required this.day, this.highlighted = false});
+/// Rows on one rounded surface, separated by hairlines.
+class ListGroup extends StatelessWidget {
+  const ListGroup({
+    super.key,
+    required this.children,
+    this.dividerIndent = Space.l,
+  });
 
-  final int day;
-  final bool highlighted;
+  final List<Widget> children;
+
+  /// Where the hairlines start, usually aligned with the row text.
+  final double dividerIndent;
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Container(
-      width: 48,
-      height: 48,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: highlighted ? scheme.primary : scheme.surfaceContainerHighest,
-        border: Border.all(
-          color: highlighted ? AppColors.gold : scheme.outlineVariant,
-          width: highlighted ? 2 : 1,
-        ),
-      ),
+    return Card(
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            'DAY',
-            style: TextStyle(
-              fontSize: 8.5,
-              height: 1,
-              fontWeight: FontWeight.w800,
-              letterSpacing: 1,
-              color: highlighted
-                  ? scheme.onPrimary.withValues(alpha: 0.85)
-                  : scheme.onSurfaceVariant,
-            ),
-          ),
-          Text(
-            '$day',
-            style: TextStyle(
-              fontSize: 19,
-              height: 1.1,
-              fontWeight: FontWeight.w800,
-              color: highlighted ? scheme.onPrimary : scheme.onSurface,
-            ),
-          ),
+          for (var i = 0; i < children.length; i++) ...[
+            if (i > 0) Divider(indent: dividerIndent),
+            children[i],
+          ],
         ],
       ),
     );
   }
 }
 
-/// Rounded icon tile used as the leading element of list entries.
-class IconBadge extends StatelessWidget {
-  const IconBadge(this.icon, {super.key});
+/// A row in a [ListGroup]: optional leading widget, title, subtitle and a
+/// chevron when it can be tapped.
+class ListRow extends StatelessWidget {
+  const ListRow({
+    super.key,
+    this.leading,
+    required this.title,
+    this.subtitle,
+    this.highlightSubtitle = false,
+    this.trailing,
+    this.onTap,
+  });
 
-  final IconData icon;
+  final Widget? leading;
+  final String title;
+  final String? subtitle;
+
+  /// Shows the subtitle in the accent colour (used for "Today").
+  final bool highlightSubtitle;
+  final Widget? trailing;
+  final VoidCallback? onTap;
+
+  /// Offset of the row text when [leading] is a 40px badge or 24px icon.
+  static const double textIndentWithBadge = Space.l + 40 + Space.l;
+  static const double textIndentWithIcon = Space.l + 24 + Space.l;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+    final trailing =
+        this.trailing ??
+        (onTap == null
+            ? null
+            : Icon(
+                Icons.chevron_right_rounded,
+                color: scheme.onSurfaceVariant,
+              ));
+
+    return InkWell(
+      onTap: onTap,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minHeight: 64),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: Space.l,
+            vertical: Space.m,
+          ),
+          child: Row(
+            children: [
+              if (leading != null) ...[
+                IconTheme.merge(
+                  data: IconThemeData(color: scheme.onSurfaceVariant),
+                  child: leading!,
+                ),
+                const SizedBox(width: Space.l),
+              ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(title, style: textTheme.titleMedium),
+                    if (subtitle != null) ...[
+                      const SizedBox(height: Space.xs),
+                      Text(
+                        subtitle!,
+                        style: textTheme.bodySmall?.copyWith(
+                          color: highlightSubtitle
+                              ? scheme.primary
+                              : scheme.onSurfaceVariant,
+                          fontWeight: highlightSubtitle
+                              ? FontWeight.w600
+                              : FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+              if (trailing != null) ...[
+                const SizedBox(width: Space.s),
+                trailing,
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The day number of a novena day, filled in red when it is today.
+class DayNumber extends StatelessWidget {
+  const DayNumber(this.day, {super.key, this.today = false});
+
+  final int day;
+  final bool today;
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     return Container(
-      width: 48,
-      height: 48,
+      width: 40,
+      height: 40,
+      alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: scheme.secondaryContainer,
-        borderRadius: BorderRadius.circular(14),
+        shape: BoxShape.circle,
+        color: today ? scheme.primary : null,
+        border: today ? null : Border.all(color: scheme.outlineVariant),
       ),
-      child: Icon(icon, color: scheme.onSecondaryContainer),
+      child: Text(
+        '$day',
+        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+          fontFamily: AppFonts.serif,
+          color: today ? scheme.onPrimary : scheme.onSurface,
+        ),
+      ),
     );
   }
 }
 
-/// A tappable card row with a leading badge, title, subtitle and chevron.
-class EntryCard extends StatelessWidget {
-  const EntryCard({
-    super.key,
-    required this.leading,
-    required this.title,
-    this.subtitle,
-    this.tag,
-    this.highlightTag = false,
-    required this.onTap,
-  });
+/// Serif heading that opens a section of a screen ("Novenas", "His life").
+class SectionHeading extends StatelessWidget {
+  const SectionHeading(this.text, {super.key});
 
-  final Widget leading;
-  final String title;
-  final String? subtitle;
-  final String? tag;
-  final bool highlightTag;
-  final VoidCallback onTap;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final scheme = Theme.of(context).colorScheme;
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Card(
-        child: InkWell(
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(14, 12, 8, 12),
-            child: Row(
-              children: [
-                leading,
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (tag != null)
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 2),
-                          child: Text(
-                            tag!.toUpperCase(),
-                            style: textTheme.labelSmall?.copyWith(
-                              color: highlightTag
-                                  ? scheme.primary
-                                  : scheme.onSurfaceVariant,
-                              fontWeight: FontWeight.w800,
-                              letterSpacing: 1,
-                            ),
-                          ),
-                        ),
-                      Text(
-                        title,
-                        style: textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w600,
-                          height: 1.25,
-                        ),
-                      ),
-                      if (subtitle != null) ...[
-                        const SizedBox(height: 2),
-                        Text(
-                          subtitle!,
-                          style: textTheme.bodyMedium?.copyWith(
-                            color: scheme.onSurfaceVariant,
-                          ),
-                        ),
-                      ],
-                    ],
-                  ),
-                ),
-                Icon(
-                  Icons.chevron_right_rounded,
-                  color: scheme.onSurfaceVariant,
-                ),
-              ],
-            ),
+      padding: const EdgeInsets.only(top: Space.xxl, bottom: Space.m),
+      child: Semantics(
+        header: true,
+        child: Text(text, style: Theme.of(context).textTheme.titleLarge),
+      ),
+    );
+  }
+}
+
+/// Small label above a [ListGroup], aligned with the row text.
+class GroupLabel extends StatelessWidget {
+  const GroupLabel(this.text, {super.key});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(Space.l, Space.xl, Space.l, Space.s),
+      child: Semantics(
+        header: true,
+        child: Text(
+          text,
+          style: Theme.of(context).textTheme.titleSmall
+              ?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
+        ),
+      ),
+    );
+  }
+}
+
+/// A row of dots showing progress through the nine novena days. The filled
+/// dots fill in one after another when the row first appears.
+class ProgressDots extends StatelessWidget {
+  const ProgressDots({
+    super.key,
+    required this.count,
+    required this.filled,
+    this.alignment = MainAxisAlignment.start,
+  });
+
+  final int count;
+  final int filled;
+  final MainAxisAlignment alignment;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Semantics(
+      label: 'Day $filled of $count',
+      excludeSemantics: true,
+      child: TweenAnimationBuilder<double>(
+        tween: Tween(begin: 0, end: filled.toDouble()),
+        duration: Duration(milliseconds: 120 * filled + 200),
+        curve: Curves.easeOut,
+        builder: (context, value, _) => Row(
+          mainAxisAlignment: alignment,
+          children: [
+            for (var i = 0; i < count; i++) ...[
+              if (i > 0) const SizedBox(width: Space.s),
+              _Dot(
+                fill: (value - i).clamp(0.0, 1.0),
+                current: i == filled - 1,
+                color: scheme.primary,
+                empty: scheme.outlineVariant,
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _Dot extends StatelessWidget {
+  const _Dot({
+    required this.fill,
+    required this.current,
+    required this.color,
+    required this.empty,
+  });
+
+  final double fill;
+  final bool current;
+  final Color color;
+  final Color empty;
+
+  @override
+  Widget build(BuildContext context) {
+    final size = current ? 12.0 : 8.0;
+    return SizedBox(
+      width: 12,
+      height: 12,
+      child: Center(
+        child: Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Color.lerp(empty, color, fill),
           ),
         ),
       ),

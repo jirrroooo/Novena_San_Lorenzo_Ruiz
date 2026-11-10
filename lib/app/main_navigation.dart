@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:novena_lorenzo/core/services/hymn_audio.dart';
+import 'package:novena_lorenzo/core/widgets/hymn_mini_player.dart';
 import 'package:novena_lorenzo/features/about/about_screen.dart';
 import 'package:novena_lorenzo/features/biography/biography_screen.dart';
 import 'package:novena_lorenzo/features/himno/himno_screen.dart';
@@ -22,6 +24,23 @@ class MainNavigation extends StatefulWidget {
 class MainNavigationState extends State<MainNavigation> {
   AppTab _tab = AppTab.home;
   final Set<AppTab> _visited = {AppTab.home};
+
+  @override
+  void initState() {
+    super.initState();
+    // The mini player on any screen leads back to the Hymn tab.
+    HymnAudio.instance.openPlayer = () {
+      if (!mounted) return;
+      Navigator.of(context).popUntil((route) => route.isFirst);
+      select(AppTab.hymn);
+    };
+  }
+
+  @override
+  void dispose() {
+    HymnAudio.instance.openPlayer = null;
+    super.dispose();
+  }
 
   void select(AppTab tab) {
     setState(() {
@@ -54,34 +73,50 @@ class MainNavigationState extends State<MainNavigation> {
               _visited.contains(tab) ? _screen(tab) : const SizedBox.shrink(),
           ],
         ),
-        bottomNavigationBar: NavigationBar(
-          selectedIndex: _tab.index,
-          onDestinationSelected: (i) => select(AppTab.values[i]),
-          destinations: const [
-            NavigationDestination(
-              icon: Icon(Icons.home_outlined),
-              selectedIcon: Icon(Icons.home_rounded),
-              label: 'Home',
+        bottomNavigationBar: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            ValueListenableBuilder<bool>(
+              valueListenable: HymnAudio.instance.active,
+              builder: (context, playing, _) => AnimatedSize(
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.easeOut,
+                child: playing && _tab != AppTab.hymn
+                    ? HymnMiniPlayer(onOpen: () => select(AppTab.hymn))
+                    : const SizedBox(width: double.infinity),
+              ),
             ),
-            NavigationDestination(
-              icon: Icon(Icons.volunteer_activism_outlined),
-              selectedIcon: Icon(Icons.volunteer_activism_rounded),
-              label: 'Prayers',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.music_note_outlined),
-              selectedIcon: Icon(Icons.music_note_rounded),
-              label: 'Hymn',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.auto_stories_outlined),
-              selectedIcon: Icon(Icons.auto_stories_rounded),
-              label: 'His Life',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.more_horiz_rounded),
-              selectedIcon: Icon(Icons.more_horiz_rounded),
-              label: 'More',
+            NavigationBar(
+              selectedIndex: _tab.index,
+              onDestinationSelected: (i) => select(AppTab.values[i]),
+              destinations: const [
+                NavigationDestination(
+                  icon: Icon(Icons.home_outlined),
+                  selectedIcon: Icon(Icons.home_rounded),
+                  label: 'Home',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.volunteer_activism_outlined),
+                  selectedIcon: Icon(Icons.volunteer_activism_rounded),
+                  label: 'Prayers',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.music_note_outlined),
+                  selectedIcon: Icon(Icons.music_note_rounded),
+                  label: 'Hymn',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.auto_stories_outlined),
+                  selectedIcon: Icon(Icons.auto_stories_rounded),
+                  label: 'His Life',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.more_horiz_rounded),
+                  selectedIcon: Icon(Icons.more_horiz_rounded),
+                  label: 'More',
+                ),
+              ],
             ),
           ],
         ),
